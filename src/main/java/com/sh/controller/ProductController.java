@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by tao on 2017/5/15 0015.
@@ -22,27 +23,29 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/api/product")
 public class ProductController {
     private ProductDAO productDao;
-    public ProductController(){
+
+    public ProductController() {
         productDao = new ProductDAOImpl();
     }
+
     @RequestMapping("/add")
     @ResponseBody
-    public ModelAndView add(HttpServletRequest request, HttpSession session){
+    public ModelAndView add(HttpServletRequest request, HttpSession session) {
         ModelAndView view = new ModelAndView();
         Product product = new Product();
         //设置uid
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         Integer uid = new Integer(0);
-        if(user == null || user.getId() == null){
+        if (user == null || user.getId() == null) {
             //用户未登录,跳转到登录页面
             session.setAttribute("msg", "您还未登录,请登录后再发布商品,3秒后自动跳转到登录页面");
             session.setAttribute("autoReturn", "login.jsp");
             view.setViewName("redirect:/info.jsp");
             return view;
-        }else {
+        } else {
             //用户已登录,可以发布商品
             uid = user.getId();
-            String pName =  request.getParameter("pName");
+            String pName = request.getParameter("pName");
             Integer kId = Integer.parseInt(request.getParameter("kindId"));
             String pDesc = request.getParameter("pDesc");
             Integer pNum = Integer.parseInt(request.getParameter("pNum"));
@@ -73,21 +76,22 @@ public class ProductController {
             return view;
         }
     }
+
     @RequestMapping("/delete")
     @ResponseBody
-    public ModelAndView delete(HttpServletRequest request, HttpSession session){
+    public ModelAndView delete(HttpServletRequest request, HttpSession session) {
         ModelAndView view = new ModelAndView();
         Product product = new Product();
         //设置uid
-        User user = (User)session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         Integer uid = new Integer(0);
-        if(user == null || user.getId() == null){
+        if (user == null || user.getId() == null) {
             //用户未登录,跳转到登录页面
             session.setAttribute("msg", "您还未登录,3秒后自动跳转到登录页面");
             session.setAttribute("autoReturn", "login.jsp");
             view.setViewName("redirect:/info.jsp");
             return view;
-        }else {
+        } else {
             //用户已登录,可以删除购物车
             Integer productId = Integer.parseInt(request.getParameter("id"));
 
@@ -105,4 +109,22 @@ public class ProductController {
             return view;
         }
     }
+
+    @RequestMapping("/search")
+    @ResponseBody
+    public ModelAndView search(HttpServletRequest request, HttpSession session) {
+        ModelAndView view = new ModelAndView();
+        List<Product> productList;
+        String pName = request.getParameter("name");
+
+        ProductDAO pd = new ProductDAOImpl();
+        productList = pd.getProductByLikeName(pName);
+
+        session.setAttribute("productlist",productList);
+
+        view = new ModelAndView();
+        view.setViewName("redirect:/search.jsp");
+        return view;
+    }
+
 }

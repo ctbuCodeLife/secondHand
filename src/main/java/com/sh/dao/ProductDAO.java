@@ -29,6 +29,9 @@ public interface ProductDAO {
     @Select("select * from `product` where id = #{id}")
     public Product select(Integer id);
 
+    @Select("select * from `product` where `pName` like concat(concat('%',#{username}),'%')")
+    public List<Product> getProductByLikeName(String productname);
+
     @Select("select * from `product` where `pName` = #{pname}")
     public Product getProductByName(String productname);
 
