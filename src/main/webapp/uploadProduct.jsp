@@ -74,9 +74,9 @@
                 <form name="registerform" id="registerform" action="api/product/add"
                       method="post" class="form-horizontal" style="margin-top: 5px;">
                     <div class="form-group">
-                        <label for="productName" class="col-sm-2 control-label">商品名</label>
+                        <label for="pName" class="col-sm-2 control-label">商品名</label>
                         <div class="col-sm-6">
-                            <input name="productName" type="text" class="form-control" id="productName"
+                            <input id="pName" name="pName" type="text" class="form-control"
                                    placeholder="请输入商品名"
                             >
                         </div>

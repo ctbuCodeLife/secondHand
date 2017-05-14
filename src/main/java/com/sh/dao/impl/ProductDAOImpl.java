@@ -56,6 +56,10 @@ public class ProductDAOImpl implements ProductDAO {
         return productDao.listByUid(uid);
     }
 
+    public List<Product> listByKid( Integer kid){
+        return productDao.listByKid(kid);
+    }
+
     public Product select(Integer id){
         return productDao.select(id);
     }

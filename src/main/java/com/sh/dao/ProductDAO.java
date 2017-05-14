@@ -23,6 +23,9 @@ public interface ProductDAO {
     @Select("select * from `product` where uId = #{uid}")
     public List<Product> listByUid(Integer uid);
 
+    @Select("select * from `product` where kId = #{kid}")
+    public List<Product> listByKid(Integer kid);
+
     @Select("select * from `product` where id = #{id}")
     public Product select(Integer id);
 
