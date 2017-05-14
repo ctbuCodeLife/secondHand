@@ -51,7 +51,9 @@ public class SalesDAOImpl implements SalesDAO {
     public List<Sales> findAll(){
         return salesDao.findAll();
     }
-
+    public List<Sales> findAllReqOrder(Integer uid){
+        return salesDao.findAllReqOrder(uid);
+    }
     public Sales select(Integer id){
         return salesDao.select(id);
     }

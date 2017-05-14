@@ -46,7 +46,7 @@ public class ProductController {
             Integer kId = Integer.parseInt(request.getParameter("kindId"));
             String pDesc = request.getParameter("pDesc");
             Integer pNum = Integer.parseInt(request.getParameter("pNum"));
-            String pImage = "img/show/sanxing.jsp";
+            String pImage = "img/show/sanxing.jpg";
             Integer originPrice = Integer.parseInt(request.getParameter("originPrice"));
             Integer realPrice = Integer.parseInt(request.getParameter("realPrice"));
 

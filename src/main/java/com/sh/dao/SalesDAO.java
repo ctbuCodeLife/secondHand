@@ -20,9 +20,12 @@ public interface SalesDAO {
     @Select("select * from `sales`")
     public List<Sales> findAll();
 
+    //级联查询
+    @Select("select * from `sales` where sales.pId in (select pId from product where uid=#{uid})")
+    public List<Sales> findAllReqOrder(Integer uid);
+
     @Select("select * from `sales` where id = #{id}")
     public Sales select(Integer id);
-    
 
     @Select("select count(id) from `sales`")
     public int count();
