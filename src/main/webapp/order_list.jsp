@@ -98,8 +98,8 @@
                             <td width="10%">${sales.contactman}</td>
                             <td width="10%">${sales.contactaddr}</td>
                             <td width="10%">${sales.contacttel}</td>
-                            <td width="10%"><button class="btn-sm btn-success"><a href="api/sales/recieve?id=${sales.id}">确认收货</a></button>
-                                <button class="btn-sm btn-danger"><a href="api/sales/delete?id=${sales.id}">删除订单</a></button></td>
+                            <td width="10%"><button class="btn-sm btn-success"><a href="api/sales/recieve?id=${sales.id}" style="text-decoration:none;color: #0f0f0f">确认收货</a></button>
+                                <button class="btn-sm btn-danger"><a href="api/sales/delete?id=${sales.id}" style="text-decoration:none;color: #0f0f0f">删除订单</a></button></td>
                         </tr>
                     </c:forEach>
                     </tbody>
