@@ -64,6 +64,10 @@ public class ProductDAOImpl implements ProductDAO {
         return productDao.select(id);
     }
 
+    public List<Product> getProductByLikeName( String productname){
+        return productDao.getProductByLikeName(productname);
+    }
+
     public Product getProductByName(String productname){
         return  productDao.getProductByName(productname);
     }
