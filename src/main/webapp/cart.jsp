@@ -84,7 +84,6 @@
                             e.printStackTrace();
                         }
                     %>
-
                         <tr class="active">
                             <td width="40%">
                                 <input type="hidden" name="id" value="${sessionScope.product.id}">
@@ -109,7 +108,7 @@
                                 <span id="total" class="subtotal heiget-auto-center">￥${shopcart.totalprice}元</span>
                             <td width="">
                                 <a href="DelShopCart?id=${shopcart.id}" class="btn btn-danger btn-height-auto-center ">删除</a>
-                            <a class="btn btn-success btn-height-auto-center " href="order_info.jsp">下单</a>
+                            <a class="btn btn-success btn-height-auto-center " href="order_info.jsp" >下单</a>
                             </td>
                         </tr>
 
