@@ -12,6 +12,8 @@ public class Kind implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public  Kind(){}
+
     public Integer getId() {
         return id;
     }

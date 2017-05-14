@@ -112,4 +112,8 @@ public class User implements Serializable {
         this.level = level;
         this.score = score;
     }
+
+    public User() {
+
+    }
 }

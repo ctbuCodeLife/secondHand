@@ -26,6 +26,8 @@ public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Product(){}
+
     public Integer getId() {
         return id;
     }

@@ -12,6 +12,8 @@ public class Hot implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public Hot(){}
+
     public Integer getId() {
         return id;
     }

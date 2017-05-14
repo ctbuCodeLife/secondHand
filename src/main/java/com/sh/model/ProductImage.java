@@ -18,6 +18,8 @@ public class ProductImage implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    public ProductImage(){}
+
     public Integer getId() {
         return id;
     }

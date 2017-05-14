@@ -161,4 +161,7 @@ public class Sales implements Serializable {
                 ", contactaddr='" + contactaddr + '\'' +
                 '}';
     }
+    public Sales(){
+
+    }
 }
