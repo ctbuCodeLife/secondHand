@@ -110,21 +110,4 @@ public class ProductController {
         }
     }
 
-    @RequestMapping("/search")
-    @ResponseBody
-    public ModelAndView search(HttpServletRequest request, HttpSession session) {
-        ModelAndView view = new ModelAndView();
-        List<Product> productList;
-        String pName = request.getParameter("name");
-
-        ProductDAO pd = new ProductDAOImpl();
-        productList = pd.getProductByLikeName(pName);
-
-        session.setAttribute("productlist",productList);
-
-        view = new ModelAndView();
-        view.setViewName("redirect:/search.jsp");
-        return view;
-    }
-
 }
