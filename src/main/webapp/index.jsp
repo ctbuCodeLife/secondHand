@@ -1,8 +1,10 @@
 <%@ page language="java"
-	import="java.util.*,com.shop.dao.*,com.shop.domain.*,com.shop.utils.*,java.sql.*"
+	import="java.util.*,java.sql.*"
 	contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.dao.ProductDao" %>
+<%@ page import="com.sh.model.Product" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.sh.dao.ProductDAO" %>
+<%@ page import="com.sh.dao.impl.ProductDAOImpl" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -46,7 +48,7 @@
 				<%!	ArrayList<Product> listHotProduct;
 				%>
 				<% 
-			  ProductDao pd = new ProductDao();
+			  ProductDAO pd = new ProductDAOImpl();
 			  listHotProduct = pd.findHot();
 			  session.setAttribute("listHotProduct", listHotProduct);
 			   %>

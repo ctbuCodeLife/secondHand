@@ -1,11 +1,11 @@
 <%@ page language="java"
-         import="java.util.*,com.shop.dao.*,com.shop.domain.*,com.shop.utils.*,java.sql.*"
+         import="java.util.*,com.sh.dao.*,com.sh.model.*,java.sql.*"
          contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="com.shop.dao.ShopCartDao" %>
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.domain.ShopCart" %>
-<%@ page import="com.shop.domain.Customer" %>
-<%@ page import="com.shop.dao.ProductDao" %>
+<%@ page import="com.sh.dao.CartDAO" %>
+<%@ page import="com.sh.model.Product" %>
+<%@ page import="com.sh.model.Cart" %>
+<%@ page import="com.sh.model.User" %>
+<%@ page import="com.sh.dao.impl.ProductDAOImpl" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -40,16 +40,16 @@
 </head>
 <body>
 <%!
-    ArrayList<ShopCart> listShopCart;
+    ArrayList<Cart> listShopCart;
 %>
 <%
     int cId = 0;
-    Customer customer = (Customer) session.getAttribute("customer");
-    if (customer != null) {
-        cId = customer.getId();
+    User user = (User) session.getAttribute("user");
+    if (user != null) {
+        cId = user.getId();
     }
-    ShopCartDao scd = new ShopCartDao();
-    listShopCart = scd.findAll(cId);
+    CartDAO scd = new CartDAOImpl();
+    listShopCart = scd.findAll();
     session.setAttribute("listShopCart", listShopCart);
 %>
 <!-- 头部DIV -->
