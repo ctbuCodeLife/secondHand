@@ -14,7 +14,7 @@ public interface SalesDAO {
     @Delete("delete from `sales` where id = #{id}")
     public int delete(Integer id);
 
-    @Update("update `sales` set `uId`=#{uId},`pId`=#{pId},`count`=#{count},`totalPrice`=#{totalPrice},`orderDate`=#{orderDate},`invoiceNo`=#{invoiceNo},`orderStatus`=#{orderStatus},`delivDate`=#{delivDate},`contactMan`=#{contactMan},`contactTel`=#{contactTel},`contactAddr`=#{contactAddr} where id=#{id}")
+    @Update("update `sales` set `uid`=#{uid},`pid`=#{pid},`count`=#{count},`totalprice`=#{totalprice},`orderdate`=#{orderdate},`invoiceno`=#{invoiceno},`orderstatus`=#{orderstatus},`delivdate`=#{delivdate},`contactman`=#{contactman},`contacttel`=#{contacttel},`contactaddr`=#{contactaddr} where id=#{id}")
     public int update(Sales record);
 
     @Select("select * from `sales`")
