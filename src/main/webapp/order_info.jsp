@@ -84,11 +84,13 @@
                      ">确认支付</a>
 						<script type="text/javascript">
 							function  link() {
+                                var url = location.search; //获取url中"?"符后的字串
+                                var cid = url.split("=")[1];
                                 var herf = $("#link").attr("href");
                                 var tel= $("#tel").val();
                                 var addr= $("#addr").val();
                                 var people= $("#people").val();
-                                $("#link").attr("href",herf+"&tel="+tel+"&addr="+addr+"&people="+people);
+                                $("#link").attr("href",herf+"&tel="+tel+"&addr="+addr+"&people="+people+"&cid="+cid);
                             }
 						</script>
 					</p>

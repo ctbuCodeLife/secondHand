@@ -52,7 +52,7 @@
                 <table class="table table-bordered">
                     <tbody>
                     <c:forEach var="sales" items="${sessionScope.listSales}">
-                        <c:set var="pid" value="${sales.pId}" scope="session"/>
+                        <c:set var="pid" value="${sales.pid}" scope="session"/>
                         <%
                             try {
                                 String param = session.getAttribute("pid").toString();
@@ -70,7 +70,7 @@
                         %>
 
                         <tr class="success">
-                            <th colspan="10">订单编号:${sales.invoiceNo}</th>
+                            <th colspan="10">订单编号:${sales.invoiceno}</th>
                         </tr>
                         <tr class="warning">
                             <th>图片</th>
@@ -88,16 +88,16 @@
                         <tr class="height-center">
                             <td width="10%">
                                 <input type="hidden" name="id" value="22">
-                                <img src="${sessionScope.product.pImage}" alt="${sessionScope.product.pName}" width="70"
+                                <img src="${sessionScope.product.pimage}" alt="${sessionScope.product.pname}" width="70"
                                      height="60"></td>
-                            <td width="10%"><a target="_blank"> ${sessionScope.product.pName}</a></td>
-                            <td width="10%">￥${sessionScope.product.iPrice}</td>
+                            <td width="10%"><a target="_blank"> ${sessionScope.product.pname}</a></td>
+                            <td width="10%">￥${sessionScope.product.realprice}</td>
                             <td width="10%">${sales.count}</td>
-                            <td width="10%"><span class="subtotal">￥${sales.totalPrice}</span></td>
-                            <td width="10%">${sales.orderStatus}</td>
-                            <td width="10%"></td>
-                            <td width="10%"></td>
-                            <td width="10%"></td>
+                            <td width="10%"><span class="subtotal">￥${sales.totalprice}</span></td>
+                            <td width="10%">${sales.orderstatus}</td>
+                            <td width="10%">${sales.contactman}</td>
+                            <td width="10%">${sales.contactaddr}</td>
+                            <td width="10%">${sales.contacttel}</td>
                             <td width="10%"><button class="btn-success">确认收货</button><button class="btn-danger">删除订单</button></td>
                         </tr>
                     </c:forEach>

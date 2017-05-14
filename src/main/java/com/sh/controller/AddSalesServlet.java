@@ -45,7 +45,7 @@ public class AddSalesServlet extends HttpServlet {
                 autoReturnPage = "login.jsp";
             } else {
                 //用户已登录
-                int cid = user.getId();
+                String cidParam =  request.getParameter("cid");
                 //获取请求参数
                 String pidParam = request.getParameter("pid");
                 System.out.println(pidParam);
@@ -108,6 +108,7 @@ public class AddSalesServlet extends HttpServlet {
                         autoReturnPage = "order_list.jsp";
                         //查找购物车
                         CartDAO scd = new CartDAOImpl();
+                        int cid = Integer.parseInt(cidParam);
                         Cart cart = scd.select(cid);
                         scd.delete(cart.getId());
                     }else {
