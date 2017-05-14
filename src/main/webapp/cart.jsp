@@ -67,7 +67,7 @@
                     <th>操作</th>
                 </tr>
                 <c:forEach var="shopcart" items="${sessionScope.listShopCart}">
-                    <c:set var="pid" value="${shopcart.pId}" scope="session"/>
+                    <c:set var="pid" value="${shopcart.pid}" scope="session"/>
                     <c:set var="cart" value="${shopcart}" scope="session"/>
                     <%
                         try {
@@ -76,9 +76,9 @@
                             if (param != null) {
                                 pId = Integer.parseInt(param);
                             }
-                            ProductDao pd = new ProductDao();
+                            ProductDAO pd = new ProductDAOImpl();
                             Product p = new Product();
-                            p = pd.find(pId);
+                            p = pd.select(pId);
                             session.setAttribute("product", p);
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -89,24 +89,24 @@
                             <td width="40%">
                                 <input type="hidden" name="id" value="${sessionScope.product.id}">
                                 <a  class="heiget-auto-center" href="product_info.jsp?id=${sessionScope.product.id}">
-                                    <img src="${sessionScope.product.pImage}"
-                                         alt="${sessionScope.product.pName}" width="auto" height="85px"
+                                    <img src="${sessionScope.product.pimage}"
+                                         alt="${sessionScope.product.pname}" width="auto" height="85px"
                                          style="display: inline-block;">
                                 </a>
                             </td>
                             <td width="15%">
                                 <a class="heiget-auto-center" target="_blank"
-                                   href="product_info.jsp?id=${sessionScope.product.id}">${sessionScope.product.pName}</a>
+                                   href="product_info.jsp?id=${sessionScope.product.id}">${sessionScope.product.pname}</a>
                             </td>
                             <td width="10%">
-                                <span id="price" class="heiget-auto-center">${sessionScope.product.iPrice}</span>元
+                                <span id="price" class="heiget-auto-center">${sessionScope.product.realprice}</span>元
                             </td>
                             <td width="10%">
                                 <input type="hidden" value="${shopcart.count}">
                                 <span class="heiget-auto-center">${shopcart.count}</span>
                             </td>
                             <td width="10%">
-                                <span id="total" class="subtotal heiget-auto-center">￥${shopcart.totolPrice}元</span>
+                                <span id="total" class="subtotal heiget-auto-center">￥${shopcart.totalprice}元</span>
                             <td width="">
                                 <a href="DelShopCart?id=${shopcart.id}" class="btn btn-danger btn-height-auto-center ">删除</a>
                             <a class="btn btn-success btn-height-auto-center " href="order_info.jsp">下单</a>

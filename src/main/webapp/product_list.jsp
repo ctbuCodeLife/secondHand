@@ -48,9 +48,9 @@ body {
 	<!--创建整体布局DIV-->
 	<div class="container">
 
-		<div class="row" style="width:1210px;margin:0 auto;">
+		<div class="row" style="width:1186px;margin:0 auto;">
             <c:forEach var="product" items="${sessionScope.listShowProduct}">
-				<div class="col-md-2">
+				<div class="col-md-2" width="160" style="margin-left: 20px">
 					<a href="product_info.jsp?id=${product.id}">
 						<img src="${product.pimage}" alt="${product.pname}"	width="170" height="170" style="display: inline-block;">
 					</a>
