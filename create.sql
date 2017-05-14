@@ -78,7 +78,7 @@ CREATE TABLE `product` (
   `realPrice` int(11) DEFAULT '0',
   `originPrice` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `unque_product_pName` (`pName`),
+  UNIQUE KEY `unique_product` (`uId`,`pName`),
   KEY `fk_kid` (`kId`),
   KEY `fk_uid` (`uId`),
   CONSTRAINT `fk_product_kind_id` FOREIGN KEY (`kId`) REFERENCES `kind` (`id`),
