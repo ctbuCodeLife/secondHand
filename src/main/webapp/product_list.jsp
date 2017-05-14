@@ -1,8 +1,9 @@
 <%@ page language="java"
-	import="java.util.*,com.shop.dao.*,com.shop.domain.*,com.shop.utils.*,java.sql.*"
+	import="java.util.*,com.sh.dao.*,com.sh.model.*,java.sql.*"
 	contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.dao.ProductDao" %>
+<%@ page import="com.sh.model.Product" %>
+<%@ page import="com.sh.dao.ProductDAO" %>
+<%@ page import="com.sh.dao.impl.ProductDAOImpl" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -40,8 +41,8 @@ body {
 				<%!	ArrayList<Product> listShowProduct;
 				%>
 				<% 
-			  ProductDao pd = new ProductDao();
-			  listShowProduct = pd.findShow();
+			  ProductDAO pd = new ProductDAOImpl();
+			  listShowProduct = pd.findAll();
 			  session.setAttribute("listShowProduct", listShowProduct);
 			   %>
 	<!--创建整体布局DIV-->
