@@ -74,11 +74,11 @@ public void testFindAll() throws Exception {
 public void testFindAllReqOrder() throws Exception { 
 //TODO: Test goes here...
     //测试通过
-//    SalesDAO sd = new SalesDAOImpl();
-//    List<Sales> sales = sd.findAllReqOrder(10000);
-//    for(Sales s:sales){
-//        System.out.println(s);
-//    }
+    SalesDAO sd = new SalesDAOImpl();
+    List<Sales> sales = sd.findAllReqOrder(10000);
+    for(Sales s:sales){
+        System.out.println(s);
+    }
 } 
 
 /** 
