@@ -1,5 +1,8 @@
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.dao.ProductDao" %>
+<%@ page import="com.sh.model.*" %>
+<%@ page import="com.sh.dao.ProductDAO" %>
+<%@ page import="com.sh.dao.impl.ProductDAOImpl" %>
+<%@ page import="com.sh.dao.KindDAO" %>
+<%@ page import="com.sh.dao.impl.KindDAOImpl" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -55,8 +58,8 @@ body {
 		<%
            try{
         	   int id = Integer.parseInt(request.getParameter("id"));
-        	   ProductDao pd = new ProductDao();
-        	   Product product = pd.find(id);
+        	   ProductDAO pd = new ProductDAOImpl();
+        	   Product product = pd.select(id);
         	   if(product != null){
         		   request.setAttribute("product", product);
         	   }
@@ -67,17 +70,19 @@ body {
 		<div class="container">
 			<div class="row">
 				<c:if test="${not empty requestScope.product}">
-
 					<div
 						style="border: 1px solid #e4e4e4; width: 930px; margin-bottom: 10px; margin: 0 auto; padding: 10px; margin-bottom: 10px;">
-						<a href="./index.jsp">首页&nbsp;&nbsp;&gt;</a> <a
-							href="./proucd_list_by_kid.jsp?kid=${product.kId}"><c:set
-								var="kId" value="${product.kId}" scope="request">
-							</c:set> <%
-					         String kId = request.getAttribute("kId").toString();
-					         Kind k = kd.find(Integer.parseInt(kId));
-					         request.setAttribute("kName", k.getkName());
-					       %> <c:if test="${not empty requestScope.kName}">
+						<a href="./index.jsp">首页&nbsp;&nbsp;&gt;</a>
+						<a href="./proucd_list_by_kid.jsp?kid=${product.kId}">
+						<c:set var="kId" value="${product.kid}" scope="request">
+							</c:set>
+							<%
+					         String kId = request.getAttribute("kid").toString();
+							 KindDAO kd = new KindDAOImpl();
+					         Kind k = kd.select(Integer.parseInt(kId));
+					         request.setAttribute("kName", k.getKname());
+					       %>
+						<c:if test="${not empty requestScope.kName}">
 					        ${requestScope.kName}
 					     </c:if>&nbsp;&nbsp;&gt;</a> <a>${product.pName}</a>
 					</div>
@@ -174,7 +179,7 @@ body {
 				</c:if>
 			</div>
 		</div>
-		<%@ include file="foot.jsp"%>
+		<%--<%@ include file="foot.jsp"%>--%>
 	</div>
 </body>
 <script>
