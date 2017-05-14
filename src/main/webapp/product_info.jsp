@@ -73,11 +73,9 @@
         <div class="row">
             <c:if test="${not empty requestScope.product}">
 
-                <div
-                        style="border: 1px solid #e4e4e4; width: 930px; margin-bottom: 10px; margin: 0 auto; padding: 10px; margin-bottom: 10px;">
+                <div style="border: 1px solid #e4e4e4; width: 930px; margin-bottom: 10px; margin: 0 auto; padding: 10px; margin-bottom: 10px;">
                     <a href="./index.jsp">首页&nbsp;&nbsp;&gt;</a>
-                    <a
-                            href="./proucd_list_by_kid.jsp?kid=${product.kid}">
+                    <a href="./proucd_list_by_kid.jsp?kid=${product.kid}">
                         <c:set
                                 var="kId" value="${product.kid}" scope="request">
                         </c:set> <%
@@ -102,12 +100,8 @@
                         <div>
                             <strong>${product.pname}</strong>
                         </div>
-                            <%--<div--%>
-                            <%--style="border-bottom: 1px dotted #dddddd; width: 350px; margin: 10px 0 10px 0;">--%>
-                            <%--<div>编号：${product.kId}</div>--%>
-                            <%--</div>--%>
                         <div>
-                            11
+                            <p>库存:${product.pnum}</p>
                         </div>
                         <div style="margin: 10px 0 10px 0;">
                             会员价: <strong style="color: #ef0101;">￥：${product.realprice}</strong>
