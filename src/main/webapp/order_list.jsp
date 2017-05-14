@@ -36,7 +36,7 @@
     user = (User) session.getAttribute("user");
     if (user != null && user.getId() != null) {
         SalesDAO sd = new SalesDAOImpl();
-        listSales = sd.findAll();
+        listSales = sd.listByUid(user.getId());
         session.setAttribute("listSales", listSales);
     }
 %>
