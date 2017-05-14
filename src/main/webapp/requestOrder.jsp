@@ -43,7 +43,7 @@
     user = (User) session.getAttribute("user");
     if (user != null && user.getId() != null) {
         SalesDAO sd = new SalesDAOImpl();
-        listSales = sd.findAll();
+        listSales = sd.findAllReqOrder(user.getId());
         session.setAttribute("listSales", listSales);
     }
 %>
