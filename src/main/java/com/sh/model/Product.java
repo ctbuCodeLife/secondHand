@@ -36,67 +36,67 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Integer getuId() {
+    public Integer getUid() {
         return uId;
     }
 
-    public void setuId(Integer uId) {
+    public void setUid(Integer uId) {
         this.uId = uId;
     }
 
-    public Integer getkId() {
+    public Integer getKid() {
         return kId;
     }
 
-    public void setkId(Integer kId) {
+    public void setKid(Integer kId) {
         this.kId = kId;
     }
 
-    public String getpName() {
+    public String getPname() {
         return pName;
     }
 
-    public void setpName(String pName) {
+    public void setPname(String pName) {
         this.pName = pName;
     }
 
-    public Integer getpNum() {
+    public Integer getPnum() {
         return pNum;
     }
 
-    public void setpNum(Integer pNum) {
+    public void setPnum(Integer pNum) {
         this.pNum = pNum;
     }
 
-    public String getpImage() {
+    public String getPimage() {
         return pImage;
     }
 
-    public void setpImage(String pImage) {
+    public void setPimage(String pImage) {
         this.pImage = pImage;
     }
 
-    public Integer getrealPrice() {
+    public Integer getRealprice() {
         return realPrice;
     }
 
-    public void setrealPrice(Integer realPrice) {
+    public void setRealprice(Integer realPrice) {
         this.realPrice = realPrice;
     }
 
-    public Integer getoriginPrice() {
+    public Integer getOriginprice() {
         return originPrice;
     }
 
-    public void setoriginPrice(Integer originPrice) {
+    public void setOriginprice(Integer originPrice) {
         this.originPrice = originPrice;
     }
 
-    public String getpDesc() {
+    public String getPdesc() {
         return pDesc;
     }
 
-    public void setpDesc(String pDesc) {
+    public void setPdesc(String pDesc) {
         this.pDesc = pDesc;
     }
 

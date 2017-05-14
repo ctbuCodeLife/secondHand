@@ -1,5 +1,8 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <welcomes>
+    <welcome>index.jsp</welcome>
+  </welcomes>
   <servlet>
     <servlet-name>myspring</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
