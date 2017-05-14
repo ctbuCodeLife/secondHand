@@ -1,7 +1,7 @@
 <%@ page language="java"
 	import="java.util.*,com.sh.dao.*,com.sh.model.*"
 	contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.sh.dao.impl.KindDAOImpl" %>
+<%@ page import="com.sh.dao.impl.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%!List<Kind> listKind;
@@ -29,7 +29,6 @@
 		    <a href="api/user/logout">注销</a>
             <a href="cart.jsp">购物车</a>
             <a href="order_list.jsp">订单</a>
-			<%--<a href="uploadProduct.jsp">上传商品</a>--%>
 			<a href="user_product.jsp">发布商品</a>
 			<a href="requestOrder.jsp">订单请求</a>
 		</c:if>
