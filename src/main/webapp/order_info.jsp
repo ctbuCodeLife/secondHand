@@ -80,8 +80,8 @@
 				<div style="margin-top:5px;margin-left:150px;">
 					<hr />
 					<p style="text-align:right;margin-right:100px;">
-                        <a id="link" class="btn btn-danger btn-height-auto-center " onclick="link()" href="AddSales?pid=${sessionScope.product.id}&count=${sessionScope.cart.count}
-                     ">确认支付</a>
+                        <a id="link" class="btn btn-danger btn-height-auto-center " onclick="link()" href="api/sales/add?pid=${sessionScope.product.id}&count=${sessionScope.cart.count}
+                     ">立即下单</a>
 						<script type="text/javascript">
 							function  link() {
                                 var url = location.search; //获取url中"?"符后的字串
