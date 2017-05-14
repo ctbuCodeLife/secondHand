@@ -71,7 +71,7 @@
             <div class="col-md-8"
                  style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
                 <font>上传商品</font>
-                <form name="registerform" id="registerform" action="addProduct"
+                <form name="registerform" id="registerform" action="api/product/add"
                       method="post" class="form-horizontal" style="margin-top: 5px;">
                     <div class="form-group">
                         <label for="productName" class="col-sm-2 control-label">商品名</label>
@@ -82,9 +82,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="productType" class="col-sm-2 control-label">商品种类</label>
+                        <label for="kindId" class="col-sm-2 control-label">商品种类</label>
                         <div class="col-sm-6">
-                            <select id="productType" name="productType" class="form-control">
+                            <select id="kindId" name="kindId" class="form-control">
                                 <option value="1">手机数码</option>
                                 <option value="2">生活用品</option>
                                 <option value="3"  selected>二手书</option>
@@ -94,31 +94,30 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="productInfo" class="col-sm-2 control-label">商品描述</label>
+                        <label for="pDesc" class="col-sm-2 control-label">商品描述</label>
                         <div class="col-sm-6">
-                            <textarea name="productInfo" id="productInfo" class="form-control" cols="37" rows="5" placeholder="请输入商品描述"></textarea>
+                            <textarea name="pDesc" id="pDesc" class="form-control" cols="37" rows="5" placeholder="请输入商品描述"></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="productNum" class="col-sm-2 control-label">商品数量</label>
+                        <label for="pNum" class="col-sm-2 control-label">商品数量</label>
                         <div class="col-sm-6">
-                            <input type="text" class="form-control" id="productNum"
-                                   name="productNum" placeholder="请输入商品数量">
+                            <input id="pNum" name="pNum" type="number" class="form-control"  placeholder="请输入商品数量">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="inputMPrice" class="col-sm-2 control-label">商品原价</label>
+                        <label for="originPrice" class="col-sm-2 control-label">商品原价</label>
                         <div class="col-sm-6">
-                            <input name="inputMPrice" id="inputMPrice" type="text" class="form-control" id="inputMPrice"
+                            <input name="originPrice" id="originPrice" type="number" class="form-control" id="inputMPrice"
                                    placeholder="价格">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputIPrice" class="col-sm-2 control-label">商品现价</label>
+                        <label for="realPrice" class="col-sm-2 control-label">商品现价</label>
                         <div class="col-sm-6">
-                            <input name="inputIPrice" id="inputIPrice" type="tel" class="form-control" id="inputIPrice"
+                            <input name="realPrice" id="realPrice" type="number" class="form-control" id="inputIPrice"
                                    placeholder="价格">
                         </div>
                     </div>

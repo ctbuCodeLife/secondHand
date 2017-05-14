@@ -29,7 +29,8 @@
 		    <a href="api/user/logout">注销</a>
             <a href="cart.jsp">购物车</a>
             <a href="order_list.jsp">订单</a>
-			<a href="uploadProduct.jsp">上传商品</a>
+			<%--<a href="uploadProduct.jsp">上传商品</a>--%>
+			<a href="user_product.jsp">发布商品</a>
 			<a href="requestOrder.jsp">订单请求</a>
 		</c:if>
 		<c:if test="${ empty sessionScope.user }">
