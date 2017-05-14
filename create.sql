@@ -17,7 +17,7 @@ CREATE TABLE `admin` (
   `username` varchar(64) NOT NULL,
   `password` varchar(32) NOT NULL,
   `email` varchar(32) DEFAULT NULL,
-  `level` tinyint(4) DEFAULT '1',
+  `level` tinyint DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_admin_username` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
@@ -136,7 +136,7 @@ CREATE TABLE `user` (
   `email` varchar(32) DEFAULT NULL,
   `tel` varchar(20) DEFAULT NULL,
   `sex` varchar(20) DEFAULT '保密',
-  `level` tinyint(4) DEFAULT '1',
+  `level` tinyint DEFAULT '1',
   `score` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `unique_user_username` (`username`)

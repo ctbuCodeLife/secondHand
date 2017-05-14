@@ -9,9 +9,9 @@ INSERT INTO `admin`(`username`,`password`,`email`,`level`) VALUES ('root', 'root
 -- ----------------------------
 INSERT INTO `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`)
  VALUES ('litao', '123456', 'litao@shop.com', '15959787657', '男', '1', '50');
-INSERT INTO `user`(`username`,`password`,`email`,`level`,`tel`,`sex`,`level`,`score`)
+INSERT INTO `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`)
  VALUES ('myq', '123456', 'myq@shop.com', '15959787657', '男', '1', '50');
-INSERT INTO `user`(`username`,`password`,`email`,`level`,`tel`,`sex`,`level`,`score`)
+INSERT INTO `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`)
  VALUES ('test', '123456', 'test@shop.com', '15959787657', '男', '1', '50');
 
 -- ----------------------------
