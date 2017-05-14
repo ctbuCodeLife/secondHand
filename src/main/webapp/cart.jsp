@@ -42,7 +42,7 @@
 <%
     int cId = 0;
     User user = (User) session.getAttribute("user");
-    if (user != null) {
+    if (user != null && user.getId() != null) {
         cId = user.getId();
     }
     CartDAO scd = new CartDAOImpl();
@@ -107,8 +107,8 @@
                             <td width="10%">
                                 <span id="total" class="subtotal heiget-auto-center">￥${shopcart.totalprice}元</span>
                             <td width="">
-                                <a href="DelShopCart?id=${shopcart.id}" class="btn btn-danger btn-height-auto-center ">删除</a>
-                            <a class="btn btn-success btn-height-auto-center " href="order_info.jsp" >下单</a>
+                                <a href="api/cart/delete?id=${shopcart.id}" class="btn btn-danger btn-height-auto-center ">删除</a>
+                            <a class="btn btn-success btn-height-auto-center " href="order_info.jsp">下单</a>
                             </td>
                         </tr>
 
