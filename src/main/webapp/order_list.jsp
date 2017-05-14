@@ -32,9 +32,9 @@
 
 <%! List<Sales> listSales;
 %>
-<% User user = new User();
+<%  User user = new User();
     user = (User) session.getAttribute("user");
-    if (user != null) {
+    if (user != null && user.getId() != null) {
         SalesDAO sd = new SalesDAOImpl();
         listSales = sd.findAll();
         session.setAttribute("listSales", listSales);

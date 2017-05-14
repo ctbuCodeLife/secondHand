@@ -8,25 +8,38 @@ import java.io.Serializable;
 public class Product implements Serializable {
     private Integer id;
 
-    private Integer uId;
+    private Integer uid;
 
-    private Integer kId;
+    private Integer kid;
 
-    private String pName;
+    private String pname;
 
-    private Integer pNum;
+    private Integer pnum;
 
-    private String pImage;
+    private String pimage;
 
-    private Integer realPrice;
+    private Integer realprice;
 
-    private Integer originPrice;
+    private Integer originprice;
 
-    private String pDesc;
+    private String pdesc;
 
     private static final long serialVersionuId = 1L;
 
-    public Product(){}
+    public Product() {
+    }
+
+    public Product(Integer id, Integer uid, Integer kid, String pname, Integer pnum, String pimage, Integer realprice, Integer originprice, String pdesc) {
+        this.id = id;
+        this.uid = uid;
+        this.kid = kid;
+        this.pname = pname;
+        this.pnum = pnum;
+        this.pimage = pimage;
+        this.realprice = realprice;
+        this.originprice = originprice;
+        this.pdesc = pdesc;
+    }
 
     public Integer getId() {
         return id;
@@ -37,93 +50,81 @@ public class Product implements Serializable {
     }
 
     public Integer getUid() {
-        return uId;
+        return uid;
     }
 
-    public void setUid(Integer uId) {
-        this.uId = uId;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public Integer getKid() {
-        return kId;
+        return kid;
     }
 
-    public void setKid(Integer kId) {
-        this.kId = kId;
+    public void setKid(Integer kid) {
+        this.kid = kid;
     }
 
     public String getPname() {
-        return pName;
+        return pname;
     }
 
-    public void setPname(String pName) {
-        this.pName = pName;
+    public void setPname(String pname) {
+        this.pname = pname;
     }
 
     public Integer getPnum() {
-        return pNum;
+        return pnum;
     }
 
-    public void setPnum(Integer pNum) {
-        this.pNum = pNum;
+    public void setPnum(Integer pnum) {
+        this.pnum = pnum;
     }
 
     public String getPimage() {
-        return pImage;
+        return pimage;
     }
 
-    public void setPimage(String pImage) {
-        this.pImage = pImage;
+    public void setPimage(String pimage) {
+        this.pimage = pimage;
     }
 
     public Integer getRealprice() {
-        return realPrice;
+        return realprice;
     }
 
-    public void setRealprice(Integer realPrice) {
-        this.realPrice = realPrice;
+    public void setRealprice(Integer realprice) {
+        this.realprice = realprice;
     }
 
     public Integer getOriginprice() {
-        return originPrice;
+        return originprice;
     }
 
-    public void setOriginprice(Integer originPrice) {
-        this.originPrice = originPrice;
+    public void setOriginprice(Integer originprice) {
+        this.originprice = originprice;
     }
 
     public String getPdesc() {
-        return pDesc;
+        return pdesc;
     }
 
-    public void setPdesc(String pDesc) {
-        this.pDesc = pDesc;
-    }
-
-    public Product(Integer id, Integer uId, Integer kId, String pName, Integer pNum, String pImage, Integer realPrice, Integer originPrice, String pDesc) {
-        this.id = id;
-        this.uId = uId;
-        this.kId = kId;
-        this.pName = pName;
-        this.pNum = pNum;
-        this.pImage = pImage;
-        this.realPrice = realPrice;
-        this.originPrice = originPrice;
-        this.pDesc = pDesc;
+    public void setPdesc(String pdesc) {
+        this.pdesc = pdesc;
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", uId=" + uId +
-                ", kId=" + kId +
-                ", pName='" + pName + '\'' +
-                ", pNum=" + pNum +
-                ", pImage='" + pImage + '\'' +
-                ", realPrice=" + realPrice +
-                ", originPrice=" + originPrice +
-                ", pDesc='" + pDesc + '\'' +
+                ", uid=" + uid +
+                ", kid=" + kid +
+                ", pname='" + pname + '\'' +
+                ", pnum=" + pnum +
+                ", pimage='" + pimage + '\'' +
+                ", realprice=" + realprice +
+                ", originprice=" + originprice +
+                ", pdesc='" + pdesc + '\'' +
                 '}';
     }
 }
