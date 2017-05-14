@@ -7,13 +7,23 @@ import com.sh.dao.impl.ProductDAOImpl;
 import com.sh.model.Product;
 import com.sh.model.Product;
 import com.sh.model.User;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -30,7 +40,7 @@ public class ProductController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public ModelAndView add(HttpServletRequest request, HttpSession session) {
+    public ModelAndView add(HttpServletRequest request, HttpSession session)throws IllegalStateException, IOException {
         ModelAndView view = new ModelAndView();
         Product product = new Product();
         //设置uid
@@ -57,8 +67,9 @@ public class ProductController {
             product.setPname(pName);
             product.setKid(kId);
             product.setPdesc(pDesc);
-            product.setPnum(pNum);
             product.setPimage(pImage);
+            product.setPnum(pNum);
+
             product.setOriginprice(originPrice);
             product.setRealprice(realPrice);
 

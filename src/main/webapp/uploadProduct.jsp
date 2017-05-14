@@ -72,7 +72,7 @@
                  style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
                 <font>上传商品</font>
                 <form name="registerform" id="registerform" action="api/product/add"
-                      method="post" class="form-horizontal" style="margin-top: 5px;">
+                      method="post" enctype="multipart/form-data" class="form-horizontal" style="margin-top: 5px;">
                     <div class="form-group">
                         <label for="pName" class="col-sm-2 control-label">商品名</label>
                         <div class="col-sm-6">

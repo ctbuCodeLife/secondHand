@@ -25,14 +25,18 @@ public class UserController {
     public ModelAndView register(User user, HttpSession session){
         user.setLevel(1);
         user.setScore(0);
-        boolean result = service.registe(user);
-
-        if (result == true) {
-            session.setAttribute("msg", "注册成功,3秒后自动跳转到主页");
-            session.setAttribute("autoReturn", "index.jsp");
-        }else {
-            session.setAttribute("msg", "注册失败,3秒后自动跳转到注册页面");
+        String name = user.getUsername();
+        User u = service.getUserByName(name);
+        if(u != null && u.getId() != null){
+            session.setAttribute("msg", "注册失败,用户名已存在,3秒后自动跳转到注册页面");
             session.setAttribute("autoReturn", "register.jsp");
+        }else {
+            boolean result = service.registe(user);
+
+            if (result == true) {
+                session.setAttribute("msg", "注册成功,3秒后自动跳转到主页");
+                session.setAttribute("autoReturn", "index.jsp");
+            }
         }
         ModelAndView view = new ModelAndView();
         view.setViewName("redirect:/info.jsp");
