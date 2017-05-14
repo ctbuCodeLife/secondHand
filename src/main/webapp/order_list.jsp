@@ -36,7 +36,7 @@
     user = (User) session.getAttribute("user");
     if (user != null && user.getId() != null) {
         SalesDAO sd = new SalesDAOImpl();
-        listSales = sd.findAll();
+        listSales = sd.listByUid(user.getId());
         session.setAttribute("listSales", listSales);
     }
 %>
@@ -98,8 +98,8 @@
                             <td width="10%">${sales.contactman}</td>
                             <td width="10%">${sales.contactaddr}</td>
                             <td width="10%">${sales.contacttel}</td>
-                            <td width="10%"><button class="btn-sm btn-success">确认收货</button>
-                                <button class="btn-sm btn-danger"><a href="api/sales/delete?id=${sales.id}">删除订单</a></button></td>
+                            <td width="10%"><button class="btn-sm btn-success"><a href="api/sales/recieve?id=${sales.id}" style="text-decoration:none;color: #0f0f0f">确认收货</a></button>
+                                <button class="btn-sm btn-danger"><a href="api/sales/delete?id=${sales.id}" style="text-decoration:none;color: #0f0f0f">删除订单</a></button></td>
                         </tr>
                     </c:forEach>
                     </tbody>

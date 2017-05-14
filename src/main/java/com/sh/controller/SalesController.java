@@ -29,11 +29,77 @@ public class SalesController {
     public SalesController(){
         salesDao = new SalesDAOImpl();
     }
+    @RequestMapping("/recieve")
+    @ResponseBody
+    public ModelAndView recieve(HttpServletRequest request, HttpSession session){
+        ModelAndView view = new ModelAndView();
+        Sales sales = new Sales();
+        //设置uid
+        User user = (User)session.getAttribute("user");
+        Integer uid = new Integer(0);
+        if(user == null || user.getId() == null){
+            //用户未登录,跳转到登录页面
+            session.setAttribute("msg", "您还未登录,请登录后再删除购物车,3秒后自动跳转到登录页面");
+            session.setAttribute("autoReturn", "login.jsp");
+            view.setViewName("redirect:/info.jsp");
+            return view;
+        }else {
+            //用户已登录,可以收货
+            Integer salesId = Integer.parseInt(request.getParameter("id"));
+
+            sales = salesDao.select(salesId);
+            sales.setOrderstatus("已收货");
+            int result =  salesDao.update(sales);
+            if (result == 1) {
+                session.setAttribute("msg", "收货成功,3秒后自动跳转到购物车页面");
+                session.setAttribute("autoReturn", "order_list.jsp");
+            } else {
+                session.setAttribute("msg", "收货失败,3秒后自动跳转到购物车页面");
+                session.setAttribute("autoReturn", "order_list.jsp");
+            }
+            view = new ModelAndView();
+            view.setViewName("redirect:/info.jsp");
+            return view;
+        }
+    }
+    @RequestMapping("/response")
+    @ResponseBody
+    public ModelAndView response(HttpServletRequest request, HttpSession session){
+        ModelAndView view = new ModelAndView();
+        Sales sales = new Sales();
+        //设置uid
+        User user = (User)session.getAttribute("user");
+        Integer uid = new Integer(0);
+        if(user == null || user.getId() == null){
+            //用户未登录,跳转到登录页面
+            session.setAttribute("msg", "您还未登录,请登录后再删除购物车,3秒后自动跳转到登录页面");
+            session.setAttribute("autoReturn", "login.jsp");
+            view.setViewName("redirect:/info.jsp");
+            return view;
+        }else {
+            //用户已登录,可以发货
+            Integer salesId = Integer.parseInt(request.getParameter("id"));
+
+            sales = salesDao.select(salesId);
+            sales.setOrderstatus("已发货");
+            int result =  salesDao.update(sales);
+            if (result == 1) {
+                session.setAttribute("msg", "发货成功,3秒后自动跳转到购物车页面");
+                session.setAttribute("autoReturn", "order_list.jsp");
+            } else {
+                session.setAttribute("msg", "发货失败,3秒后自动跳转到购物车页面");
+                session.setAttribute("autoReturn", "order_list.jsp");
+            }
+            view = new ModelAndView();
+            view.setViewName("redirect:/info.jsp");
+            return view;
+        }
+    }
     @RequestMapping("/delete")
     @ResponseBody
     public ModelAndView delete(HttpServletRequest request, HttpSession session){
         ModelAndView view = new ModelAndView();
-        Sales cart = new Sales();
+        Sales sales = new Sales();
         //设置uid
         User user = (User)session.getAttribute("user");
         Integer uid = new Integer(0);
