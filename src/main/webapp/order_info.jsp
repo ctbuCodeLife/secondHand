@@ -40,41 +40,38 @@
                                     <input type="hidden" name="id" value="22">
                                     <img src="${sessionScope.product.pimage}" alt="${sessionScope.product.pname}" width="70"
                                          height="60"></td>
-                                <td width="20%"><a target="_blank"> ${sessionScope.product.pname}</a></td>
-                                <td width="10%">￥${sessionScope.product.realprice}</td>
-                                <td width="10%">${sessionScope.cart.count}</td>
-                                <td width="10%"><span class="subtotal">￥${sessionScope.cart.totalprice}元</span></td>
+                                <td width="20%"><a target="_blank" style="line-height: 50px"> ${sessionScope.product.pname}</a></td>
+                                <td width="10%" style="line-height: 50px">￥${sessionScope.product.realprice}</td>
+                                <td width="10%" style="line-height: 50px">${sessionScope.cart.count}</td>
+                                <td width="10%"><span class="subtotal" style="line-height: 50px">￥${sessionScope.cart.totalprice}元</span></td>
                             </tr>
 						</tbody>
 					</table>
 				</div>
-
-
 			</div>
-
 			<div>
 				<hr />
 				<form class="form-horizontal"
 					style="margin-top:5px;margin-left:150px;">
 					<div class="form-group">
-						<label for="username" class="col-sm-1 control-label">地址</label>
+						<label for="addr" class="col-sm-1 control-label">地址</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="username"
+							<input type="text" class="form-control" id="addr"
 								placeholder="请输入收货地址">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword3" class="col-sm-1 control-label">收货人</label>
+						<label for="people" class="col-sm-1 control-label">收货人</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="inputPassword3"
+							<input type="text" class="form-control" id="people"
 								placeholder="请输收货人">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="confirmpwd" class="col-sm-1 control-label">电话</label>
+						<label for="tel" class="col-sm-1 control-label">电话</label>
 						<div class="col-sm-5">
-							<input type="text" class="form-control" id="confirmpwd"
-								placeholder="请输入联系方式">
+							<input type="text" class="form-control" id="tel"
+								placeholder="请输入联系方式" value="">
 						</div>
 					</div>
 				</form>
@@ -83,10 +80,19 @@
 				<div style="margin-top:5px;margin-left:150px;">
 					<hr />
 					<p style="text-align:right;margin-right:100px;">
-                        <a class="btn btn-danger btn-height-auto-center " href="AddSales?pid=${sessionScope.product.id}&count=${sessionScope.cart.count}
-                        &addr=
-						&tel=
-						&people=">确认支付</a>
+                        <a id="link" class="btn btn-danger btn-height-auto-center " onclick="link()" href="AddSales?pid=${sessionScope.product.id}&count=${sessionScope.cart.count}
+                     ">确认支付</a>
+						<script type="text/javascript">
+							function  link() {
+                                var url = location.search; //获取url中"?"符后的字串
+                                var cid = url.split("=")[1];
+                                var herf = $("#link").attr("href");
+                                var tel= $("#tel").val();
+                                var addr= $("#addr").val();
+                                var people= $("#people").val();
+                                $("#link").attr("href",herf+"&tel="+tel+"&addr="+addr+"&people="+people+"&cid="+cid);
+                            }
+						</script>
 					</p>
 					<hr />
 				</div>

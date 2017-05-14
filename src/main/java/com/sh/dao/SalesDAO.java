@@ -8,7 +8,7 @@ import com.sh.model.Sales;
 import org.apache.ibatis.annotations.*;
 
 public interface SalesDAO {
-    @Insert("insert into `sales`(`uId`,`pId`,`count`,`totalPrice`,`orderDate`,`invoiceNo`,`orderStatus`,`delivDate`,`contactMan`,`contactTel`,`contactAddr`) VALUES (#{uId},#[pId},#{count},#{totalPrice},#{orderDate},#{invoiceNo},#{orderStatus},#{delivDate},#{contactMan},#{contactTel},#{contactAddr})")
+    @Insert("insert into `sales`(`uId`,`pId`,`count`,`totalPrice`,`orderDate`,`invoiceNo`,`orderStatus`,`delivDate`,`contactMan`,`contactTel`,`contactAddr`) VALUES (#{uid},#{pid},#{count},#{totalprice},#{orderdate},#{invoiceno},#{orderstatus},#{delivdate},#{contactman},#{contacttel},#{contactaddr})")
     public int insert(Sales record);
 
     @Delete("delete from `sales` where id = #{id}")

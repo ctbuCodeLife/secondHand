@@ -45,12 +45,14 @@ public class AddSalesServlet extends HttpServlet {
                 autoReturnPage = "login.jsp";
             } else {
                 //用户已登录
-                int cid = user.getId();
+                String cidParam =  request.getParameter("cid");
                 //获取请求参数
                 String pidParam = request.getParameter("pid");
-                String countParam = request.getParameter("count");
+                System.out.println(pidParam);
+                String countParam = request.getParameter("count").trim();
+                System.out.println(countParam);
                 String addrParam = request.getParameter("addr");
-                String peopleParam = request.getParameter("username");
+                String peopleParam = request.getParameter("people");
                 String telParam = request.getParameter("tel");
                 if(pidParam == null ||countParam == null ){
                     //没有输入 跳转到info页面提示
@@ -88,12 +90,14 @@ public class AddSalesServlet extends HttpServlet {
                     Sales sales = new Sales();
                     sales.setUid(user.getId());
                     sales.setPid(pid);
+                    sales.setContactaddr(addrParam);
+                    sales.setContactman(peopleParam);
+                    sales.setContacttel(telParam);
                     sales.setCount(count);
                     sales.setTotalprice(totalPrice);
                     sales.setOrderdate(orderDate);
                     sales.setInvoiceno(invoiceNO);
                     sales.setOrderstatus(orderStatus);
-
 
                     //插入到sales表
                     SalesDAO sd = new SalesDAOImpl();
@@ -104,6 +108,7 @@ public class AddSalesServlet extends HttpServlet {
                         autoReturnPage = "order_list.jsp";
                         //查找购物车
                         CartDAO scd = new CartDAOImpl();
+                        int cid = Integer.parseInt(cidParam);
                         Cart cart = scd.select(cid);
                         scd.delete(cart.getId());
                     }else {
