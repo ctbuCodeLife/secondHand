@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html;charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.dao.ProductDao" %>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.sh.model.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.sh.dao.*" %>
+<%@ page import="com.sh.dao.impl.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -30,13 +30,13 @@
 
 <body>
 
-<%! ArrayList<Sales> listSales;
+<%! List<Sales> listSales;
 %>
-<% Customer customer = new Customer();
-    customer = (Customer) session.getAttribute("customer");
-    if (customer != null) {
-        SalesDao sd = new SalesDao();
-        listSales = sd.findShow(customer.getId());
+<% User user = new User();
+    user = (User) session.getAttribute("user");
+    if (user != null) {
+        SalesDAO sd = new SalesDAOImpl();
+        listSales = sd.findAll();
         session.setAttribute("listSales", listSales);
     }
 %>
@@ -60,9 +60,9 @@
                                 if (param != null) {
                                     pId = Integer.parseInt(param);
                                 }
-                                ProductDao pd = new ProductDao();
+                                ProductDAO pd = new ProductDAOImpl();
                                 Product p = new Product();
-                                p = pd.find(pId);
+                                p = pd.select(pId);
                                 session.setAttribute("product", p);
                             } catch (Exception e) {
                                 e.printStackTrace();

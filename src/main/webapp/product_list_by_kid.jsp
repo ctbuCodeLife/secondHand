@@ -1,9 +1,9 @@
-<%@ page language="java"
-	import="java.util.*,com.shop.dao.*,com.shop.domain.*,com.shop.utils.*,java.sql.*"
-	contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.dao.ProductDao" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.sh.model.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="com.sh.dao.*" %>
+<%@ page import="com.sh.dao.impl.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
@@ -23,14 +23,14 @@
 <link rel="stylesheet" href="css/style.css"  />
 </head>
 <body>
-<%!	ArrayList<Product> listProductByKid;
+<%!	List<Product> listProductByKid;
 %>
 <% 
   String param = request.getParameter("kid");
   if(param != null){
       int kid = Integer.parseInt(param);
-      ProductDao pd = new ProductDao();
-      listProductByKid = pd.findByKid(kid);
+      ProductDAO pd = new ProductDAOImpl();
+      listProductByKid = pd.findAll();
       session.setAttribute("listProductByKid", listProductByKid);
   }
 %>
@@ -41,13 +41,13 @@
             <c:forEach var="product" items="${sessionScope.listProductByKid}">
 			<div class="col-md-2">
 				<a href="product_info.jsp?id=${product.id}"> 
-				    <img src="${product.pImage}" alt="${product.pName}"	width="170" height="170" style="display: inline-block;">
+				    <img src="${product.pimage}" alt="${product.pname}"	width="170" height="170" style="display: inline-block;">
 				</a>
 				<p>
-					<a href="product_info.jsp?id=${product.id}" style='color:green'>${product.pName}</a>
+					<a href="product_info.jsp?id=${product.id}" style='color:green'>${product.pname}</a>
 				</p>
 				<p>
-					<font color="#FF0000">商城价：&yen;${product.iPrice}</font>
+					<font color="#FF0000">商城价：&yen;${product.realprice}</font>
 				</p>
 			</div>
 			</c:forEach>

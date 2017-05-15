@@ -35,10 +35,10 @@
                 <p id="pId" style="display: none">{{id}}</p>
                 <img id="img" src="" alt="" width="170" height="170" style="display: inline-block;">
                 <p>
-                    <a  href="JavaScript:;" onclick="location ='product_info.jsp?id='+document.getElementById('pId').innerHTML;">{{pName}}</a>
+                    <a  href="JavaScript:;" onclick="location ='product_info.jsp?id='+document.getElementById('pId').innerHTML;">{{pname}}</a>
                 </p>
                 <p>
-                    <font color="#FF0000">商城价：&yen;{{iPrice}}</font>
+                    <font color="#FF0000">商城价：&yen;{{realprice}}</font>
                 </p>
             </div>
         </div>
@@ -80,7 +80,7 @@
         var name = theRequest.name;
         $.ajax({
             type:"GET",
-            url:"/shop/searchByName",
+            url:"/secondHand/searchByName",
             data:{name:name},
             dataType:"json",
             success:function (data) {
@@ -90,7 +90,7 @@
                         el:"#allsearch",
                         data:data
                     });
-                    $("#img").attr("src", data.pImage);
+                    $("#img").attr("src", data.pimage);
                     $("#allsearch").css("display","block");
                 }else{
                     $("#allsearch").css("display","none");
