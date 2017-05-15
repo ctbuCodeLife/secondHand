@@ -3,22 +3,25 @@ package com.sh.dao;
 import com.sh.model.Hot;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.sh.model.Hot;
+import org.apache.ibatis.annotations.*;
 
 public interface HotDAO {
 
+    @Insert("INSERT INTO `hot`(`pid`) VALUES (#{pid}")
+    public int insert(Hot record);
 
-    int deleteByPrimaryKey(Integer id);
+    @Delete("delete from `hot` where id = #{id}")
+    public int delete(Integer id);
 
-    int insert(Hot record);
+    @Select("select * from `hot`")
+    public List<Hot> findAll();
 
-    int insertSelective(Hot record);
+    @Select("select * from `hot` where id = #{id}")
+    public Hot select(Integer id);
 
+    @Select("select count(id) from `hot`")
+    public int count();
 
-    Hot selectByPrimaryKey(Integer id);
-
-
-    int updateByPrimaryKeySelective(Hot record);
-
-    int updateByPrimaryKey(Hot record);
 }

@@ -3,23 +3,29 @@ package com.sh.dao;
 import com.sh.model.Kind;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.sh.model.Kind;
+import org.apache.ibatis.annotations.*;
 
 public interface KindDAO {
+    @Insert("insert into `kind`(`kName`) VALUES (#{kName})")
+    public int insert(Kind record);
 
+    @Delete("delete from `kind` where id = #{id}")
+    public int delete(Integer id);
 
-    int deleteByPrimaryKey(Integer id);
+    @Update("update `kind` set `kName`=#{kName}, where id=#{id}")
+    public int update(Kind record);
 
-    int insert(Kind record);
+    @Select("select * from `kind`")
+    public List<Kind> findAll();
 
-    int insertSelective(Kind record);
+    @Select("select * from `kind` where id = #{id}")
+    public Kind select(Integer id);
 
+    @Select("select * from `kind` where `kName` = #{kName}")
+    public Kind getKindByName(String kName);
 
-    Kind selectByPrimaryKey(Integer id);
-
-
-
-    int updateByPrimaryKeySelective(Kind record);
-
-    int updateByPrimaryKey(Kind record);
+    @Select("select count(id) from `kind`")
+    public int count();
 }

@@ -3,27 +3,31 @@ package com.sh.dao;
 import com.sh.model.Product;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.sh.model.Product;
+import org.apache.ibatis.annotations.*;
 
 public interface ProductDAO {
 
+    @Insert("insert into `product`(`uId`,`kId`,`pName`,`pDesc`,`pNum`,`pImage`,`realPrice`,`originPrice`) VALUES (#{uid},#{kid},#{pName},#{pDesc},#{pNum},#{pImage},#{realPrice},#{originPrice})")
+    public int insert(Product record);
 
-    int deleteByPrimaryKey(Integer id);
+    @Delete("delete from `product` where id = #{id}")
+    public int delete(Integer id);
 
-    int insert(Product record);
+    @Update("update `product` set `uid`=#{uId},`kId`=#{kId},`pName`=#{pName},`pDesc`=#{pDesc},`pNum`=#{pNum},`pImage`=#{pImage},`realPrice`=#{realPrice},`originPrice`=#{originPrice}) where id=#{id}")
+    public int update(Product record);
 
-    int insertSelective(Product record);
+    @Select("select * from `product`")
+    public List<Product> findAll();
 
+    @Select("select * from `product` where id = #{id}")
+    public Product select(Integer id);
 
+    @Select("select * from `product` where `pName` = #{pName}")
+    public Product getProductByName(String productname);
 
-    Product selectByPrimaryKey(Integer id);
+    @Select("select count(id) from `product`")
+    public int count();
 
-
-
-
-    int updateByPrimaryKeySelective(Product record);
-
-    int updateByPrimaryKeyWithBLOBs(Product record);
-
-    int updateByPrimaryKey(Product record);
 }

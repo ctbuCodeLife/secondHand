@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface UserDAO {
-    @Insert("INSERT INTO `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`) VALUES (#{username},#{password},#{email},#{tel},#{sex},#{level},#{score})")
+    @Insert("insert into `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`) VALUES (#{username},#{password},#{email},#{tel},#{sex},#{level},#{score})")
     public int insert(User record);
 
     @Delete("delete from `user` where id = #{id}")

@@ -3,23 +3,30 @@ package com.sh.dao;
 import com.sh.model.Cart;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.sh.model.User;
+import org.apache.ibatis.annotations.*;
 
 public interface CartDAO {
 
+    @Insert("INSERT INTO `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`) VALUES (#{username},#{password},#{email},#{tel},#{sex},#{level},#{score})")
+    public int insert(User record);
 
-    int deleteByPrimaryKey(Integer id);
+    @Delete("delete from `user` where id = #{id}")
+    public int delete(Integer id);
 
-    int insert(Cart record);
+    @Update("update `user` set `username`=#{username},`password`=#{password},`tel`=#{tel},`sex`=#{sex},`level`=#{level},`score`=#{score} where id=#{id}")
+    public int update(User record);
 
-    int insertSelective(Cart record);
+    @Select("select * from `user`")
+    public List<User> findAll();
 
+    @Select("select * from `user` where id = #{id}")
+    public User select(Integer id);
 
-    Cart selectByPrimaryKey(Integer id);
+    @Select("select * from `user` where `username` = #{username}")
+    public User getUserByName(String username);
 
-
-
-    int updateByPrimaryKeySelective(Cart record);
-
-    int updateByPrimaryKey(Cart record);
+    @Select("select count(id) from `user`")
+    public int count();
 }
