@@ -1,21 +1,21 @@
 package com.sh.dao.impl; 
 
-import com.sh.dao.ProductDAO;
-import com.sh.model.Product;
-import org.junit.Test;
+import com.sh.dao.HotDAO;
+import com.sh.model.Hot;
+import org.junit.Test; 
 import org.junit.Before; 
 import org.junit.After;
 
 import java.util.List;
 
 /** 
-* ProductDAOImpl Tester. 
+* HotDAOImpl Tester. 
 * 
 * @author <Authors name> 
 * @since <pre>���� 15, 2017</pre> 
 * @version 1.0 
 */ 
-public class ProductDAOImplTest { 
+public class HotDAOImplTest { 
 
 @Before
 public void before() throws Exception { 
@@ -27,7 +27,7 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: insert(Product record) 
+* Method: insert(Hot record) 
 * 
 */ 
 @Test
@@ -47,26 +47,16 @@ public void testDelete() throws Exception {
 
 /** 
 * 
-* Method: update(Product record) 
-* 
-*/ 
-@Test
-public void testUpdate() throws Exception { 
-//TODO: Test goes here... 
-} 
-
-/** 
-* 
 * Method: findAll() 
 * 
 */ 
 @Test
 public void testFindAll() throws Exception { 
-//TODO: Test goes here...
-    ProductDAO productDao = new ProductDAOImpl();
-    List<Product> list = productDao.findAll();
-    for(Product product :list){
-        System.out.println(product);
+//TODO: Test goes here... 
+    HotDAO productDao = new HotDAOImpl();
+    List<Hot> list = productDao.findAll();
+    for(Hot hot :list){
+        System.out.println(hot);
     }
 } 
 
@@ -77,21 +67,6 @@ public void testFindAll() throws Exception {
 */ 
 @Test
 public void testSelect() throws Exception { 
-//TODO: Test goes here...
-    ProductDAO productDao = new ProductDAOImpl();
-    Integer id = new Integer(10000);
-    Product product = productDao.select(id);
-    System.out.println(product);
-
-} 
-
-/** 
-* 
-* Method: getProductByName(String productname) 
-* 
-*/ 
-@Test
-public void testGetProductByName() throws Exception { 
 //TODO: Test goes here... 
 } 
 
