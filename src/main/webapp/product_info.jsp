@@ -81,7 +81,7 @@
                         <c:set
                                 var="kId" value="${product.kid}" scope="request">
                         </c:set> <%
-                        KindDAO kd = new KindDAOImpl();
+                        kd = new KindDAOImpl();
                         String kId = request.getAttribute("kId").toString();
                         Kind k = kd.select(new Integer(kId));
                         request.setAttribute("kName", k.getKname());
