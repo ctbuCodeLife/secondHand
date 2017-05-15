@@ -18,6 +18,11 @@
 
     <mappers>
         <!--<package name="com.mapper"/>-->
+        <mapper class="com.sh.dao.AdminDAO"></mapper>
+        <mapper class="com.sh.dao.CartDAO"></mapper>
+        <mapper class="com.sh.dao.HotDAO"></mapper>
+        <mapper class="com.sh.dao.KindDAO"></mapper>
+        <mapper class="com.sh.dao.SalesDAO"></mapper>
         <mapper class="com.sh.dao.UserDAO"></mapper>
     </mappers>
 
