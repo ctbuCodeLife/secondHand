@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.dao.ProductDAO">
+  <resultMap id="BaseResultMap" type="com.sh.model.Product">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="uId" jdbcType="INTEGER" property="uid" />
+    <result column="kId" jdbcType="INTEGER" property="kid" />
+    <result column="pName" jdbcType="VARCHAR" property="pname" />
+    <result column="pNum" jdbcType="INTEGER" property="pnum" />
+    <result column="pImage" jdbcType="VARCHAR" property="pimage" />
+    <result column="realPrice" jdbcType="INTEGER" property="realprice" />
+    <result column="originPrice" jdbcType="INTEGER" property="originprice" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sh.model.Product">
+    <result column="pDesc" jdbcType="LONGVARCHAR" property="pdesc" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uId, kId, pName, pNum, pImage, realPrice, originPrice
+  </sql>
+  <sql id="Blob_Column_List">
+    pDesc
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.sh.model.ProductExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.sh.model.ProductExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sh.model.ProductExample">
+    delete from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sh.model.Product">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into product (uId, kId, pName, 
+      pNum, pImage, realPrice, 
+      originPrice, pDesc)
+    values (#{uid,jdbcType=INTEGER}, #{kid,jdbcType=INTEGER}, #{pname,jdbcType=VARCHAR}, 
+      #{pnum,jdbcType=INTEGER}, #{pimage,jdbcType=VARCHAR}, #{realprice,jdbcType=INTEGER}, 
+      #{originprice,jdbcType=INTEGER}, #{pdesc,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sh.model.Product">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uId,
+      </if>
+      <if test="kid != null">
+        kId,
+      </if>
+      <if test="pname != null">
+        pName,
+      </if>
+      <if test="pnum != null">
+        pNum,
+      </if>
+      <if test="pimage != null">
+        pImage,
+      </if>
+      <if test="realprice != null">
+        realPrice,
+      </if>
+      <if test="originprice != null">
+        originPrice,
+      </if>
+      <if test="pdesc != null">
+        pDesc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pnum != null">
+        #{pnum,jdbcType=INTEGER},
+      </if>
+      <if test="pimage != null">
+        #{pimage,jdbcType=VARCHAR},
+      </if>
+      <if test="realprice != null">
+        #{realprice,jdbcType=INTEGER},
+      </if>
+      <if test="originprice != null">
+        #{originprice,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null">
+        #{pdesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sh.model.ProductExample" resultType="java.lang.Long">
+    select count(*) from product
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update product
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null">
+        uId = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.kid != null">
+        kId = #{record.kid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pname != null">
+        pName = #{record.pname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pnum != null">
+        pNum = #{record.pnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.pimage != null">
+        pImage = #{record.pimage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realprice != null">
+        realPrice = #{record.realprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.originprice != null">
+        originPrice = #{record.originprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.pdesc != null">
+        pDesc = #{record.pdesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update product
+    set id = #{record.id,jdbcType=INTEGER},
+      uId = #{record.uid,jdbcType=INTEGER},
+      kId = #{record.kid,jdbcType=INTEGER},
+      pName = #{record.pname,jdbcType=VARCHAR},
+      pNum = #{record.pnum,jdbcType=INTEGER},
+      pImage = #{record.pimage,jdbcType=VARCHAR},
+      realPrice = #{record.realprice,jdbcType=INTEGER},
+      originPrice = #{record.originprice,jdbcType=INTEGER},
+      pDesc = #{record.pdesc,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update product
+    set id = #{record.id,jdbcType=INTEGER},
+      uId = #{record.uid,jdbcType=INTEGER},
+      kId = #{record.kid,jdbcType=INTEGER},
+      pName = #{record.pname,jdbcType=VARCHAR},
+      pNum = #{record.pnum,jdbcType=INTEGER},
+      pImage = #{record.pimage,jdbcType=VARCHAR},
+      realPrice = #{record.realprice,jdbcType=INTEGER},
+      originPrice = #{record.originprice,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sh.model.Product">
+    update product
+    <set>
+      <if test="uid != null">
+        uId = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="kid != null">
+        kId = #{kid,jdbcType=INTEGER},
+      </if>
+      <if test="pname != null">
+        pName = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="pnum != null">
+        pNum = #{pnum,jdbcType=INTEGER},
+      </if>
+      <if test="pimage != null">
+        pImage = #{pimage,jdbcType=VARCHAR},
+      </if>
+      <if test="realprice != null">
+        realPrice = #{realprice,jdbcType=INTEGER},
+      </if>
+      <if test="originprice != null">
+        originPrice = #{originprice,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null">
+        pDesc = #{pdesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sh.model.Product">
+    update product
+    set uId = #{uid,jdbcType=INTEGER},
+      kId = #{kid,jdbcType=INTEGER},
+      pName = #{pname,jdbcType=VARCHAR},
+      pNum = #{pnum,jdbcType=INTEGER},
+      pImage = #{pimage,jdbcType=VARCHAR},
+      realPrice = #{realprice,jdbcType=INTEGER},
+      originPrice = #{originprice,jdbcType=INTEGER},
+      pDesc = #{pdesc,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sh.model.Product">
+    update product
+    set uId = #{uid,jdbcType=INTEGER},
+      kId = #{kid,jdbcType=INTEGER},
+      pName = #{pname,jdbcType=VARCHAR},
+      pNum = #{pnum,jdbcType=INTEGER},
+      pImage = #{pimage,jdbcType=VARCHAR},
+      realPrice = #{realprice,jdbcType=INTEGER},
+      originPrice = #{originprice,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

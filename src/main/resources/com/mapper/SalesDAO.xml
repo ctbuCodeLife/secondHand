@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.dao.SalesDAO">
+  <resultMap id="BaseResultMap" type="com.sh.model.Sales">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="uId" jdbcType="INTEGER" property="uid" />
+    <result column="pId" jdbcType="INTEGER" property="pid" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="totalPrice" jdbcType="INTEGER" property="totalprice" />
+    <result column="orderDate" jdbcType="TIMESTAMP" property="orderdate" />
+    <result column="invoiceNo" jdbcType="CHAR" property="invoiceno" />
+    <result column="orderStatus" jdbcType="VARCHAR" property="orderstatus" />
+    <result column="delivDate" jdbcType="TIMESTAMP" property="delivdate" />
+    <result column="contactMan" jdbcType="VARCHAR" property="contactman" />
+    <result column="contactTel" jdbcType="VARCHAR" property="contacttel" />
+    <result column="contactAddr" jdbcType="VARCHAR" property="contactaddr" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, uId, pId, count, totalPrice, orderDate, invoiceNo, orderStatus, delivDate, contactMan, 
+    contactTel, contactAddr
+  </sql>
+  <select id="selectByExample" parameterType="com.sh.model.SalesExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sales
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limit != null">
+      <if test="offset != null">
+        limit ${offset}, ${limit}
+      </if>
+      <if test="offset == null">
+        limit ${limit}
+      </if>
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sales
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from sales
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.sh.model.SalesExample">
+    delete from sales
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.sh.model.Sales">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sales (uId, pId, count, 
+      totalPrice, orderDate, invoiceNo, 
+      orderStatus, delivDate, contactMan, 
+      contactTel, contactAddr)
+    values (#{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{count,jdbcType=INTEGER}, 
+      #{totalprice,jdbcType=INTEGER}, #{orderdate,jdbcType=TIMESTAMP}, #{invoiceno,jdbcType=CHAR}, 
+      #{orderstatus,jdbcType=VARCHAR}, #{delivdate,jdbcType=TIMESTAMP}, #{contactman,jdbcType=VARCHAR}, 
+      #{contacttel,jdbcType=VARCHAR}, #{contactaddr,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sh.model.Sales">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sales
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        uId,
+      </if>
+      <if test="pid != null">
+        pId,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="totalprice != null">
+        totalPrice,
+      </if>
+      <if test="orderdate != null">
+        orderDate,
+      </if>
+      <if test="invoiceno != null">
+        invoiceNo,
+      </if>
+      <if test="orderstatus != null">
+        orderStatus,
+      </if>
+      <if test="delivdate != null">
+        delivDate,
+      </if>
+      <if test="contactman != null">
+        contactMan,
+      </if>
+      <if test="contacttel != null">
+        contactTel,
+      </if>
+      <if test="contactaddr != null">
+        contactAddr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        #{totalprice,jdbcType=INTEGER},
+      </if>
+      <if test="orderdate != null">
+        #{orderdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceno != null">
+        #{invoiceno,jdbcType=CHAR},
+      </if>
+      <if test="orderstatus != null">
+        #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="delivdate != null">
+        #{delivdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactman != null">
+        #{contactman,jdbcType=VARCHAR},
+      </if>
+      <if test="contacttel != null">
+        #{contacttel,jdbcType=VARCHAR},
+      </if>
+      <if test="contactaddr != null">
+        #{contactaddr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.sh.model.SalesExample" resultType="java.lang.Long">
+    select count(*) from sales
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sales
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null">
+        uId = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.pid != null">
+        pId = #{record.pid,jdbcType=INTEGER},
+      </if>
+      <if test="record.count != null">
+        count = #{record.count,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalprice != null">
+        totalPrice = #{record.totalprice,jdbcType=INTEGER},
+      </if>
+      <if test="record.orderdate != null">
+        orderDate = #{record.orderdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.invoiceno != null">
+        invoiceNo = #{record.invoiceno,jdbcType=CHAR},
+      </if>
+      <if test="record.orderstatus != null">
+        orderStatus = #{record.orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.delivdate != null">
+        delivDate = #{record.delivdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.contactman != null">
+        contactMan = #{record.contactman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contacttel != null">
+        contactTel = #{record.contacttel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.contactaddr != null">
+        contactAddr = #{record.contactaddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sales
+    set id = #{record.id,jdbcType=BIGINT},
+      uId = #{record.uid,jdbcType=INTEGER},
+      pId = #{record.pid,jdbcType=INTEGER},
+      count = #{record.count,jdbcType=INTEGER},
+      totalPrice = #{record.totalprice,jdbcType=INTEGER},
+      orderDate = #{record.orderdate,jdbcType=TIMESTAMP},
+      invoiceNo = #{record.invoiceno,jdbcType=CHAR},
+      orderStatus = #{record.orderstatus,jdbcType=VARCHAR},
+      delivDate = #{record.delivdate,jdbcType=TIMESTAMP},
+      contactMan = #{record.contactman,jdbcType=VARCHAR},
+      contactTel = #{record.contacttel,jdbcType=VARCHAR},
+      contactAddr = #{record.contactaddr,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sh.model.Sales">
+    update sales
+    <set>
+      <if test="uid != null">
+        uId = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        pId = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="totalprice != null">
+        totalPrice = #{totalprice,jdbcType=INTEGER},
+      </if>
+      <if test="orderdate != null">
+        orderDate = #{orderdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invoiceno != null">
+        invoiceNo = #{invoiceno,jdbcType=CHAR},
+      </if>
+      <if test="orderstatus != null">
+        orderStatus = #{orderstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="delivdate != null">
+        delivDate = #{delivdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="contactman != null">
+        contactMan = #{contactman,jdbcType=VARCHAR},
+      </if>
+      <if test="contacttel != null">
+        contactTel = #{contacttel,jdbcType=VARCHAR},
+      </if>
+      <if test="contactaddr != null">
+        contactAddr = #{contactaddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sh.model.Sales">
+    update sales
+    set uId = #{uid,jdbcType=INTEGER},
+      pId = #{pid,jdbcType=INTEGER},
+      count = #{count,jdbcType=INTEGER},
+      totalPrice = #{totalprice,jdbcType=INTEGER},
+      orderDate = #{orderdate,jdbcType=TIMESTAMP},
+      invoiceNo = #{invoiceno,jdbcType=CHAR},
+      orderStatus = #{orderstatus,jdbcType=VARCHAR},
+      delivDate = #{delivdate,jdbcType=TIMESTAMP},
+      contactMan = #{contactman,jdbcType=VARCHAR},
+      contactTel = #{contacttel,jdbcType=VARCHAR},
+      contactAddr = #{contactaddr,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
