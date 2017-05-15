@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService {
     public boolean login(String name, String password){
         User user = new User();
         user = userDao.getUserByName(name);
-        if (user.getPassword().equals(password)){
+        if (user != null && user.getPassword().equals(password)){
             //表明用户密码正确,登录成功.
             return true;
         }
