@@ -1,8 +1,4 @@
-<%@ page language="java"
-	import="java.util.*,com.shop.dao.*,com.shop.domain.*"
-	contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <!--创建footDIV-->
 <div class="container">
 	<center>
