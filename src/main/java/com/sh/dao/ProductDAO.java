@@ -4,7 +4,6 @@ import com.sh.model.Product;
 
 import java.util.List;
 
-import com.sh.model.Product;
 import org.apache.ibatis.annotations.*;
 
 public interface ProductDAO {
