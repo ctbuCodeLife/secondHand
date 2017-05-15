@@ -38,12 +38,12 @@
                             <tr class="active">
                                 <td width="40%">
                                     <input type="hidden" name="id" value="22">
-                                    <img src="${sessionScope.product.pImage}" alt="${sessionScope.product.pName}" width="70"
+                                    <img src="${sessionScope.product.pimage}" alt="${sessionScope.product.pname}" width="70"
                                          height="60"></td>
-                                <td width="20%"><a target="_blank"> ${sessionScope.product.pName}</a></td>
-                                <td width="10%">￥${sessionScope.product.iPrice}</td>
+                                <td width="20%"><a target="_blank"> ${sessionScope.product.pname}</a></td>
+                                <td width="10%">￥${sessionScope.product.realprice}</td>
                                 <td width="10%">${sessionScope.cart.count}</td>
-                                <td width="10%"><span class="subtotal">￥${sessionScope.cart.totolPrice}元</span></td>
+                                <td width="10%"><span class="subtotal">￥${sessionScope.cart.totalprice}元</span></td>
                             </tr>
 						</tbody>
 					</table>
@@ -83,7 +83,10 @@
 				<div style="margin-top:5px;margin-left:150px;">
 					<hr />
 					<p style="text-align:right;margin-right:100px;">
-                        <a class="btn btn-danger btn-height-auto-center " href="AddSales?pid=${sessionScope.product.id}&count=${sessionScope.cart.count}">确认支付</a>
+                        <a class="btn btn-danger btn-height-auto-center " href="AddSales?pid=${sessionScope.product.id}&count=${sessionScope.cart.count}
+                        &addr=
+						&tel=
+						&people=">确认支付</a>
 					</p>
 					<hr />
 				</div>

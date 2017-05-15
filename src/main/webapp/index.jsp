@@ -100,8 +100,8 @@
         </div>
     </div>
     <!--创建adDIV-->
-    <div class="">
-        <img src="img/广告.jpg"/>
+    <div class="" >
+        <img src="img/广告.jpg"style="margin-left: -20px" />
     </div>
     <!--创建newProductDIV-->
     <div>

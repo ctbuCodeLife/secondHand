@@ -5,11 +5,11 @@
   Time: 20:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html;charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<%@ page import="com.shop.domain.Product" %>
-<%@ page import="com.shop.dao.ProductDao" %>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.sh.model.*" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.sh.dao.*" %>
+<%@ page import="com.sh.dao.impl.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>订单请求表</title>
+    <title>订单表</title>
     <!--根据设备的宽度调整缩放比例   -->
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <!--引入bootstrap的CSS文件 -->
@@ -28,10 +28,7 @@
     <script 　type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <style type="text/css">
-        .form-control{
-            width: 60px;
-        }
-        .height-center td:not(:first-child){
+        .height-center td:not(:last-child){
             line-height: 60px;
             vertical-align: middle;
         }
@@ -40,13 +37,13 @@
 
 <body>
 
-<%! ArrayList<Sales> listSales;
+<%! List<Sales> listSales;
 %>
-<% Customer customer = new Customer();
-    customer = (Customer) session.getAttribute("customer");
-    if (customer != null) {
-        SalesDao sd = new SalesDao();
-        listSales = sd.findShow(customer.getId());
+<% User user = new User();
+    user = (User) session.getAttribute("user");
+    if (user != null) {
+        SalesDAO sd = new SalesDAOImpl();
+        listSales = sd.findAll();
         session.setAttribute("listSales", listSales);
     }
 %>
@@ -58,7 +55,7 @@
         <div class="row">
 
             <div style="margin:0 auto; margin-top:10px;width:1150px;">
-                <strong>订单请求</strong>
+                <strong>我的订单</strong>
                 <table class="table table-bordered">
                     <tbody>
                     <c:forEach var="sales" items="${sessionScope.listSales}">
@@ -70,9 +67,9 @@
                                 if (param != null) {
                                     pId = Integer.parseInt(param);
                                 }
-                                ProductDao pd = new ProductDao();
+                                ProductDAO pd = new ProductDAOImpl();
                                 Product p = new Product();
-                                p = pd.find(pId);
+                                p = pd.select(pId);
                                 session.setAttribute("product", p);
                             } catch (Exception e) {
                                 e.printStackTrace();
@@ -94,6 +91,7 @@
                             <th>联系电话</th>
                             <th>操作</th>
                         </tr>
+
                         <tr class="height-center">
                             <td width="10%">
                                 <input type="hidden" name="id" value="22">
@@ -107,7 +105,7 @@
                             <td width="10%"></td>
                             <td width="10%"></td>
                             <td width="10%"></td>
-                            <td width="10%"><button class="form-control btn-info">发货</button></td>
+                            <td width="10%"><button class="btn-success">确认收货</button><button class="btn-danger">删除订单</button></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -118,5 +116,4 @@
     <%@ include file="foot.jsp" %>
 </div>
 </body>
-
 </html>
