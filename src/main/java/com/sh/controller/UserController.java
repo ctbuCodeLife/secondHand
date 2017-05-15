@@ -58,4 +58,22 @@ public class UserController {
         return view;
     }
 
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView logout(HttpSession session){
+        User user = (User)session.getAttribute("user");
+        if (user != null && user.getId() != null) {
+            //用户已登录
+            session.removeAttribute("user");
+            session.setAttribute("msg", "注销成功,3秒后自动跳转到主页");
+            session.setAttribute("autoReturn", "index.jsp");
+        }else {
+            session.setAttribute("msg", "注销失败,3秒后自动跳转到主页");
+            session.setAttribute("autoReturn", "index.jsp");
+        }
+        ModelAndView view = new ModelAndView();
+        view.setViewName("redirect:/info.jsp");
+        return view;
+    }
+
 }

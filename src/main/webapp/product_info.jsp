@@ -123,8 +123,7 @@
                         <div
                                 style="padding: 10px; border: 1px solid #e7dbb1; width: 330px; margin: 15px 0 10px 0;; background-color: #fffee6;">
                             <div style="margin: 5px 0 10px 0;">白色</div>
-                            <form action="AddShopCart" method="post">
-                                <input name="cId" type="hidden" value="${sessionScope.customer.id}"/>
+                            <form action="api/cart/add" method="post">
                                 <input name="pId" type="hidden" value="${product.id}"/>
                                 <div style="border-bottom: 1px solid #faeac7; margin-top: 20px; padding-left: 10px;">
                                     购买数量:
@@ -133,8 +132,6 @@
                                            maxlength="4" size="10" type="text">
                                     <a id="addCount" class="btn count-btn">+</a>
                                 </div>
-                                <input name="isBuy" type="hidden" value="否"/>
-
                                 <div style="margin: 20px 0 10px 0;; text-align: center;">
                                     <input class="btn btn-success btn-lg" value="加入购物车" type="submit">
                                 </div>

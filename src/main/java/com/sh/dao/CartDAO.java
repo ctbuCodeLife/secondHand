@@ -4,29 +4,26 @@ import com.sh.model.Cart;
 
 import java.util.List;
 
-import com.sh.model.User;
+import com.sh.model.Cart;
 import org.apache.ibatis.annotations.*;
 
 public interface CartDAO {
 
-    @Insert("INSERT INTO `user`(`username`,`password`,`email`,`tel`,`sex`,`level`,`score`) VALUES (#{username},#{password},#{email},#{tel},#{sex},#{level},#{score})")
-    public int insert(User record);
+    @Insert("insert into `cart`(`uId`,`pId`,`count`,`isBuy`,`totalPrice`) VALUES (#{uid},#{pid},#{count},#{isbuy},#{totalprice})")
+    public int insert(Cart record);
 
-    @Delete("delete from `user` where id = #{id}")
+    @Delete("delete from `cart` where id = #{id}")
     public int delete(Integer id);
 
-    @Update("update `user` set `username`=#{username},`password`=#{password},`tel`=#{tel},`sex`=#{sex},`level`=#{level},`score`=#{score} where id=#{id}")
-    public int update(User record);
+    @Update("update `cart` set `uId`=#{uId},`pId`=#{pId},`count`=#{count},`isBuy`=#{isbuy},`totalPrice`=#{totalprice} where id=#{id}")
+    public int update(Cart record);
 
-    @Select("select * from `user`")
-    public List<User> findAll();
+    @Select("select * from `cart`")
+    public List<Cart> findAll();
 
-    @Select("select * from `user` where id = #{id}")
-    public User select(Integer id);
+    @Select("select * from `cart` where id = #{id}")
+    public Cart select(Integer id);
 
-    @Select("select * from `user` where `username` = #{username}")
-    public User getUserByName(String username);
-
-    @Select("select count(id) from `user`")
+    @Select("select count(id) from `cart`")
     public int count();
 }
