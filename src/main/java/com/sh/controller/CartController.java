@@ -70,4 +70,36 @@ public class CartController {
             return view;
         }
     }
+    @RequestMapping("/delete")
+    @ResponseBody
+    public ModelAndView delete(HttpServletRequest request, HttpSession session){
+        ModelAndView view = new ModelAndView();
+        Cart cart = new Cart();
+        //设置uid
+        User user = (User)session.getAttribute("user");
+        Integer uid = new Integer(0);
+        if(user == null || user.getId() == null){
+            //用户未登录,跳转到登录页面
+            session.setAttribute("msg", "您还未登录,请登录后再删除购物车,3秒后自动跳转到登录页面");
+            session.setAttribute("autoReturn", "login.jsp");
+            view.setViewName("redirect:/info.jsp");
+            return view;
+        }else {
+            //用户已登录,可以删除购物车
+           Integer cartId = Integer.parseInt(request.getParameter("id"));
+
+            boolean result = (1 == cartDao.delete(cartId));
+
+            if (result == true) {
+                session.setAttribute("msg", "删除成功,3秒后自动跳转到购物车页面");
+                session.setAttribute("autoReturn", "cart.jsp");
+            } else {
+                session.setAttribute("msg", "删除失败,3秒后自动跳转到购物车页面");
+                session.setAttribute("autoReturn", "cart.jsp");
+            }
+            view = new ModelAndView();
+            view.setViewName("redirect:/info.jsp");
+            return view;
+        }
+    }
 }
