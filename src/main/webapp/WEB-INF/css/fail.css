@@ -1,0 +1,11 @@
+/********fail.jsp样式开始*************/
+.loginBoole {
+    width: 380px;
+    height: 236px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -118px 0px 0px -190px;
+    background: url(../img/fail.gif) no-repeat 0px 50px #fff;
+}
+/********fail.jsp样式开始*************/

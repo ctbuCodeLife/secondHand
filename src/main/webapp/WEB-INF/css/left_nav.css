@@ -1,0 +1,39 @@
+.button {
+	width: 55px;
+	height: 55px;
+	border-style: solid;
+	border-width: 1px;
+	position: absolute;
+	cursor: pointer;
+	text-align: center;
+	font-family: sans;
+	color: white;
+	font-size: 20px;
+	border-radius: 45px;
+	line-height: 28px;
+	left: 50px;
+	top: 50px;
+	background-color: cadetblue;
+}
+
+.button p {
+	margin: auto auto;
+}
+
+.infoBox{
+	font-family: sans, monospace;
+	font-size: 13px;
+	position: absolute;
+	opacity: 0.0;
+	left: 120px;
+	height: 30px;
+	width: 60px;
+	line-height: 25px;
+	border-radius: 10px;
+	text-align: center;
+	background-color: black;
+	color: white;
+}
+.button:hover {
+	background-color: lightgray;
+}

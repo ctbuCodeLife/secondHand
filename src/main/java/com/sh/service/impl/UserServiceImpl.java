@@ -22,20 +22,25 @@ public class UserServiceImpl implements UserService {
     }
 
     //用户注册
-    public void registe(User user){
-        userDao.insert(user);
+    public boolean registe(User user){
+        return   userDao.insert(user) == 1;
     }
     //用户登录
-    public void login(String name, String password){
+    public boolean login(String name, String password){
         User user = new User();
         user = userDao.getUserByName(name);
         if (user.getPassword().equals(password)){
             //表明用户密码正确,登录成功.
-
+            return true;
         }
+        return false;
     }
     //所用用户
     public List<User> findAll(){
         return userDao.findAll();
+    }
+    //根据用户名查找用户
+    public User getUserByName(String username){
+        return userDao.getUserByName(username);
     }
 }

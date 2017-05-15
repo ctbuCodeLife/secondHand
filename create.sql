@@ -6,6 +6,13 @@
 
 /*!40103 SET SQL_NOTES='ON' */;
 
+DROP DATABASE
+IF EXISTS `second_hand`;
+
+CREATE DATABASE `second_hand` DEFAULT
+CHARSET utf8;
+USE second_hand;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------

@@ -9,9 +9,11 @@ import java.util.List;
  */
 public interface UserService {
     //用户注册
-    public void registe(User user);
+    public boolean registe(User user);
     //用户登录
-    public void login(String name, String password);
+    public boolean login(String name, String password);
     //所用用户
     public List<User> findAll();
+    //根据用户名查找用户
+    public User getUserByName(String username);
 }
