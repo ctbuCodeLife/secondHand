@@ -108,7 +108,7 @@
         <div class="row">
             <h3>最新商品</h3>
         </div>
-        <%--<jsp:include page="product_list.jsp"></jsp:include>--%>
+        <jsp:include page="product_list.jsp"></jsp:include>
 
     </div>
 </div>

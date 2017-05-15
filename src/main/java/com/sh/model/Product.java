@@ -37,67 +37,67 @@ public class Product implements Serializable {
     }
 
     public Integer getUid() {
-        return uid;
+        return uId;
     }
 
-    public void setUid(Integer uid) {
-        this.uid = uid;
+    public void setUid(Integer uId) {
+        this.uId = uId;
     }
 
     public Integer getKid() {
-        return kid;
+        return kId;
     }
 
-    public void setKid(Integer kid) {
-        this.kid = kid;
+    public void setKid(Integer kId) {
+        this.kId = kId;
     }
 
     public String getPname() {
-        return pname;
+        return pName;
     }
 
-    public void setPname(String pname) {
-        this.pname = pname;
+    public void setPname(String pName) {
+        this.pName = pName;
     }
 
     public Integer getPnum() {
-        return pnum;
+        return pNum;
     }
 
-    public void setPnum(Integer pnum) {
-        this.pnum = pnum;
+    public void setPnum(Integer pNum) {
+        this.pNum = pNum;
     }
 
     public String getPimage() {
-        return pimage;
+        return pImage;
     }
 
-    public void setPimage(String pimage) {
-        this.pimage = pimage;
+    public void setPimage(String pImage) {
+        this.pImage = pImage;
     }
 
     public Integer getRealprice() {
-        return realprice;
+        return realPrice;
     }
 
-    public void setRealprice(Integer realprice) {
-        this.realprice = realprice;
+    public void setRealprice(Integer realPrice) {
+        this.realPrice = realPrice;
     }
 
     public Integer getOriginprice() {
-        return originprice;
+        return originPrice;
     }
 
-    public void setOriginprice(Integer originprice) {
-        this.originprice = originprice;
+    public void setOriginprice(Integer originPrice) {
+        this.originPrice = originPrice;
     }
 
     public String getPdesc() {
-        return pdesc;
+        return pDesc;
     }
 
-    public void setPdesc(String pdesc) {
-        this.pdesc = pdesc;
+    public void setPdesc(String pDesc) {
+        this.pDesc = pDesc;
     }
 
     public Product(Integer id, Integer uId, Integer kId, String pName, Integer pNum, String pImage, Integer realPrice, Integer originPrice, String pDesc) {

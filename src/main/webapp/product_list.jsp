@@ -52,13 +52,13 @@ body {
             <c:forEach var="product" items="${sessionScope.listShowProduct}">
 				<div class="col-md-2">
 					<a href="product_info.jsp?id=${product.id}">
-						<img src="${product.pImage}" alt="${product.pName}"	width="170" height="170" style="display: inline-block;">
+						<img src="${product.pimage}" alt="${product.pname}"	width="170" height="170" style="display: inline-block;">
 					</a>
 					<p>
-						<a href="product_info.jsp?id=${product.id}" style='color:green'>${product.pName}</a>
+						<a href="product_info.jsp?id=${product.id}" style='color:green'>${product.pname}</a>
 					</p>
 					<p>
-						<font color="#FF0000">商城价：&yen;${product.realPrice}</font>
+						<font color="#FF0000">商城价：&yen;${product.realprice}</font>
 					</p>
 				</div>
 			</c:forEach>
