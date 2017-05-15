@@ -94,7 +94,6 @@ public void testFindAll() throws Exception {
 //TODO: Test goes here...
     //测试通过
     UserDAO userDao = new UserDAOImpl();
-    Integer id = new Integer(10000);
     List<User> list = userDao.findAll();
     for(User u :list){
         System.out.println(u);
@@ -141,7 +140,6 @@ public void testCount() throws Exception {
 //TODO: Test goes here...
     //测试通过
     UserDAO userDao = new UserDAOImpl();
-    Integer id = new Integer(10000);
     int count = userDao.count();
     System.out.println(count);
     assertNotEquals(0,count);

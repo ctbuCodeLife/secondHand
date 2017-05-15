@@ -3,21 +3,30 @@ package com.sh.dao;
 import com.sh.model.Admin;
 
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+
+import com.sh.model.Admin;
+import org.apache.ibatis.annotations.*;
 
 public interface AdminDAO {
 
-    int deleteByPrimaryKey(Integer id);
+    @Insert("INSERT INTO `admin`(`username`,`password`,`email`,`level`) VALUES (#{username},#{password},#{email},#{level})")
+    public int insert(Admin record);
 
-    int insert(Admin record);
+    @Delete("delete from `admin` where id = #{id}")
+    public int delete(Integer id);
 
-    int insertSelective(Admin record);
+    @Update("update `admin` set `username`=#{username},`password`=#{password},`level`=#{level} where id=#{id}")
+    public int update(Admin record);
 
+    @Select("select * from `admin`")
+    public List<Admin> findAll();
 
-    Admin selectByPrimaryKey(Integer id);
+    @Select("select * from `admin` where id = #{id}")
+    public Admin select(Integer id);
 
+    @Select("select * from `admin` where `username` = #{username}")
+    public Admin getAdminByName(String username);
 
-    int updateByPrimaryKeySelective(Admin record);
-
-    int updateByPrimaryKey(Admin record);
+    @Select("select count(id) from `admin`")
+    public int count();
 }

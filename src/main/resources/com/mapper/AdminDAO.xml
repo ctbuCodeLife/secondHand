@@ -99,7 +99,7 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from admin
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </delete>
   <delete id="deleteByExample" parameterType="com.sh.model.AdminExample">
     delete from admin
