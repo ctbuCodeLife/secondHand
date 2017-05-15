@@ -38,7 +38,7 @@ body {
 
 <body>
 				
-				<%!	ArrayList<Product> listShowProduct;
+				<%!	List<Product> listShowProduct;
 				%>
 				<% 
 			  ProductDAO pd = new ProductDAOImpl();
@@ -58,7 +58,7 @@ body {
 						<a href="product_info.jsp?id=${product.id}" style='color:green'>${product.pName}</a>
 					</p>
 					<p>
-						<font color="#FF0000">商城价：&yen;${product.iPrice}</font>
+						<font color="#FF0000">商城价：&yen;${product.realPrice}</font>
 					</p>
 				</div>
 			</c:forEach>
