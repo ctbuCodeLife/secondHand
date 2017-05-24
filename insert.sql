@@ -28,12 +28,12 @@ INSERT INTO `kind` VALUES ('2', '生活用品');
 -- ----------------------------
 -- Records of product
 -- ----------------------------
-INSERT INTO `product` VALUES ('10000', '10000', '1', '小米note3', '小米note3全网通', '1000', 'img/hot/xiaomi.jpg', '1000', '1200');
+NSERT INTO `product` VALUES ('10000', '10000', '1', '小米note3', '小米note3全网通', '1000', 'img/hot/xiaomi.jpg', '1000', '1200');
 INSERT INTO `product` VALUES ('10001', '10000', '1', '魅族', '魅蓝metal', '1000', 'img/hot/meizu.jpg', '1000', '1200');
 INSERT INTO `product` VALUES ('10002', '10000', '1', '魅族pro6', '魅族pro6 小得大不一样', '1000', 'img/hot/meizu2.png', '1000', '1200');
-INSERT INTO `product` VALUES ('10003', '10000', '1', '数码', '全场特价', '1000', 'img/hot/shuma.jpg', '10', '1200');
-INSERT INTO `product` VALUES ('10004', '10000', '1', '热销手机', '热销手机提前放价', '1000', 'img/hot/shuma2.jpg', '1000', '1200');
-INSERT INTO `product` VALUES ('10005', '10000', '1', '小米max', '小米max全网通', '1000', 'img/hot/xiaomi1.jpg', '1499', '1500');
+INSERT INTO `product` VALUES ('10003', '10000', '1', '小米Maxs手机', '小米Max手机不错哟', '1000', 'img/hot/xiaomi1.jpg', '10', '1200');
+INSERT INTO `product` VALUES ('10004', '10000', '1', 'ipad2平板', 'ipad2不错哦', '1000', 'img/show/ipad.jpg', '1000', '1200');
+INSERT INTO `product` VALUES ('10005', '10000', '1', '小米max', '小米max全网通', '1000', 'img/show/ipad.jpg', '1499', '1500');
 INSERT INTO `product` VALUES ('10006', '10000', '1', 'ipad2', 'ipad2', '1000', 'img/show/ipad.jpg', '1000', '1200');
 INSERT INTO `product` VALUES ('10007', '10000', '1', 'opp7', 'opp7', '1000', 'img/show/oppor7.png', '1000', '1200');
 INSERT INTO `product` VALUES ('10008', '10000', '1', '三星s7', '三星s7', '1000', 'img/show/sanxing.jpg', '1000', '1200');
@@ -57,16 +57,17 @@ INSERT INTO `product` VALUES ('100024', '10000', '1', 'idfffsdffdsf', 'ipad2', '
 INSERT INTO `product` VALUES ('100025', '10000', '1', 'fdfdsfsf', 'opp7', '1000', 'img/show/oppor7.png', '1000', '1200');
 INSERT INTO `product` VALUES ('100026', '10000', '1', 'fdfasdsf', '三星s7', '1000', 'img/show/sanxing.jpg', '1000', '1200');
 INSERT INTO `product` VALUES ('100027', '10000', '1', 'fdsfsdfaf', 'ipad2', '1000', 'img/show/ipad.jpg', '1000', '1200');
-INSERT INTO `product` VALUES ('100029', '10000', '1', 'fsdfsdadf', '三星s7', '1000', 'img/show/sanxing.jpg', '1000', '1200');
+INSERT INTO `product` VALUES ('100037', '10000', '3', 'test', 'test', '13', 'img/show/sanxing.jpg', '2', '333');
+INSERT INTO `product` VALUES ('100038', '10000', '3', '电话的时候f', '发撒旦法', '5', 'img/show/sanxing.jpg', '5', '5');
+INSERT INTO `product` VALUES ('100039', '10000', '3', '回家啦收到就好了', '发撒旦法', '6', 'img/show/sanxing.jpg', '443', '666');
 
 -- ----------------------------
 -- Records of hot
 -- ----------------------------
 INSERT INTO `hot` VALUES ('10000', '10000');
 INSERT INTO `hot` VALUES ('10001', '10001');
+INSERT INTO `hot` VALUES ('10002', '10002');
 INSERT INTO `hot` VALUES ('10003', '10003');
-INSERT INTO `hot` VALUES ('10004', '10004');
-INSERT INTO `hot` VALUES ('10002', '10008');
 
 -- ----------------------------
 -- Records of cart
