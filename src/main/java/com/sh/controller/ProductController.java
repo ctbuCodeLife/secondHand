@@ -56,8 +56,7 @@ public class ProductController {
             //用户已登录,可以发布商品
             uid = user.getId();
             String pName = request.getParameter("pName");
-            System.out.println(request.getParameter("kindId"));
-           // Integer kId = Integer.parseInt(request.getParameter("kindId"));
+            Integer kId = Integer.parseInt(request.getParameter("kindId"));
             String pDesc = request.getParameter("pDesc");
             Integer pNum = Integer.parseInt(request.getParameter("pNum"));
             String pImage = "img/show/sanxing.jpg";
@@ -66,7 +65,7 @@ public class ProductController {
 
             product.setUid(uid);
             product.setPname(pName);
-           // product.setKid(kId);
+            product.setKid(kId);
             product.setPdesc(pDesc);
             product.setPimage(pImage);
             product.setPnum(pNum);
