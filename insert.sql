@@ -57,9 +57,6 @@ INSERT INTO `product` VALUES ('100024', '10000', '1', 'idfffsdffdsf', 'ipad2', '
 INSERT INTO `product` VALUES ('100025', '10000', '1', 'fdfdsfsf', 'opp7', '1000', 'img/show/oppor7.png', '1000', '1200');
 INSERT INTO `product` VALUES ('100026', '10000', '1', 'fdfasdsf', '三星s7', '1000', 'img/show/sanxing.jpg', '1000', '1200');
 INSERT INTO `product` VALUES ('100027', '10000', '1', 'fdsfsdfaf', 'ipad2', '1000', 'img/show/ipad.jpg', '1000', '1200');
-INSERT INTO `product` VALUES ('100037', '10000', '3', 'test', 'test', '13', 'img/show/sanxing.jpg', '2', '333');
-INSERT INTO `product` VALUES ('100038', '10000', '3', '电话的时候f', '发撒旦法', '5', 'img/show/sanxing.jpg', '5', '5');
-INSERT INTO `product` VALUES ('100039', '10000', '3', '回家啦收到就好了', '发撒旦法', '6', 'img/show/sanxing.jpg', '443', '666');
 
 -- ----------------------------
 -- Records of hot
