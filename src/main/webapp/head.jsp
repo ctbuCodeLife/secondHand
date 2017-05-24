@@ -11,39 +11,28 @@
   listKind = kd.findAll();
   session.setAttribute("listKind", listKind);
 %>
-<!--创建logDIV--菜单栏-->
 <div class="container">
-	<!--log-->
-	<div class="col-md-4">
-		<img src="img/log.jpg" width="100px" />
-	</div>
-	<!--log1-->
-	<div class="col-md-4">
-		<img src="img/log2.jpg" width="200px" />
-
-	</div>
-	<div class="col-md-4" style="padding-top: 30px;">
-
-		<c:if test="${not empty sessionScope.user }">
-		    <a href="#">当前用户:${sessionScope.user.username}</a>
-		    <a href="api/user/logout">注销</a>
-            <a href="cart.jsp">购物车</a>
-            <a href="order_list.jsp">订单</a>
-			<a href="user_product.jsp">发布商品</a>
-			<a href="requestOrder.jsp">订单请求</a>
-		</c:if>
-		<c:if test="${ empty sessionScope.user }">
-		    <a href="login.jsp">登录</a>
-			<a href="register.jsp ">注册</a>
-	    </c:if>
-	</div>
+	<c:if test="${not empty sessionScope.user }">
+		<a href="#">当前用户:${sessionScope.user.username}</a>
+		<a href="api/user/logout">注销</a>
+		<a href="cart.jsp">购物车</a>
+		<a href="order_list.jsp">订单</a>
+		<a href="user_product.jsp">发布商品</a>
+		<a href="requestOrder.jsp">订单请求</a>
+	</c:if>
+	<c:if test="${ empty sessionScope.user }">
+		<a href="login.jsp">登录</a>
+		<a href="register.jsp ">注册</a>
+	</c:if>
 </div>
+
 <!--创建menuDIV--导航条-->
 <div class="container">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
+
 				<button type="button" class="navbar-toggle collapsed"
 					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
 					aria-expanded="false">
@@ -53,13 +42,12 @@
 				</button>
 				<a class="navbar-brand active" href="index.jsp">首页<span class="sr-only">(current)</span></a>
 			</div>
-
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 				    <c:forEach var="kind" items="${sessionScope.listKind}">
-				      <li><a href="product_list_by_kid.jsp?kid=${kind.id}">${kind.kname}</a></li>
+				      <li><a href="product_list_by_kid.jsp?kid=${kind.id}" >${kind.kname}</a></li>
 				    </c:forEach>
 				</ul>
 				<div class="navbar-form navbar-right" role="search">

@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.*;
 
 public interface AdminDAO {
 
-    @Insert("INSERT INTO `admin`(`username`,`password`,`email`,`level`) VALUES (#{username},#{password},#{email},#{level})")
+    @Insert("insert into `admin`(`username`,`password`,`email`,`level`) VALUES (#{username},#{password},#{email},#{level})")
     public int insert(Admin record);
 
     @Delete("delete from `admin` where id = #{id}")

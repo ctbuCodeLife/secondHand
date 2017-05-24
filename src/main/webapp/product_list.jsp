@@ -29,6 +29,12 @@ body {
 	margin: 0 auto;
 }
 
+.product{
+	margin-left: 20px;
+}
+.product :hover{
+	border: 1px red solid;
+}
 .carousel-inner .item img {
 	width: 100%;
 	height: 300px;
@@ -50,7 +56,7 @@ body {
 
 		<div class="row" style="width:1186px;margin:0 auto;">
             <c:forEach var="product" items="${sessionScope.listShowProduct}">
-				<div class="col-md-2" width="160" style="margin-left: 20px">
+				<div class="col-md-2"  width="160">
 					<a href="product_info.jsp?id=${product.id}">
 						<img src="${product.pimage}" alt="${product.pname}"	width="170" height="170" style="display: inline-block;">
 					</a>

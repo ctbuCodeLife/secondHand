@@ -81,7 +81,7 @@
                             session.setAttribute("product",product);
                         %>
                         <a href="product_info.jsp?id=${sessionScope.listHot[index].id}">
-                            <img src="${sessionScope.product.pimage}" alt="${sessionScope.product.pname}">
+                            <img src="${sessionScope.product.pimage}" alt="${sessionScope.product.pname}" width="100%" height="100%">
                         </a>
                     </div>
                 </c:forEach>
@@ -106,7 +106,7 @@
     <!--创建newProductDIV-->
     <div>
         <div class="row">
-            <h3>最新商品</h3>
+            <h3>所有商品</h3>
         </div>
         <jsp:include page="product_list.jsp"></jsp:include>
 
