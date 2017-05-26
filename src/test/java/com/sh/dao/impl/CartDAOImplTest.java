@@ -100,6 +100,13 @@ public void testSelect() throws Exception {
 public void testCount() throws Exception { 
 //TODO: Test goes here... 
 } 
-
+@Test
+public void testSelectByUidAndPid(){
+    CartDAO cartDAO = new CartDAOImpl();
+    Integer uid = new Integer(10008);
+    Integer pid = new Integer(10000);
+    Cart cart = cartDAO.selectByUidAndPid(10008,10000);
+    System.out.println(cart);
+}
 
 } 

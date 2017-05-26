@@ -31,6 +31,7 @@ public class CartController {
     public ModelAndView add(HttpServletRequest request, HttpSession session){
         ModelAndView view = new ModelAndView();
         Cart cart = new Cart();
+        CartDAO cartDao = new CartDAOImpl();
         //设置uid
         User user = (User)session.getAttribute("user");
         Integer uid = new Integer(0);
@@ -46,9 +47,17 @@ public class CartController {
             Integer pid = Integer.parseInt(request.getParameter("pId"));
             Integer count = Integer.parseInt(request.getParameter("count"));
 
+            //cart = cartDao.selectByUidAndPid(uid,pid);
+//            if(cart != null || cart.getId() != null){
+//                //购物车记录已存在
+//                //将数量加入到已存在的记录中
+//                cart.setCount(cart.getCount()+count);
+//            }else{
+//                cart.setCount(count);
+//            }
+            cart.setCount(count);
             cart.setUid(uid);
             cart.setPid(pid);
-            cart.setCount(count);
             cart.setIsbuy("否");
             //设置totalPrice
             ProductDAO productDao = new ProductDAOImpl();

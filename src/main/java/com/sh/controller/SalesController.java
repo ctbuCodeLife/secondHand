@@ -96,9 +96,9 @@ public class SalesController {
                     return view;
                 }
                 //获取收货信息
-                String contactMan = request.getParameter("count");
-                String contactTel = request.getParameter("count");
-                String contactAddr = request.getParameter("count");
+//                String contactMan = request.getParameter("count");
+//                String contactTel = request.getParameter("count");
+//                String contactAddr = request.getParameter("count");
 
                 int totalPrice = 0;
                 int unitPrice = product.getRealprice();

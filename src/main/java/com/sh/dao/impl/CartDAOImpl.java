@@ -57,6 +57,9 @@ public class CartDAOImpl implements CartDAO {
         return cartDao.select(id);
     }
 
+    public Cart selectByUidAndPid(Integer uId, Integer pId){
+        return cartDao.selectByUidAndPid(uId, pId);
+    }
 
     public int count(){
         return cartDao.count();

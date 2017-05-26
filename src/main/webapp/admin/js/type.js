@@ -33,7 +33,7 @@ function selectGrade(grade) {
 //增加类别
 function addType() {
     //输入非空验证
-    vartypeEle = ["#grade", "#name", "#parentId", "#describe"];
+    var typeEle = ["#grade", "#name", "#parentId", "#describe"];
     for (var i = 0; i <typeEle.length; i++) {
         if ($(adminEle[i]).val() === "") {
             $(adminEle[i]).focus();

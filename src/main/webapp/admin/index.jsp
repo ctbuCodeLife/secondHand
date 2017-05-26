@@ -92,6 +92,49 @@
                         <li>
                             <a href="product/addProduct.jsp" target="contentIframe">商品增加</a>
                         </li>
+                        <li>
+                            <a href="product/listType.jsp" target="contentIframe">所有类别</a>
+                        </li>
+                        <li>
+                            <a href="product/queryType.jsp" target="contentIframe">类别查询</a>
+                        </li>
+                        <li>
+                            <a href="product/addType.jsp" target="contentIframe">类别增加</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="active font-1" href="comment/listComment.jsp">评论管理</a>
+                    <ul class="nav nav-stacked">
+                        <li>
+                            <a href="">评论增加</a>
+                        </li>
+                        <li>
+                            <a href="">评论删除</a>
+                        </li>
+                        <li>
+                            <a href="">评论修改</a>
+                        </li>
+                        <li>
+                            <a href="">评论查询</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="active font-1" href="listOrder.jsp">订单管理</a>
+                    <ul class="nav nav-stacked">
+                        <li>
+                            <a href="">订单增加</a>
+                        </li>
+                        <li>
+                            <a href="">订单删除</a>
+                        </li>
+                        <li>
+                            <a href="">订单修改</a>
+                        </li>
+                        <li>
+                            <a href="">订单查询</a>
+                        </li>
                     </ul>
                 </li>
             </ul>

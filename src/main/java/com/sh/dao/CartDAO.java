@@ -24,6 +24,9 @@ public interface CartDAO {
     @Select("select * from `cart` where id = #{id}")
     public Cart select(Integer id);
 
+    @Select("select * from `cart` where `uId` = #{uId} and `pId` = #{pId}")
+    public Cart selectByUidAndPid(Integer uId, Integer pId);
+
     @Select("select count(id) from `cart`")
     public int count();
 }

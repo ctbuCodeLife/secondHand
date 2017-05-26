@@ -110,13 +110,12 @@
                         </div>
 
                         <div style="margin: 10px 0 10px 0;">
-                            促销: <a target="_blank" title="限时抢购 (2014-07-30 ~ 2015-01-01)"
-                                   style="background-color: #f07373;">限时抢购</a>
+                            促销: <a target="_blank" title="限时抢购 (2015-05-30 ~ 2015-06-01)"
+                                   >限时抢购</a>
                         </div>
 
                         <div
                                 style="padding: 10px; border: 1px solid #e7dbb1; width: 330px; margin: 15px 0 10px 0;; background-color: #fffee6;">
-                            <div style="margin: 5px 0 10px 0;">白色</div>
                             <form action="api/cart/add" method="post">
                                 <input name="pId" type="hidden" value="${product.id}"/>
                                 <div style="border-bottom: 1px solid #faeac7; margin-top: 20px; padding-left: 10px;">
@@ -138,19 +137,12 @@
                     <div style="background-color: #d3d3d3; width: 930px; padding: 10px 10px; margin: 10px 0 10px 0;">
                         <strong>商品介绍</strong>
                     </div>
-                    <div id="productImgInfo">
-                        <img src="${product.pimage}">
-                    </div>
                     <div>
                         <strong>${product.pdesc}</strong>
                     </div>
-                    <div style="background-color: #d3d3d3; width: 930px; padding: 10px 10px; margin: 10px 0 10px 0;">
-                        <strong>商品参数</strong>
+                    <div id="productImgInfo">
+                        <img src="${product.pimage}">
                     </div>
-                    <div style="margin-top: 10px; width: 900px;">
-                        详情介绍
-                    </div>
-
                 </div>
             </c:if>
             <c:if test="${empty requestScope.product}">
