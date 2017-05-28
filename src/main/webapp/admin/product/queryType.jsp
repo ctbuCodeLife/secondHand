@@ -11,10 +11,10 @@
 <html>
 <head>
     <title>查询类别</title>
-    <link href="<%=request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/font-awesome.min.css">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <!--提示框插件样式-->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
 </head>
 <body>
 <!--类别导航-->
@@ -59,12 +59,12 @@
         </table>
     </div>
 </div>
-<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/vue.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/vue.js"></script>
 <!--引入弹出框插件的js-->
-<script src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
+<script src="../js/sweetalert2.min.js"></script>
 <!--引入自定义的type.js-->
-<script src="<%=request.getContextPath()%>/js/type.js"></script>
+<script src="../js/type.js"></script>
 <script>
 </script>
 </body>

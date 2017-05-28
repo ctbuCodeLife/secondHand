@@ -10,9 +10,9 @@
 <head>
     <title>所有用户</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
     <!--提示框插件样式-->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
 </head>
 <body>
 <div id="data">
@@ -43,11 +43,11 @@
         </tr>
     </table>
 </div>
-<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/vue.js"></script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/vue.js"></script>
 <!--引入插件的js-->
-<script src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
-<script src="<%=request.getContextPath()%>/js/user.js"></script>
+<script src="../js/sweetalert2.min.js"></script>
+<script src="../js/user.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         listUser();

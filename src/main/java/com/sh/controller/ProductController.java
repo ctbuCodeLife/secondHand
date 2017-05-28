@@ -1,5 +1,7 @@
 package com.sh.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.sh.dao.ProductDAO;
 import com.sh.dao.ProductDAO;
 import com.sh.dao.impl.ProductDAOImpl;
@@ -7,6 +9,7 @@ import com.sh.dao.impl.ProductDAOImpl;
 import com.sh.model.Product;
 import com.sh.model.Product;
 import com.sh.model.User;
+import com.sh.util.Message;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -23,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -119,5 +123,23 @@ public class ProductController {
             view.setViewName("redirect:/info.jsp");
             return view;
         }
+    }
+
+    @RequestMapping("/listAll")
+    @ResponseBody
+    public String findAll(){
+        List<Product> list = new ArrayList<Product>();
+        list = productDao.findAll();
+        int status = 0;
+        if(list != null) {
+           status = 0;
+        }else{
+           status = 1;
+        }
+        String data = JSON.toJSONString(list, SerializerFeature.WriteDateUseDateFormat,SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect);
+        System.out.println(data);
+        Message msg = new Message(status,data);
+
+        return JSON.toJSONString(msg,SerializerFeature.WriteDateUseDateFormat,SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect);
     }
 }

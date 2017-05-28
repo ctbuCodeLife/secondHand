@@ -88,6 +88,7 @@ function addProdcut() {
 }
 //删除商品
 function delProduct(that) {
+    var response;
     swal({
         title: '删除商品?',
         text: "删除后就不可恢复!",
@@ -104,7 +105,7 @@ function delProduct(that) {
             var id = p.innerHTML;
             $.ajax({
                 type: "GET",
-                url: "/ishop-admin/delProduct",
+                url: "../../api/product/delete",
                 data: {id: id},
                 dataType: "json",
                 success: function (data) {
@@ -187,14 +188,14 @@ function listProduct() {
     mydata=[];
     $.ajax({
         type:"GET",
-        url:"/ishop-admin/listProduct",
+        url:"../../api/product/listAll",
         dataType:"json",
         success:function (data) {
             //这里获取到数据展示到前台
             var vm = new Vue({
                 el:'#productTable',
                 data:{
-                    mydata:data
+                    mydata:data.data
                 }
             });
         }

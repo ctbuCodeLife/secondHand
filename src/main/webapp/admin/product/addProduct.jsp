@@ -9,9 +9,9 @@
 <html>
 <head>
     <title>addProduct</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!--提示框插件样式-->
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/sweetalert2.min.css">
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
     <style type="text/css">
         .container{
             width: 500px;
@@ -93,12 +93,12 @@
         </div>
     </form>
 </div>
-<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
-<%--<script src="<%=request.getContextPath()%>/js/vue.js"></script>--%>
+<script src="../js/jquery.min.js"></script>
+<%--<script src="../js/vue.js"></script>--%>
 <!--引入弹出框插件的js-->
-<script src="<%=request.getContextPath()%>/js/sweetalert2.min.js"></script>
+<script src="../js/sweetalert2.min.js"></script>
 <!--自定义的管理product的js-->
-<script src="<%=request.getContextPath()%>/js/product.js"></script>
+<script src="../js/product.js"></script>
 <script>
     $(document).ready(function () {
        swal(

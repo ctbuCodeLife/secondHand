@@ -4,12 +4,16 @@ import com.alibaba.fastjson.JSON;
 import com.sh.model.User;
 import com.sh.service.UserService;
 import com.sh.service.impl.UserServiceImpl;
+import com.sh.util.Message;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -25,6 +29,7 @@ public class UserController {
     public ModelAndView register(User user, HttpSession session){
         user.setLevel(1);
         user.setScore(0);
+        user.setSex("保密");
         String name = user.getUsername();
         User u = service.getUserByName(name);
         if(u != null && u.getId() != null){
@@ -80,4 +85,20 @@ public class UserController {
         return view;
     }
 
+    @RequestMapping(value = "/getUserByName",produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String getUserByName(HttpServletRequest request, HttpServletResponse response){
+        response.setHeader("Cache-Control", "no-cache");
+        Message msg = new Message();
+        String name = request.getParameter("name");
+        User user = service.getUserByName(name);
+        if(user == null || user.getId() == null){
+            msg.setStatus(0);
+            msg.setData("用户名不存在，可以注册");
+        } else {
+            msg.setStatus(1);
+            msg.setData("用户已存在，请重新输入。");
+        }
+        return  msg.toString();
+    }
 }
