@@ -27,7 +27,7 @@
 </div>
 
 <!--创建menuDIV--导航条-->
-<div class="container">
+<div class="container-fluid">
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<!-- Brand and toggle get grouped for better mobile display -->

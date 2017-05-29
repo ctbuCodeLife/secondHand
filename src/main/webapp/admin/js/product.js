@@ -11,7 +11,6 @@ function addProdcut() {
             return;
         }
     }
-    alert(2);
     var name = $("#productName").val();
     var subTitle = $("#productSubTitle").val();
     var typeId = $("#typeName").val();
@@ -189,7 +188,7 @@ function listProduct() {
     var mydata=[];
     $.ajax({
         type:"GET",
-        url:"../../api/product/listAll",
+        url:"../api/product/listAll",
         dataType:"json",
         success:function (data) {
             //这里获取到数据展示到前台
@@ -208,7 +207,7 @@ function getProductByName() {
     var name = $("#name").val();
     $.ajax({
         type:"GET",
-        url:"../../api/product/findByName",
+        url:"../api/product/findByName",
         data:{name:name},
         dataType:"json",
         success:function (response) {
