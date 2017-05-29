@@ -1,30 +1,25 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="utf-8" />
 		<title>订单信息</title>
 		<!--根据设备的宽度调整缩放比例   -->
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<!--引入bootstrap的CSS文件 -->
-		<link rel="stylesheet" href="css/head.css">
+		<link rel="stylesheet" href="css/he">
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
 		<!--引入jquery的js文件-->
 		<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</head>
-
 	<body>
 	<%@include file="head.jsp" %>
 		<!--创建订单详情DIV-->
 		<div class="container">
 			<div class="row">
-
 				<div style="margin:0 auto;margin-top:10px;width:1150px;">
 					<strong>订单详情</strong>
 					<table class="table table-bordered">
@@ -76,7 +71,6 @@
 						</div>
 					</div>
 				</form>
-
 				<hr />
 				<div style="margin-top:5px;margin-left:150px;">
 					<hr />
@@ -124,5 +118,4 @@
 			</center>
 		</div>
 	</body>
-
 </html>

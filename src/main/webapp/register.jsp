@@ -9,7 +9,7 @@
     <title>在线注册</title>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
-    <link rel="stylesheet" href="css/head.css">
+    link
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/my.js"></script>
@@ -137,7 +137,7 @@
                 dataType: "json",
                 success: function (response) {
                     if(response.status === 1){
-                        swal(response.data[0]).then(function () {
+                        swal(response.data).then(function () {
                                 $("#username").focus()
                         });
                     }
@@ -185,7 +185,7 @@
                 if(response.status === 1){
                     swal({
                         title: '提示',
-                        text: response.data[0],
+                        text: response.data,
                         timer: 3000
                     }).then(
                         function autoReturn() {location.href = response.autoReturn},
