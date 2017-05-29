@@ -12,6 +12,7 @@
     <!--根据设备的宽度调整缩放比例   -->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--引入bootstrap的CSS文件 -->
+    <link rel="stylesheet" href="css/head.css">
     <link rel="stylesheet" href="css/bootstrap.min.css"  />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"
           type="text/css" />
@@ -52,7 +53,7 @@
 
     <div class="container">
         <div class="row">
-            <a class="btn btn-success" href="uploadProduct.jsp">发布新商品</a>
+            <a class="btn btn-success" style="height: 50px" href="uploadProduct.jsp"><span>发布新商品</span></a>
             <div style="margin:0 auto; margin-top:10px;width:1150px;">
                 <strong>所有发布的商品</strong>
 

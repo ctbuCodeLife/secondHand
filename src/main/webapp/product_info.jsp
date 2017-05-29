@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"
           type="text/css"/>
+    <link rel="stylesheet" href="css/head.css">
     <!--引入jquery的js文件-->
     <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -75,7 +76,7 @@
 
                 <div style="border: 1px solid #e4e4e4; width: 930px; margin-bottom: 10px; margin: 0 auto; padding: 10px; margin-bottom: 10px;">
                     <a href="./index.jsp">首页&nbsp;&nbsp;&gt;</a>
-                    <a href="./proucd_list_by_kid.jsp?kid=${product.kid}">
+                    <a href="./product_list_by_kid.jsp?kid=${product.kid}">
                         <c:set
                                 var="kId" value="${product.kid}" scope="request">
                         </c:set> <%

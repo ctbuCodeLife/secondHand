@@ -11,6 +11,7 @@
 		<!--根据设备的宽度调整缩放比例   -->
 		<meta name="viewport" content="width=device-width,initial-scale=1" />
 		<!--引入bootstrap的CSS文件 -->
+		<link rel="stylesheet" href="css/head.css">
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
 		<link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css" />
 		<!--引入jquery的js文件-->
