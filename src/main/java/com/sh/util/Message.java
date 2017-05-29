@@ -4,14 +4,16 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.annotation.JSONType;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 
+import java.util.List;
+
 /**
  * Created by tao on 2017/5/27 0027.
  */
 @JSONType(orders={"status","data"})
 public class Message {
-    int status;
-    String data;
-    String autoReturn;
+    private int status;
+    private List<Object> data;
+    private String autoReturn;
 
     public int getStatus() {
         return status;
@@ -21,11 +23,11 @@ public class Message {
         this.status = status;
     }
 
-    public String getData() {
+    public List<Object> getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(List<Object> data) {
         this.data = data;
     }
 
@@ -37,7 +39,7 @@ public class Message {
         this.autoReturn = autoReturn;
     }
 
-    public Message(int status, String data, String autoReturn) {
+    public Message(int status, List<Object> data, String autoReturn) {
         this.status = status;
         this.data = data;
         this.autoReturn = autoReturn;
@@ -48,7 +50,7 @@ public class Message {
         return JSON.toJSONString(this, SerializerFeature.WriteDateUseDateFormat,SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect);
     }
 
-    public Message(int status, String data){
+    public Message(int status, List<Object> data){
         this.status = status;
         this.data = data;
         this.autoReturn = "index.jsp";

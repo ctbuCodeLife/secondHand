@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,55 +37,71 @@ public class UserController {
         User u = service.getUserByName(name);
         if(u != null && u.getId() != null){
             msg.setStatus(0);
-            msg.setData("注册失败,用户名已存在,3秒后自动跳转到注册页面");
+            List data = new ArrayList();
+            data.add("注册失败,用户名已存在,3秒后自动跳转到注册页面");
+            msg.setData(data);
             msg.setAutoReturn("register.jsp");
         }else {
             boolean result = service.registe(user);
 
             if (result == true) {
                 msg.setStatus(1);
-                msg.setData("注册成功,3秒后自动跳转到主页");
+                List data = new ArrayList();
+                data.add("注册成功,3秒后自动跳转到主页");
+                msg.setData(data);
                 msg.setAutoReturn("index.jsp");
             }
         }
         return msg.toString();
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public ModelAndView register(String username,String password,HttpSession session){
-        boolean result = service.login(username,password);
+    public String login(String username,String password,HttpSession session) {
+        Message msg = new Message();//返回的json数据
+
+        boolean result = service.login(username, password);
 
         if (result == true) {
             User user = service.getUserByName(username);
             session.setAttribute("user", user);
-            session.setAttribute("msg", "登录成功,3秒后自动跳转到主页");
-            session.setAttribute("autoReturn", "index.jsp");
-        }else {
-            session.setAttribute("msg", "登录失败,3秒后自动跳转到登录页面");
-            session.setAttribute("autoReturn", "login.jsp");
+            msg.setStatus(1);
+            List data = new ArrayList();
+            data.add("登录成功,3秒后自动跳转到主页");
+            msg.setData(data);
+            msg.setAutoReturn("index.jsp");
+        } else {
+            msg.setStatus(0);
+            List data = new ArrayList();
+            data.add("登录失败,3秒后自动跳转到登录页面");
+            msg.setData(data);
+            msg.setAutoReturn("login.jsp");
         }
-        ModelAndView view = new ModelAndView();
-        view.setViewName("redirect:/info.jsp");
-        return view;
+        return msg.toString();
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    @RequestMapping(value = "/logout",produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public ModelAndView logout(HttpSession session){
+    public String logout(HttpSession session){
+        Message msg = new Message();
+
         User user = (User)session.getAttribute("user");
         if (user != null && user.getId() != null) {
             //用户已登录
             session.removeAttribute("user");
-            session.setAttribute("msg", "注销成功,3秒后自动跳转到主页");
-            session.setAttribute("autoReturn", "index.jsp");
+            msg.setStatus(1);
+            List data = new ArrayList();
+            data.add("注销成功,3秒后自动跳转到主页");
+            msg.setData(data);
+            msg.setAutoReturn("index.jsp");
         }else {
-            session.setAttribute("msg", "注销失败,3秒后自动跳转到主页");
-            session.setAttribute("autoReturn", "index.jsp");
+            msg.setStatus(0);
+            List data = new ArrayList();
+            data.add("注销失败,3秒后自动跳转到主页");
+            msg.setData(data);
+            msg.setAutoReturn("index.jsp");
         }
-        ModelAndView view = new ModelAndView();
-        view.setViewName("redirect:/info.jsp");
-        return view;
+       return msg.toString();
     }
 
     @RequestMapping(value = "/getUserByName",produces = "text/html;charset=UTF-8")
@@ -96,10 +113,14 @@ public class UserController {
         User user = service.getUserByName(name);
         if(user == null || user.getId() == null){
             msg.setStatus(0);
-            msg.setData("用户名不存在，可以注册");
+            List data = new ArrayList();
+            data.add("用户名不存在，可以注册");
+            msg.setData(data);
         } else {
             msg.setStatus(1);
-            msg.setData("用户已存在，请重新输入。");
+            List data = new ArrayList();
+            data.add("用户已存在，请重新输入。");
+            msg.setData(data);
         }
         return  msg.toString();
     }

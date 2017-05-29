@@ -42,7 +42,9 @@ public void testInsert() throws Exception {
 */ 
 @Test
 public void testDelete() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    ProductDAO productDAO = new ProductDAOImpl();
+    int result   = productDAO.delete(new Integer(00027));
 } 
 
 /** 

@@ -88,7 +88,7 @@ function addProdcut() {
 }
 //删除商品
 function delProduct(that) {
-    var response;
+    mydata;
     swal({
         title: '删除商品?',
         text: "删除后就不可恢复!",
@@ -105,26 +105,27 @@ function delProduct(that) {
             var id = p.innerHTML;
             $.ajax({
                 type: "GET",
-                url: "../../api/product/delete",
+                url: "../api/product/delete",
                 data: {id: id},
                 dataType: "json",
-                success: function (data) {
-                    //这里获取到数据展示到前台
-                    if(data === true){
-                        swal(
-                            '删除成功!',
-                            '您已经成功删除商品',
-                            'success'
-                        ).then(function () {
-                            location.reload();
-                        });
-                    }else {
-                        swal(
-                            '删除失败!',
-                            '删除商品失败',
-                            'success'
-                        )
-                    }
+                success: function (response) {
+                    mydata = response;
+                    console.log(response.data);
+                    swal({
+                        title: '提示',
+                        text: response.data[0],
+                        timer: 3000
+                    }).then(
+                        function autoReturn() {
+                            location.href = response.autoReturn
+                        },
+                        function (dismiss) {
+                            setTimeout(autoReturn)
+                            if (dismiss === 'timer') {
+                                console.log('I was closed by the timer')
+                            }
+                        }
+                    )
                 }
             });
 
@@ -188,7 +189,7 @@ function listProduct() {
     mydata=[];
     $.ajax({
         type:"GET",
-        url:"../../api/product/listAll",
+        url:"../api/product/listAll",
         dataType:"json",
         success:function (data) {
             //这里获取到数据展示到前台

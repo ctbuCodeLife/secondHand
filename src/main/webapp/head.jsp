@@ -14,7 +14,7 @@
 <div class="container">
 	<c:if test="${not empty sessionScope.user }">
 		<a href="#">当前用户:${sessionScope.user.username}</a>
-		<a href="api/user/logout">注销</a>
+		<a href="#" onclick="logout()">注销</a>
 		<a href="cart.jsp">购物车</a>
 		<a href="order_list.jsp">订单</a>
 		<a href="user_product.jsp">发布商品</a>
@@ -62,3 +62,35 @@
 		<!-- /.container-fluid -->
 	</nav>
 </div>
+<script>
+    function logout() {
+        $.ajax({
+            type: "GET",
+            url: "api/user/logout",
+            dataType: "json",
+            success: function (response) {
+                if (response.status === 0) {
+                    //注销失败
+                    swal({
+                        title: '提示',
+                        text: response.data,
+                        timer: 3000
+                    }).then(
+                        function autoReturn() {
+                            location.href = response.autoReturn
+                        }
+                        // handling the promise rejection
+//                        function (dismiss) {
+//                            setTimeout(autoReturn)
+//                            if (dismiss === 'timer') {
+//                                console.log('I was closed by the timer')
+//                            }
+//                        }
+                    )
+                }else{
+                    location.href = response.autoReturn;
+                }
+            }
+        })
+    }
+</script>
