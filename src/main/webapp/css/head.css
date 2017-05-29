@@ -1,0 +1,9 @@
+.container a{
+    text-decoration:none;
+    line-height: 50px;
+    vertical-align: middle;
+    color: #0e0e0e;
+    font-family:Haettenschweiler;
+    font-size: 16px;
+    text-align: center;
+}

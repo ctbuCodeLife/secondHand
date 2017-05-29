@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/leftMenu.css">
+    <link rel="stylesheet" href="css/head.css">
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/my.js"></script>
@@ -32,6 +34,16 @@
 <div class="container">
     <!-- 头部DIV -->
     <%@include file="head.jsp" %>
+    <!--左侧菜单-->
+    <div class="left-menu">
+        <ul>
+            <li><a href="index.jsp" >首页</a></li>
+            <c:forEach var="kind" items="${sessionScope.listKind}">
+                <li><a href="product_list_by_kid.jsp?kid=${kind.id}" >${kind.kname}</a></li>
+            </c:forEach>
+        </ul>
+    </div>
+    <!---左侧菜单结束->
     <!--创建imgDIV-->
     <div class="container">
         <script>
@@ -102,9 +114,7 @@
         </div>
     </div>
     <!--创建adDIV-->
-    <div class="" >
-        <img src="img/广告.jpg"style="margin-left: -20px" />
-    </div>
+
     <!--创建newProductDIV-->
     <div>
         <div class="row">
