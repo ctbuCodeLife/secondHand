@@ -11,9 +11,9 @@ import java.util.List;
  */
 @JSONType(orders={"status","data"})
 public class Message {
-    private int status;
-    private List<Object> data;
-    private String autoReturn;
+    private int status;//1表示成功，0表示失败，3表示未登录
+    private List<Object> data;//返回给前台的数据
+    private String autoReturn;//浏览器自动跳转的页面
 
     public int getStatus() {
         return status;
