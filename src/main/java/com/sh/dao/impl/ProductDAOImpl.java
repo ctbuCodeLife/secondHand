@@ -60,6 +60,14 @@ public class ProductDAOImpl implements ProductDAO {
         return productDao.listByKid(kid);
     }
 
+    public List<Product> listByStatus(Integer status){
+        return productDao.listByStatus(status);
+    }
+
+    public List<Product> listByUidAndStatus(Integer uid, Integer status){
+        return productDao.listByUidAndStatus(uid,status);
+    }
+
     public Product select(Integer id){
         return productDao.select(id);
     }

@@ -184,6 +184,43 @@ function updateProdcut() {
     });
 }
 //查看所有商品
+function listProductAll() {
+    var mydata=[];
+    $.ajax({
+        type:"GET",
+        url:"../api/product/listAll",
+        dataType:"json",
+        success:function (data) {
+            //这里获取到数据展示到前台
+            var vm = new Vue({
+                el:'#productTable',
+                data:{
+                    mydata:data.data
+                }
+            });
+        }
+    })
+}
+//查看所有商品
+function listProductUp() {
+    var mydata=[];
+    $.ajax({
+        type:"GET",
+        url:"../api/product/listAll",
+        dataType:"json",
+        success:function (data) {
+            //这里获取到数据展示到前台
+            var vm = new Vue({
+                el:'#productTable',
+                data:{
+                    mydata:data.data
+                }
+            });
+        }
+    })
+}
+
+//查看所有商品
 function listProduct() {
     var mydata=[];
     $.ajax({
@@ -201,6 +238,7 @@ function listProduct() {
         }
     })
 }
+
 //通过name查看商品
 function getProductByName() {
     var mydata = [];

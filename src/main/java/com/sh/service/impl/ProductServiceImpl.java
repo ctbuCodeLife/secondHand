@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
         productDao = new ProductDAOImpl();
     }
     //添加商品
-    public boolean add (Product product) {
+    public boolean add(Product product) {
         return  productDao.insert(product) == 1;
     }
     //删除商品
@@ -43,6 +43,14 @@ public class ProductServiceImpl implements ProductService {
     //按照用户id查询商品
     public List<Product> findByUid(Integer uid) {
         return productDao.listByUid(uid);
+    }
+    //按照商品状态查询商品
+    public List<Product> findByStatus(Integer status){
+        return productDao.listByStatus(status);
+    }
+    //按照用户id和商品状态查询商品
+    public List<Product> findByUidAndStatus(Integer uid, Integer status){
+        return productDao.listByUidAndStatus(uid,status);
     }
     //查询所有商品
     public List<Product> findAll() {
