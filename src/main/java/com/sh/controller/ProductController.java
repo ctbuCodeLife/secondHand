@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -113,6 +114,36 @@ public class ProductController {
         return msg.toString();
     }
 
+    @RequestMapping(value = "/update", produces="text/html;charset=UTF-8")
+    @ResponseBody
+    public String update(HttpServletRequest request){
+        return "";
+    }
+
+    @RequestMapping(value = "/findByName",produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findByName(HttpServletRequest request){
+        Message msg = new Message();
+
+        String productName = request.getParameter("name");
+        List<Product> list = service.findByName(productName);
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        for (int i = 0; i < list.size(); i++){
+            data.add(list.get(i));
+        }
+        int status = 0;
+        if(list != null && list.size() >0) {
+            status = 1;
+        }else{
+            status = 0;
+        }
+
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
+    }
+
     @RequestMapping(value="/listAll", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String findAll(){
@@ -127,9 +158,9 @@ public class ProductController {
 
         int status = 0;
         if(list != null) {
-           status = 0;
-        }else{
            status = 1;
+        }else{
+           status = 0;
         }
 
         Message msg = new Message();

@@ -22,7 +22,7 @@ function addProdcut() {
     var salePrice = $("#salePrice").val();
     var realPrice = $("#realPrice").val();
     var isRecommend = $("#isRecommend").val();
-    //判断管理员是否存在
+    //判断商品是否存在
     $.ajax({
         type: "GET",
         url: "/ishop-admin/getProductByName",
@@ -186,10 +186,10 @@ function updateProdcut() {
 }
 //查看所有商品
 function listProduct() {
-    mydata=[];
+    var mydata=[];
     $.ajax({
         type:"GET",
-        url:"../api/product/listAll",
+        url:"../../api/product/listAll",
         dataType:"json",
         success:function (data) {
             //这里获取到数据展示到前台
@@ -204,16 +204,16 @@ function listProduct() {
 }
 //通过name查看商品
 function getProductByName() {
+    var mydata = [];
     var name = $("#name").val();
     $.ajax({
         type:"GET",
-        url:"/ishop-admin/getProductByName",
+        url:"../../api/product/findByName",
         data:{name:name},
         dataType:"json",
-        success:function (data) {
+        success:function (response) {
             //这里获取到数据展示到前台
-            if(jQuery.isEmptyObject(data)){
-                $("#queryProductTable").hide();
+            if(response.status === 0){
                 swal(
                     '查找失败!',
                     '抱歉,没有查找到您要查找的商品',
@@ -223,17 +223,10 @@ function getProductByName() {
                 var vm = new Vue({
                     el:'#queryProductTable',
                     data:{
-                        product:data
+                        mydata:response.data
                     }
                 });
                 $("#queryProductTable").show();
-                $("#deleteId").text(data.id);
-                $("#showName").text(data.name);
-                $("#showTypeId").text(data.typeId);
-                $("#showImgSrc").text(data.imageSrc);
-                $("#showPrice").text(data.sellPrice);
-                $("#showInventNum").text(data.inventNumber);
-                $("#showSaleNum").text(data.monthSellNumber);
             }
         }
     })

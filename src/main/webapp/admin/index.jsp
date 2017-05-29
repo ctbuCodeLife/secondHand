@@ -87,7 +87,7 @@
                     <a class="active font-1" href="listProduct.jsp" target="contentIframe">商品管理</a>
                     <ul class="nav nav-stacked">
                         <li>
-                            <a href="product/queryProduct.jsp" target="contentIframe">商品查询</a>
+                            <a href="queryProduct.jsp" target="contentIframe">商品查询</a>
                         </li>
                         <li>
                             <a href="product/addProduct.jsp" target="contentIframe">商品增加</a>

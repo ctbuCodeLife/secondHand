@@ -132,7 +132,7 @@
                     //登录失败
                     swal({
                         title: '提示',
-                        text: response.data,
+                        text: response.data[0],
                         timer: 3000
                     }).then(
                         function autoReturn() {

@@ -137,7 +137,7 @@
                 dataType: "json",
                 success: function (response) {
                     if(response.status === 1){
-                        swal(response.data).then(function () {
+                        swal(response.data[0]).then(function () {
                                 $("#username").focus()
                         });
                     }
@@ -185,7 +185,7 @@
                 if(response.status === 1){
                     swal({
                         title: '提示',
-                        text: response.data,
+                        text: response.data[0],
                         timer: 3000
                     }).then(
                         function autoReturn() {location.href = response.autoReturn},
