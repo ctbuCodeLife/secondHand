@@ -22,6 +22,10 @@ public interface ProductService {
     public List<Product> findByKid(Integer kid);
     //按照用户id查询商品
     public List<Product> findByUid(Integer uid);
+    //按照商品状态查询商品
+    public List<Product> findByStatus(Integer status);
+    //按照用户id和商品状态查询商品
+    public List<Product> findByUidAndStatus(Integer uid, Integer status);
     //查询所有商品
     public List<Product> findAll();
 }

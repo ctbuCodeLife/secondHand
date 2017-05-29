@@ -33,7 +33,7 @@ INSERT INTO `product` VALUES ('10002', '10000', '1', '魅族pro6', '魅族pro6 �
 INSERT INTO `product` VALUES ('10005', '10000', '1', '小米max', '主屏：6.44英寸1920x108\r\n摄像：1600万像素\r\n系统：MIUI8\r\n模式：4G网络\r\n特性：伪基站识别 大屏黄金尺寸 悬浮球 指纹识别', '1000', 'img/hot/xiaomi1.jpg', '1499', '1500', '1');
 INSERT INTO `product` VALUES ('10008', '10000', '1', '三星s7', '主屏：5.1英寸2560x1440\r\n系统：Android6.0\r\n摄像：1200万像素\r\n模式：4G网络\r\n特性：息屏提醒 防水功能 快速充电 Samsung Pay三星智', '1000', 'img/show/sanxing.jpg', '1000', '1200', '1');
 INSERT INTO `product` VALUES ('100037', '10000', '5', 'xds山地车', '高端上帝单车，拔速快，喜德盛山地自行车27速X6铝合金油压碟刹锁死前叉逐日600自行车山地车运动健身单车 黑红色17寸 ( 适合身高1.65-1.80米) 已有900+条评价 关注 < > ¥799.00', '100', 'img/hot/qita1.png', '2000', '1699', '1');
-INSERT INTO `product` VALUES ('100038', '10000', '3', '战争就是这么回事', '二手战争书籍', '100', 'img/hot/shu1.png', '100', '20'，'1');
+INSERT INTO `product` VALUES ('100038', '10000', '3', '战争就是这么回事', '二手战争书籍', '100', 'img/hot/shu1.png', '100', '20','1');
 INSERT INTO `product` VALUES ('100039', '10000', '4', '小裙子', '粉色的裙子', '100', 'img/hot/clothes1.png', '169', '69', '1');
 INSERT INTO `product` VALUES ('100040', '10000', '1', '华为nova2', '高端智能机，你值得拥有', '1000', 'img/hot/huawei1.png', '2499', '2299', '1');
 INSERT INTO `product` VALUES ('100041', '10000', '2', '拉柜', '清新托熟的柜子，又大又卫生', '399', 'img/hot/shenghuo1.png', '699', '599', '1');
@@ -41,10 +41,11 @@ INSERT INTO `product` VALUES ('100041', '10000', '2', '拉柜', '清新托熟的
 -- ----------------------------
 -- Records of hot
 -- ----------------------------
-INSERT INTO `hot` VALUES ('10000', '10000');
-INSERT INTO `hot` VALUES ('10001', '10001');
-INSERT INTO `hot` VALUES ('10002', '10002');
-INSERT INTO `hot` VALUES ('10003', '10003');
+INSERT INTO `hot` VALUES ('10000', '100037');
+INSERT INTO `hot` VALUES ('10001', '100038');
+INSERT INTO `hot` VALUES ('10002', '100039');
+INSERT INTO `hot` VALUES ('10003', '100040');
+INSERT INTO `hot` VALUES ('10004', '100041');
 
 -- ----------------------------
 -- Records of cart

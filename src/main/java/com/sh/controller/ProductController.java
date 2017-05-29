@@ -170,14 +170,129 @@ public class ProductController {
         return msg.toString();
     }
 
-    @RequestMapping(value = "listUnaudit", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/listAllUnaudit", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String findAllUnaudit(){
+        List<Product> list = new ArrayList<Product>();
+        list = service.findByStatus(0);//未审核状态为0
 
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        for (int i = 0; i < list.size(); i++) {
+            data.add(list.get(i));
+        }
+
+        int status = 0;
+        if (list != null) {
+            status = 1;
+        } else {
+            status = 0;
+        }
+
+        Message msg = new Message();
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
     }
-    @RequestMapping(value = "listUnaudit", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/listAllUp", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String findAllUp(){
+        List<Product> list = new ArrayList<Product>();
+        list = service.findByStatus(1);//上架状态为1
 
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        for (int i = 0; i < list.size(); i++) {
+            data.add(list.get(i));
+        }
+
+        int status = 0;
+        if (list != null) {
+            status = 1;
+        } else {
+            status = 0;
+        }
+
+        Message msg = new Message();
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
     }
+
+    @RequestMapping(value = "/listUserUnaudit", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findUserUnaudit(HttpSession session){
+        Message msg = new Message();
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        int status = 0;//返回给前台的状态码
+
+        //设置uid
+        User user = (User) session.getAttribute("user");
+        Integer uid = new Integer(0);
+        if (user == null || user.getId() == null) {
+            //用户未登录,跳转到登录页面
+            msg.setStatus(3);//用户未登录
+            data.add("您还未登录,请登录后再查询发布的商品。3秒后跳转到登录页面");
+            msg.setData(data);
+            msg.setAutoReturn("login.jsp");
+        } else {
+            uid = user.getId();
+            List<Product> list = new ArrayList<Product>();
+            list = service.findByUidAndStatus(uid,0);//未审核状态为0
+
+
+            for (int i = 0; i < list.size(); i++) {
+                data.add(list.get(i));
+            }
+            if (list != null) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+        }
+
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
+    }
+    @RequestMapping(value = "/listUserUp", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findUserUp(HttpSession session){
+        Message msg = new Message();
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        int status = 0;//返回给前台的状态码
+
+        //设置uid
+        User user = (User) session.getAttribute("user");
+        Integer uid = new Integer(0);
+        if (user == null || user.getId() == null) {
+            //用户未登录,跳转到登录页面
+            msg.setStatus(3);//用户未登录
+            data.add("您还未登录,请登录后再查询发布的商品。3秒后跳转到登录页面");
+            msg.setData(data);
+            msg.setAutoReturn("login.jsp");
+        } else {
+            uid = user.getId();
+            List<Product> list = new ArrayList<Product>();
+            list = service.findByUidAndStatus(uid,1);//上架的状态为0
+
+
+            for (int i = 0; i < list.size(); i++) {
+                data.add(list.get(i));
+            }
+            if (list != null) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+        }
+
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
+    }
+
+
 }

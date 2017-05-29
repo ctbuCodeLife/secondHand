@@ -24,12 +24,14 @@ public class Product implements Serializable {
 
     private String pdesc;
 
+    private Integer status;
+
     private static final long serialVersionuId = 1L;
 
     public Product() {
     }
 
-    public Product(Integer id, Integer uid, Integer kid, String pname, Integer pnum, String pimage, Integer realprice, Integer originprice, String pdesc) {
+    public Product(Integer id, Integer uid, Integer kid, String pname, Integer pnum, String pimage, Integer realprice, Integer originprice, String pdesc,Integer status) {
         this.id = id;
         this.uid = uid;
         this.kid = kid;
@@ -39,6 +41,7 @@ public class Product implements Serializable {
         this.realprice = realprice;
         this.originprice = originprice;
         this.pdesc = pdesc;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -113,6 +116,14 @@ public class Product implements Serializable {
         this.pdesc = pdesc;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -125,6 +136,7 @@ public class Product implements Serializable {
                 ", realprice=" + realprice +
                 ", originprice=" + originprice +
                 ", pdesc='" + pdesc + '\'' +
+                ", status=" + status +
                 '}';
     }
 }
