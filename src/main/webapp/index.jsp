@@ -31,7 +31,7 @@
 </head>
 <body>
 <!--创建整体布局DIV-->
-<div class="container">
+<div  class="container">
     <!-- 头部DIV -->
     <%@include file="head.jsp" %>
     <!--左侧菜单-->
@@ -41,6 +41,7 @@
             <c:forEach var="kind" items="${sessionScope.listKind}">
                 <li><a href="product_list_by_kid.jsp?kid=${kind.id}" >${kind.kname}</a></li>
             </c:forEach>
+            <li><a href="#miao">回到顶部</a></li>
         </ul>
     </div>
     <!---左侧菜单结束->
