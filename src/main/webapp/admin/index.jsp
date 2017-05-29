@@ -90,10 +90,10 @@
                             <a href="queryProduct.jsp" target="contentIframe">商品查询</a>
                         </li>
                         <li>
-                            <a href="queryProduct.jsp" target="contentIframe">商品审核</a>
+                            <a href="listProductUnaudit.jsp" target="contentIframe">商品审核</a>
                         </li>
                         <li>
-                            <a href="queryProduct.jsp" target="contentIframe">商品下架</a>
+                            <a href="listProductUp.jsp" target="contentIframe">商品下架</a>
                         </li>
                         <%--<li>--%>
                             <%--<a href="product/listType.jsp" target="contentIframe">所有类别</a>--%>

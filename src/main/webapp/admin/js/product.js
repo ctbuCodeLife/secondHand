@@ -87,7 +87,7 @@ function addProdcut() {
 }
 //删除商品
 function delProduct(that) {
-    mydata;
+    var mydata;
     swal({
         title: '删除商品?',
         text: "删除后就不可恢复!",
@@ -206,7 +206,7 @@ function listProductUp() {
     var mydata=[];
     $.ajax({
         type:"GET",
-        url:"../api/product/listAll",
+        url:"../api/product/listAllUp",
         dataType:"json",
         success:function (data) {
             //这里获取到数据展示到前台
@@ -221,11 +221,11 @@ function listProductUp() {
 }
 
 //查看所有商品
-function listProduct() {
+function listProductUnaudit() {
     var mydata=[];
     $.ajax({
         type:"GET",
-        url:"../api/product/listAll",
+        url:"../api/product/listAllUnaudit",
         dataType:"json",
         success:function (data) {
             //这里获取到数据展示到前台
@@ -267,6 +267,104 @@ function getProductByName() {
             }
         }
     })
+}
+//审核商品
+function auditProduct(that){
+    var mydata;
+    swal({
+        title: '审核商品?',
+        text: "确定审核!!!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '确认审核',
+        cancelButtonText: "取消"
+    }).then(function (isConfirm) {
+        if (isConfirm) {
+            //执行删除操作
+            var p = that.parentNode.firstElementChild;
+            var id = p.innerHTML;
+            $.ajax({
+                type: "GET",
+                url: "../api/product/updateStatus",
+                data: {
+                    id:id,
+                    status: 1
+                },
+                dataType: "json",
+                success: function (response) {
+                    mydata = response;
+                    console.log(response.data);
+                    swal({
+                        title: '提示',
+                        text: response.data[0],
+                        timer: 3000
+                    }).then(
+                        function autoReturn() {
+                            location.href = response.autoReturn
+                        },
+                        function (dismiss) {
+                            setTimeout(autoReturn)
+                            if (dismiss === 'timer') {
+                                console.log('I was closed by the timer')
+                            }
+                        }
+                    )
+                }
+            });
+
+        }
+    });
+}
+//下架商品
+function downProduct(that){
+    var mydata;
+    swal({
+        title: '下架商品?',
+        text: "确定下架!!!",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '确认下架',
+        cancelButtonText: "取消"
+    }).then(function (isConfirm) {
+        if (isConfirm) {
+            //执行删除操作
+            var p = that.parentNode.firstElementChild;
+            var id = p.innerHTML;
+            $.ajax({
+                type: "GET",
+                url: "../api/product/updateStatus",
+                data: {
+                    id:id,
+                    status: 2
+                },
+                dataType: "json",
+                success: function (response) {
+                    mydata = response;
+                    console.log(response.data);
+                    swal({
+                        title: '提示',
+                        text: response.data[0],
+                        timer: 3000
+                    }).then(
+                        function autoReturn() {
+                            location.href = response.autoReturn
+                        },
+                        function (dismiss) {
+                            setTimeout(autoReturn)
+                            if (dismiss === 'timer') {
+                                console.log('I was closed by the timer')
+                            }
+                        }
+                    )
+                }
+            });
+
+        }
+    });
 }
 //通过Id查询商品
 function  getProductById() {

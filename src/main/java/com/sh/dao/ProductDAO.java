@@ -8,13 +8,13 @@ import org.apache.ibatis.annotations.*;
 
 public interface ProductDAO {
 
-    @Insert("insert into `product`(`uId`,`kId`,`pName`,`pDesc`,`pNum`,`pImage`,`realPrice`,`originPrice`,`status`) VALUES (#{uid},#{kid},#{pname},#{pdesc},#{pnum},#{pimage},#{realprice},#{originprice})")
+    @Insert("insert into `product`(`uId`,`kId`,`pName`,`pDesc`,`pNum`,`pImage`,`realPrice`,`originPrice`,`status`) VALUES (#{uid},#{kid},#{pname},#{pdesc},#{pnum},#{pimage},#{realprice},#{originprice},#{status})")
     public int insert(Product record);
 
     @Delete("delete from `product` where id = #{id}")
     public int delete(Integer id);
 
-    @Update("update `product` set `uid`=#{uid},`kId`=#{kid},`pName`=#{pname},`pDesc`=#{pdesc},`pNum`=#{pnum},`pImage`=#{pimage},`realprice`=#{realprice},`originprice`=#{originprice}),`status`=#{status} where id=#{id}")
+    @Update("update `product` set `uid`=#{uid},`kId`=#{kid},`pName`=#{pname},`pDesc`=#{pdesc},`pNum`=#{pnum},`pImage`=#{pimage},`realprice`=#{realprice},`originprice`=#{originprice},`status`=#{status} where id=#{id}")
     public int update(Product record);
 
     @Select("select * from `product`")

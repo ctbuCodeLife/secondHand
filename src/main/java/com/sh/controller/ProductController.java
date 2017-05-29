@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -119,6 +120,42 @@ public class ProductController {
     @ResponseBody
     public String update(HttpServletRequest request) {
         return "";
+    }
+    @RequestMapping(value = "/updateStatus", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String updateStatus(HttpServletRequest request) {
+        Message msg = new Message();
+        List<Object> data = new ArrayList<Object>();
+
+        Integer productId = Integer.parseInt(request.getParameter("id"));
+        Integer status = Integer.parseInt(request.getParameter("status"));
+
+        Product product = service.findById(productId);
+        if(product == null || product.getId() == null){
+            //商品不存在
+            msg.setStatus(3);
+            data.add("商品不存在,3秒后自动跳转到所有商品页面");
+            msg.setData(data);
+            msg.setAutoReturn("listProduct.jsp");
+        } else {
+            product.setStatus(status);
+            boolean result = service.update(product);
+
+            if (result == true){
+                //审核成功
+                msg.setStatus(1);
+                data.add("操作成功，3秒后自动跳转所有商品页面");
+                msg.setData(data);
+                msg.setAutoReturn("listProduct.jsp");
+            } else {
+                //审核失败
+                msg.setStatus(0);
+                data.add("审核失败，3秒后自动跳转到审核商品页面");
+                msg.setData(data);
+                msg.setAutoReturn("listProductUnaudit.jsp");
+            }
+        }
+      return msg.toString();
     }
 
     @RequestMapping(value = "/findByName", produces = "text/html;charset=UTF-8")
