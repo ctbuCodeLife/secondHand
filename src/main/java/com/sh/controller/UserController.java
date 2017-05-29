@@ -24,28 +24,30 @@ import java.util.List;
 public class UserController {
     private UserService service  = new UserServiceImpl();
 
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @RequestMapping(value = "/register",method = RequestMethod.POST,produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public ModelAndView register(User user, HttpSession session){
+    public String register(User user, HttpSession session){
+        Message msg = new Message();
+
         user.setLevel(1);
         user.setScore(0);
         user.setSex("保密");
         String name = user.getUsername();
         User u = service.getUserByName(name);
         if(u != null && u.getId() != null){
-            session.setAttribute("msg", "注册失败,用户名已存在,3秒后自动跳转到注册页面");
-            session.setAttribute("autoReturn", "register.jsp");
+            msg.setStatus(0);
+            msg.setData("注册失败,用户名已存在,3秒后自动跳转到注册页面");
+            msg.setAutoReturn("register.jsp");
         }else {
             boolean result = service.registe(user);
 
             if (result == true) {
-                session.setAttribute("msg", "注册成功,3秒后自动跳转到主页");
-                session.setAttribute("autoReturn", "index.jsp");
+                msg.setStatus(1);
+                msg.setData("注册成功,3秒后自动跳转到主页");
+                msg.setAutoReturn("index.jsp");
             }
         }
-        ModelAndView view = new ModelAndView();
-        view.setViewName("redirect:/info.jsp");
-        return view;
+        return msg.toString();
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)

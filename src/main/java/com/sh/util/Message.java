@@ -11,6 +11,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 public class Message {
     int status;
     String data;
+    String autoReturn;
 
     public int getStatus() {
         return status;
@@ -28,9 +29,18 @@ public class Message {
         this.data = data;
     }
 
-    public Message(int status, String data) {
+    public String getAutoReturn() {
+        return autoReturn;
+    }
+
+    public void setAutoReturn(String autoReturn) {
+        this.autoReturn = autoReturn;
+    }
+
+    public Message(int status, String data, String autoReturn) {
         this.status = status;
         this.data = data;
+        this.autoReturn = autoReturn;
     }
 
     @Override
@@ -38,7 +48,12 @@ public class Message {
         return JSON.toJSONString(this, SerializerFeature.WriteDateUseDateFormat,SerializerFeature.PrettyFormat, SerializerFeature.DisableCircularReferenceDetect);
     }
 
-    public  Message(){}
+    public Message(int status, String data){
+        this.status = status;
+        this.data = data;
+        this.autoReturn = "index.jsp";
+    }
 
+    public  Message(){}
 
 }

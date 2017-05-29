@@ -169,7 +169,7 @@
         var emailVal = $("#email").val();
         var sexVal = $("#sex").val();
         var telVal = $("#tel").val();
-        //发送ajax注册
+        //发送ajax进行注册
         $.ajax({
             type: "POST",
             url: "api/user/register",
@@ -182,9 +182,20 @@
             dataType: "json",
             success: function (response) {
                 if(response.status === 1){
-                    swal(response.data).then(function () {
-                        $("#username").focus()
-                    });
+                    swal({
+                        title: '提示',
+                        text: response.data,
+                        timer: 3000
+                    }).then(
+                        function autoReturn() {location.href = response.autoReturn},
+                        // handling the promise rejection
+                        function (dismiss) {
+                            setTimeout(autoReturn)
+                            if (dismiss === 'timer') {
+                                console.log('I was closed by the timer')
+                            }
+                        }
+                    )
                 }
             }
         })
