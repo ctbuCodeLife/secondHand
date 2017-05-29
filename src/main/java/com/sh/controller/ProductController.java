@@ -1,5 +1,6 @@
 package com.sh.controller;
 
+import com.sh.model.Admin;
 import com.sh.model.Product;
 
 import com.sh.model.User;
@@ -33,17 +34,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/product")
 public class ProductController {
-    private ProductService service ;
+    private ProductService service;
 
     public ProductController() {
         service = new ProductServiceImpl();
     }
 
-    @RequestMapping(value = "/add",produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/add", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String add(HttpServletRequest request, HttpSession session)throws IllegalStateException, IOException {
+    public String add(HttpServletRequest request, HttpSession session) throws IllegalStateException, IOException {
         Message msg = new Message();
-        List<Object> data =new ArrayList<Object>();
+        List<Object> data = new ArrayList<Object>();
         Product product = new Product();
         //设置uid
         User user = (User) session.getAttribute("user");
@@ -89,10 +90,10 @@ public class ProductController {
                 msg.setAutoReturn("user_product.jsp");
             }
         }
-        return  msg.toString();
+        return msg.toString();
     }
 
-    @RequestMapping(value="/delete",produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/delete", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String delete(HttpServletRequest request, HttpSession session) {
         Message msg = new Message();
@@ -114,28 +115,28 @@ public class ProductController {
         return msg.toString();
     }
 
-    @RequestMapping(value = "/update", produces="text/html;charset=UTF-8")
+    @RequestMapping(value = "/update", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String update(HttpServletRequest request){
+    public String update(HttpServletRequest request) {
         return "";
     }
 
-    @RequestMapping(value = "/findByName",produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/findByName", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String findByName(HttpServletRequest request){
+    public String findByName(HttpServletRequest request) {
         Message msg = new Message();
 
         String productName = request.getParameter("name");
         List<Product> list = service.findByName(productName);
         //此处定义data是为了返回前台统一使用msg
         List<Object> data = new ArrayList<Object>();
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             data.add(list.get(i));
         }
         int status = 0;
-        if(list != null && list.size() >0) {
+        if (list != null && list.size() > 0) {
             status = 1;
-        }else{
+        } else {
             status = 0;
         }
 
@@ -144,28 +145,39 @@ public class ProductController {
         return msg.toString();
     }
 
-    @RequestMapping(value="/listAll", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "/listAll", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String findAll(){
+    public String findAll() {
         List<Product> list = new ArrayList<Product>();
         list = service.findAll();
 
         //此处定义data是为了返回前台统一使用msg
         List<Object> data = new ArrayList<Object>();
-        for (int i = 0; i < list.size(); i++){
+        for (int i = 0; i < list.size(); i++) {
             data.add(list.get(i));
         }
 
         int status = 0;
-        if(list != null) {
-           status = 1;
-        }else{
-           status = 0;
+        if (list != null) {
+            status = 1;
+        } else {
+            status = 0;
         }
 
         Message msg = new Message();
         msg.setStatus(status);
         msg.setData(data);
         return msg.toString();
+    }
+
+    @RequestMapping(value = "listUnaudit", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findAllUnaudit(){
+
+    }
+    @RequestMapping(value = "listUnaudit", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findAllUp(){
+
     }
 }

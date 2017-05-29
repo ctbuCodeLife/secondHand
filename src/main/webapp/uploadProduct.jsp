@@ -107,31 +107,30 @@
                             <input id="pNum" name="pNum" type="number" class="form-control"  placeholder="请输入商品数量">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label for="originPrice" class="col-sm-2 control-label">商品原价</label>
                         <div class="col-sm-6">
                             <input name="originPrice" id="originPrice" type="number" class="form-control" id="inputMPrice"
-                                   placeholder="价格">
+                                   placeholder="请输入原价价格">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="realPrice" class="col-sm-2 control-label">商品现价</label>
                         <div class="col-sm-6">
                             <input name="realPrice" id="realPrice" type="number" class="form-control" id="inputIPrice"
-                                   placeholder="价格">
+                                   placeholder="请输入售价价格">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="uploadImg" class="col-sm-2 control-label">上传图片</label>
+                        <label for="pImage" class="col-sm-4 control-label">上传图片</label>
                         <div class="col-sm-6">
-                            <input id="uploadImg" name="uploadImg" type="file" class="form-control"
-                                   placeholder="价格">
+                            <input id="pImage" name="pImage" type="file" class="form-control"
+                                   placeholder="请选择图片">
                         </div>
                     </div>
                     <div id="button-group" class="form-group">
                         <div class="col-sm-offset-2">
-                            <input type="submit" width="100" value="上传" name="submit"
+                            <input type="submit" width="100" value="发布商品" name="submit"
                                    style="background: url('./images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
                         </div>
                         <div class="col-sm-offset-2">
