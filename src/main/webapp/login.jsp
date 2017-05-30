@@ -128,7 +128,7 @@
             },
             dataType: "json",
             success: function (response) {
-                if (response.status === 0) {
+                if (response.status !== 1) {
                     //登录失败
                     swal({
                         title: '提示',

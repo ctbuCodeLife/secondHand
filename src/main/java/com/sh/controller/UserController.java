@@ -60,23 +60,34 @@ public class UserController {
     public String login(String username,String password,HttpSession session) {
         Message msg = new Message();//返回的json数据
 
-        boolean result = service.login(username, password);
-
-        if (result == true) {
-            User user = service.getUserByName(username);
-            session.setAttribute("user", user);
-            msg.setStatus(1);
+        User user = service.getUserByName(username);
+        if(user == null || user.getId() ==null){
+            //用户名不存在
+            msg.setStatus(3);
             List data = new ArrayList();
-            data.add("登录成功,3秒后自动跳转到主页");
-            msg.setData(data);
-            msg.setAutoReturn("index.jsp");
-        } else {
-            msg.setStatus(0);
-            List data = new ArrayList();
-            data.add("登录失败,3秒后自动跳转到登录页面");
+            data.add("用户名不存在，3秒后自动跳转到登录页面");
             msg.setData(data);
             msg.setAutoReturn("login.jsp");
+        } else {
+            boolean result = service.login(username, password);
+
+            if (result == true) {
+                session.setAttribute("user", user);
+                msg.setStatus(1);
+                List data = new ArrayList();
+                data.add("登录成功,3秒后自动跳转到主页");
+                msg.setData(data);
+                msg.setAutoReturn("index.jsp");
+            } else {
+                //密码错误
+                msg.setStatus(0);
+                List data = new ArrayList();
+                data.add("密码错误,3秒后自动跳转到登录页面");
+                msg.setData(data);
+                msg.setAutoReturn("login.jsp");
+            }
         }
+
         return msg.toString();
     }
 

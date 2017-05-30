@@ -9,7 +9,6 @@
     <title>在线注册</title>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/sweetalert2.min.css">
-    link
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/my.js"></script>
@@ -137,7 +136,7 @@
                 dataType: "json",
                 success: function (response) {
                     if(response.status === 1){
-                        swal(response.data).then(function () {
+                        swal(response.data[0]).then(function () {
                                 $("#username").focus()
                         });
                     }
@@ -161,45 +160,49 @@
             swal("两次输入的密码不一致，请重新输入！").then(function () {
                 $("#password").focus();
             })
-        }
-        //手机验证
+        } else {
+            //邮箱验证
+
+            //手机验证
 
 
-        //获取参数
-        var nameVal = $("#username").val();
-        var emailVal = $("#email").val();
-        var sexVal = $("#sex").val();
-        var telVal = $("#tel").val();
-        //发送ajax进行注册
-        $.ajax({
-            type: "POST",
-            url: "api/user/register",
-            data: {
-                username: nameVal,
-                password:pwdVal,
-                email:emailVal,
-                tel:telVal,
-            },
-            dataType: "json",
-            success: function (response) {
-                if(response.status === 1){
-                    swal({
-                        title: '提示',
-                        text: response.data,
-                        timer: 3000
-                    }).then(
-                        function autoReturn() {location.href = response.autoReturn},
-                        // handling the promise rejection
-                        function (dismiss) {
-                            setTimeout(autoReturn)
-                            if (dismiss === 'timer') {
-                                console.log('I was closed by the timer')
+            //获取参数
+            var nameVal = $("#username").val();
+            var emailVal = $("#email").val();
+            var sexVal = $("#sex").val();
+            var telVal = $("#tel").val();
+            //发送ajax进行注册
+            $.ajax({
+                type: "POST",
+                url: "api/user/register",
+                data: {
+                    username: nameVal,
+                    password:pwdVal,
+                    email:emailVal,
+                    tel:telVal,
+                },
+                dataType: "json",
+                success: function (response) {
+                    if(response.status === 1){
+                        swal({
+                            title: '提示',
+                            text: response.data[0],
+                            timer: 3000
+                        }).then(
+                            function autoReturn() {location.href = response.autoReturn},
+                            // handling the promise rejection
+                            function (dismiss) {
+                                setTimeout(autoReturn)
+                                if (dismiss === 'timer') {
+                                    console.log('I was closed by the timer')
+                                }
                             }
-                        }
-                    )
+                        )
+                    }
                 }
-            }
-        })
+            })
+        }
+
     }
 </script>
 </html>
