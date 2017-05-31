@@ -12,7 +12,7 @@ function addProdcut() {
         }
     }
     var pName = $("#pName").val();
-    var kId = $("#kindId").val();
+    var kId = $("#kindId").find("option:selected").val();  //获取Select选择的Text
     var pDesc = $("#pDesc").val();
     var pNum = $("#pNum").val();
     var originPrice = $("#originPrice").val();
@@ -31,25 +31,27 @@ function addProdcut() {
             realPrice: realPrice,
             dataType: "json",
             success: function (response) {
-                if (response.status !== 1) {
-                    swal({
-                        title: '提示',
-                        text: response.data[0],
-                        timer: 3000
-                    }).then(
-                        function autoReturn() {
-                            location.href = response.autoReturn
-                        },
-                        // handling the promise rejection
-                        function (dismiss) {
-                            setTimeout(autoReturn)
-                            if (dismiss === 'timer') {
-                                console.log('I was closed by the timer')
-                            }
-                        }
-                    )
-                }
+                console.log(response);
             }
+            //     if (response.status !== 1) {
+            //         swal({
+            //             title: '提示',
+            //             text: response.data[0],
+            //             timer: 3000
+            //         }).then(
+            //             function autoReturn() {
+            //                 location.href = response.autoReturn
+            //             },
+            //             // handling the promise rejection
+            //             function (dismiss) {
+            //                 setTimeout(autoReturn)
+            //                 if (dismiss === 'timer') {
+            //                     console.log('I was closed by the timer')
+            //                 }
+            //             }
+            //         )
+            //     }
+            // }
         }
     });
 }

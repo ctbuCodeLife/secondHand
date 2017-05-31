@@ -121,7 +121,7 @@
                     </div>
                     <div id="button-group" class="form-group">
                         <div class="col-sm-offset-2">
-                            <button type="button" class="btn btn-success" onclick="addProdcut()" >注册</button>
+                            <button type="button" class="btn btn-success" onclick="addProdcut()" >发布</button>
                         </div>
                         <div class="col-sm-offset-2">
                             <input type="reset" class="btn btn-danger" value="重置" name="submit"
