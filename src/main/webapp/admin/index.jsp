@@ -123,7 +123,7 @@
         </div>
         <!--描述：右半部-->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <iframe name="contentIframe" src="welcome.html" frameborder="0" width="100%" height="600px"></iframe>
+            <iframe name="contentIframe" src="welcome.jsp" frameborder="0" width="100%" height="600px"></iframe>
         </div>
     </div>
 </div>

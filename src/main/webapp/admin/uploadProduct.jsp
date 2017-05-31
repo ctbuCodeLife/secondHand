@@ -54,8 +54,7 @@
 
 <body>
 <div class="container">
-    <div class="container"
-         style="width: 100%; background: url('image/regist_bg.jpg');">
+    <div class="container">
         <div class="row">
 
             <div class="col-md-2"></div>

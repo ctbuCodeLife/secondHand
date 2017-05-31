@@ -38,7 +38,18 @@ public class AdminLoginFilter implements Filter {
             //表明是静态资源、不过滤
             return;
         }
+
         if(targetURL.indexOf(".css") != -1){
+            chain.doFilter(request, response);
+            //表明是静态资源、不过滤
+            return;
+        }
+        if(targetURL.indexOf(".jpg") != -1){
+            chain.doFilter(request, response);
+            //表明是静态资源、不过滤
+            return;
+        }
+        if(targetURL.indexOf(".png") != -1){
             chain.doFilter(request, response);
             //表明是静态资源、不过滤
             return;
@@ -56,7 +67,7 @@ public class AdminLoginFilter implements Filter {
                 return;
             }else{
                 //在不为登陆页面时，再进行判断，如果不是登陆页面也没有session则跳转到登录页面，
-                if(session == null || session.getAttribute("admin") == null ){
+                if(session == null || session.getAttribute("admin") == null || session.getAttribute("saleser") == null){
                     response.sendRedirect(ctxPath+loginPage);
                    // System.out.println("redirect:"+ctxPath+loginPage);
                     return;

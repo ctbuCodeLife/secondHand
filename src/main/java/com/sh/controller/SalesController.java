@@ -191,7 +191,7 @@ public class SalesController {
         ModelAndView view = new ModelAndView();
         Sales sales = new Sales();
         //设置uid
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("saleser");
         Integer uid = new Integer(0);
         if (user == null || user.getId() == null) {
             //用户未登录,跳转到登录页面

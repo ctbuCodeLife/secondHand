@@ -209,6 +209,31 @@ public class ProductController {
         return msg.toString();
     }
 
+    @RequestMapping(value = "/listAllShow", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findAllShow() {
+        List<Product> list = new ArrayList<Product>();
+        Integer productStatus = new Integer(1);//上架状态为1
+        list = service.findByStatus(productStatus);
+
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        for (int i = 0; i < list.size(); i++) {
+            data.add(list.get(i));
+        }
+
+        int status = 0;
+        if (list != null) {
+            status = 1;
+        } else {
+            status = 0;
+        }
+
+        Message msg = new Message();
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
+    }
     @RequestMapping(value = "/listAllUnaudit", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String findAllUnaudit(){

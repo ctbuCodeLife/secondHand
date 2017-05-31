@@ -49,7 +49,7 @@ body {
 				%>
 				<% 
 			  ProductDAO pd = new ProductDAOImpl();
-			  listShowProduct = pd.findAll();
+			  listShowProduct = pd.listByStatus(1);
 			  session.setAttribute("listShowProduct", listShowProduct);
 			   %>
 	<!--创建整体布局DIV-->
