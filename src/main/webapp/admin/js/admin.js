@@ -159,14 +159,14 @@ function listAdmin() {
     mydata = [];
     $.ajax({
         type: "GET",
-        url: "/ishop-admin/listAdmin",
+        url: "../api/admin/listAll",
         dataType: "json",
-        success: function (data) {
+        success: function (response) {
             //这里获取到数据展示到前台
             var vm = new Vue({
                 el: '#adminTable',
                 data: {
-                    mydata: data
+                    mydata: response.data
                 }
             });
             $("#queryTable").addClass("show");

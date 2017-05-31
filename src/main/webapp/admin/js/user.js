@@ -149,15 +149,15 @@ function listUser(){
     mydata=[];
     $.ajax({
             type:"GET",
-            url:"/ishop-admin/listUser",
+            url:"../api/user/listAll",
             dataType:"json",
-            success:function (data) {
+            success:function (response) {
                 //这里获取到数据展示到前台
                 //mydata=data;
                 var vm = new Vue({
                     el:'#userTable',
                     data:{
-                        mydata:data
+                        mydata:response.data
                     }
                 });
             }

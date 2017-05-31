@@ -88,14 +88,6 @@
                 </li>
                 <li>
                     <a class="active font-1" href="listSales.jsp" target="contentIframe">订单管理</a>
-                    <ul class="nav nav-stacked">
-                        <li>
-                            <a href="">订单处理</a>
-                        </li>
-                        <li>
-                            <a href="">订单查询</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>

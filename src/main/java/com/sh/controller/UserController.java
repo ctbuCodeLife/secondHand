@@ -135,4 +135,29 @@ public class UserController {
         }
         return  msg.toString();
     }
+
+    @RequestMapping(value = "/listAll", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findAll() {
+        List<User> list = new ArrayList<User>();
+        list = service.findAll();
+
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        for (int i = 0; i < list.size(); i++) {
+            data.add(list.get(i));
+        }
+
+        int status = 0;
+        if (list != null) {
+            status = 1;
+        } else {
+            status = 0;
+        }
+
+        Message msg = new Message();
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
+    }
 }

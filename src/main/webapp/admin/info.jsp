@@ -7,7 +7,6 @@
     <link href="css/info.css" rel="stylesheet" >
 </head>
 <body>
-<%@include file="head.jsp" %>
 <div class="loginBoole">
     <p>
         ${sessionScope.msg}
@@ -16,7 +15,6 @@
     </p>
 </div>
 <footer class="navbar-fixed-bottom">
-    <%@include file="footer.jsp" %>
 </footer>
 </body>
 <script type="text/javascript">

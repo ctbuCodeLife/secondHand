@@ -61,7 +61,7 @@
         <div id="left-bar" class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-pills nav-stacked">
                 <li>
-                    <a class="active font-1" href="admin/listAdmin.jsp" target="contentIframe" onclick="showNav(this)">管理员管理</a>
+                    <a class="active font-1" href="listAdmin.jsp" target="contentIframe" onclick="showNav(this)">管理员管理</a>
                     <ul class="nav nav-stacked">
                         <li>
                             <a href="admin/queryAdmin.jsp" target="contentIframe">管理员查询</a>
@@ -72,7 +72,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="active font-1" href="user/listUser.jsp" target="contentIframe">用户管理</a>
+                    <a class="active font-1" href="listUser.jsp" target="contentIframe">用户管理</a>
                     <ul class="nav nav-stacked">
                         <li>
                             <a href="user/queryUser.jsp" target="contentIframe">用户查询</a>

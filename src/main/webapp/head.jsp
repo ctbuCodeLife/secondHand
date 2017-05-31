@@ -24,6 +24,7 @@
 					<a href="#" onclick="logout()">注销</a>
 					<a href="cart.jsp">购物车</a>
 					<a href="order_list.jsp">订单</a>
+					<a href="admin/login.jsp">卖家</a>
 					<%--<a href="user_product.jsp">发布商品</a>--%>
 					<%--<a href="requestOrder.jsp">订单请求</a>--%>
 				</c:if>
@@ -31,6 +32,7 @@
 					<a href="index.jsp">首页</a>
 					<a href="login.jsp">登录</a>
 					<a href="register.jsp ">注册</a>
+					<a href="admin/login.jsp">卖家</a>
 				</c:if>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
