@@ -38,15 +38,15 @@
 %>
 <%@ include file="head.jsp"%>
 <!--左侧菜单-->
-<div class="left-menu">
-	<ul>
-		<li><a href="index.jsp" >首页</a></li>
-		<c:forEach var="kind" items="${sessionScope.listKind}">
-			<li><a href="product_list_by_kid.jsp?kid=${kind.id}" >${kind.kname}</a></li>
-		</c:forEach>
-		<li><a href="#miao">回到顶部</a></li>
-	</ul>
-</div>
+<%--<div class="left-menu">--%>
+	<%--<ul>--%>
+		<%--<li><a href="index.jsp" >首页</a></li>--%>
+		<%--<c:forEach var="kind" items="${sessionScope.listKind}">--%>
+			<%--<li><a href="product_list_by_kid.jsp?kid=${kind.id}" >${kind.kname}</a></li>--%>
+		<%--</c:forEach>--%>
+		<%--<li><a href="#miao">回到顶部</a></li>--%>
+	<%--</ul>--%>
+<%--</div>--%>
 <!---左侧菜单结束->
 <!--创建整体布局DIV-->
 	<div class="container">
