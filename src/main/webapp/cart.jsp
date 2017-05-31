@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css"/>
     <link rel="stylesheet" href="css/head.css">
     <!--引入jquery的js文件-->
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <style>
         .count-btn {

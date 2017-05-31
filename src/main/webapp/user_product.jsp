@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css"
           type="text/css" />
     <!--引入jquery的js文件-->
-    <script  src="js/jquery-1.12.4.min.js"></script>
+    <script  src="js/jquery.min.js"></script>
     <script  src="js/bootstrap.min.js"></script>
     <!-- 引入自定义css文件 style.css -->
     <link rel="stylesheet" href="css/style.css"  />

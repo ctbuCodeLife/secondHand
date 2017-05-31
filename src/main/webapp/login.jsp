@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <link rel="stylesheet" href="css/head.css">
     <!--引入jquery的js文件-->
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="js/sweetalert2.min.js"></script>
 
@@ -128,7 +128,7 @@
             },
             dataType: "json",
             success: function (response) {
-                if (response.status === 0) {
+                if (response.status !== 1) {
                     //登录失败
                     swal({
                         title: '提示',
@@ -154,7 +154,7 @@
     }
     $(function() {
         $(document).keydown(function (event) {
-            if (event.keyCode == 13) {
+            if (event.keyCode === 13) {
                 login()
             }
         })

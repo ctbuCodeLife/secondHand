@@ -64,8 +64,8 @@ public class ProductDAOImpl implements ProductDAO {
         return productDao.listByStatus(status);
     }
 
-    public List<Product> listByUidAndStatus(Integer uid, Integer status){
-        return productDao.listByUidAndStatus(uid,status);
+    public List<Product> listByUidAndStatus(Integer userid, Integer status){
+        return productDao.listByUidAndStatus(userid,status);
     }
 
     public Product select(Integer id){
@@ -74,6 +74,10 @@ public class ProductDAOImpl implements ProductDAO {
 
     public List<Product> getProductByLikeName( String productname){
         return productDao.getProductByLikeName(productname);
+    }
+
+    public List<Product> getProductByUidAndLikeName(Integer uid, String productname){
+        return productDao.getProductByUidAndLikeName(uid,productname);
     }
 
     public Product getProductByName(String productname){

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/sweetalert2.min.css">
     <link rel="stylesheet" href="css/leftMenu.css">
     <link rel="stylesheet" href="css/head.css">
-    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/my.js"></script>
     <script src="js/sweetalert2.min.js"></script>
@@ -117,7 +117,7 @@
     <!--创建adDIV-->
 
     <!--创建newProductDIV-->
-    <div>
+    <div class="container">
         <div class="row">
             <h3>所有商品</h3>
         </div>

@@ -10,10 +10,12 @@
 <head>
     <title>登录</title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" href="css/sweetalert2.min.css">
+
 </head>
 <body>
 <div id="app" >
-    <form class="login-container" action="adminLogin" method="post">
+    <form class="login-container" action="#" method="post">
         <h3 class="title">系统登录</h3>
         <div class="item">
             <label >
@@ -27,11 +29,61 @@
         </div>
         <div class="item">
             <label >
-                <input class="input submit"  type="submit" value="登录" >
+                <button class="input submit" onclick="adminLogin()">登录</button>
             </label>
         </div>
 
     </form>
 </div>
+<script src="js/jquery.min.js"></script>
+<script src="js/sweetalert2.min.js"></script>
+<script>
+    function adminLogin() {
+        //输入非空验证
+        var userEle = ["#name", "#password"];
+        for (var i = 0; i < userEle.length; i++) {
+            if ($(userEle[i]).val() === "") {
+                $(userEle[i]).focus();
+                return;
+            }
+        }
+        //获取参数
+        var nameVal = $("#name").val();
+        var pwdVal = $("#password").val();
+        //发送ajax进行注册
+        $.ajax({
+            type: "POST",
+            url: "../api/admin/login",
+            data: {
+                name: nameVal,
+                password: pwdVal,
+            },
+            dataType: "json",
+            success: function (response) {
+                if (response.status === 0) {
+                    //登录失败
+                    swal({
+                        title: '提示',
+                        text: response.data[0],
+                        timer: 3000
+                    }).then(
+                        function autoReturn() {
+                            location.href = response.autoReturn
+                        },
+                        // handling the promise rejection
+                        function (dismiss) {
+                            setTimeout(autoReturn)
+                            if (dismiss === 'timer') {
+                                console.log('I was closed by the timer')
+                            }
+                        }
+                    )
+                } else {
+                    location.href = response.autoReturn;
+                }
+            }
+        })
+    }
+</script>
 </body>
 </html>

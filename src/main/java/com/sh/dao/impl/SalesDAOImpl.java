@@ -48,12 +48,26 @@ public class SalesDAOImpl implements SalesDAO {
         return num;
     }
 
-    public List<Sales> findAll(){
-        return salesDao.findAll();
+    public List<Sales> listAll(){
+        return salesDao.listAll();
     }
 
     public List<Sales> listByUid(Integer uid){
         return salesDao.listByUid(uid);
+    }
+
+    public List<Sales> listByPid(Integer pid) {return salesDao.listByPid(pid);}
+
+    public List<Sales> listByStatus(String orderStatus){
+        return salesDao.listByStatus(orderStatus);
+    }
+
+    public List<Sales> listByUidAndPid(Integer uid,Integer pid) {return salesDao.listByUidAndPid(uid,pid);}
+
+    public List<Sales> listByUidAndStatus(Integer uid,String orderStatus) {return salesDao.listByUidAndStatus(uid,orderStatus);}
+
+    public List<Sales> listByUidAndPidAndStatus(Integer uid,Integer pid,String orderStatus){
+        return salesDao.listByUidAndPidAndStatus(uid,pid,orderStatus);
     }
 
     public List<Sales> findAllReqOrder(Integer uid){

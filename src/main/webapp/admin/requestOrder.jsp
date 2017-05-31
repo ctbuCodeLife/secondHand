@@ -17,14 +17,13 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>订单表</title>
+    <title>请求订单</title>
     <!--根据设备的宽度调整缩放比例   -->
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <!--引入bootstrap的CSS文件 -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css"
-          type="text/css"/>
-    <link rel="stylesheet" href="css/head.css">
+
+
     <!--引入jquery的js文件-->
     <script 　type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
@@ -120,7 +119,7 @@
             </div>
         </div>
     </div>
-    <%@ include file="foot.jsp" %>
+    <%@ include file="footer.jsp" %>
 </div>
 </body>
 </html>
