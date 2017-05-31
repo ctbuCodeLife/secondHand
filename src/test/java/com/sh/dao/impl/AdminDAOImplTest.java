@@ -112,7 +112,7 @@ public class AdminDAOImplTest {
         //测试通过
         AdminDAO adminDao = new AdminDAOImpl();
         String name = "root";
-        Admin admin = adminDao.getAdminByName(name);
+        Admin admin =adminDao.getAdminByName(name);
         assertNotNull(admin);
     }
 

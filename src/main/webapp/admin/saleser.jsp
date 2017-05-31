@@ -9,7 +9,7 @@
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <meta name="description" content="">
 
-    <title>admin index</title>
+    <title>卖家主页</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/dashboard.css" rel="stylesheet">
@@ -61,41 +61,19 @@
         <div id="left-bar" class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-pills nav-stacked">
                 <li>
-                    <a class="active font-1" href="admin/listAdmin.jsp" target="contentIframe" onclick="showNav(this)">管理员管理</a>
-                    <ul class="nav nav-stacked">
-                        <li>
-                            <a href="admin/queryAdmin.jsp" target="contentIframe">管理员查询</a>
-                        </li>
-                        <li>
-                            <a href="admin/addAdmin.jsp" target="contentIframe">管理员增加</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="active font-1" href="user/listUser.jsp" target="contentIframe">用户管理</a>
-                    <ul class="nav nav-stacked">
-                        <li>
-                            <a href="user/queryUser.jsp" target="contentIframe">用户查询</a>
-                        </li>
-                        <li>
-                            <a href="user/addUser.jsp" target="contentIframe">用户增加</a>
-                        </li>
-                        <li>
-                            <a href="user/auditUser.jsp" target="contentIframe">用户审核</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="active font-1" href="listProduct.jsp" target="contentIframe">商品管理</a>
+                    <a class="active font-1" href="listProductUser.jsp" target="contentIframe">商品管理</a>
                     <ul class="nav nav-stacked">
                         <li>
                             <a href="queryProduct.jsp" target="contentIframe">商品查询</a>
                         </li>
                         <li>
-                            <a href="listProductUnaudit.jsp" target="contentIframe">商品审核</a>
+                            <a href="uploadProduct.jsp" target="contentIframe">发布商品</a>
                         </li>
                         <li>
-                            <a href="listProductUp.jsp" target="contentIframe">商品下架</a>
+                            <a href="listProductUserUp.jsp" target="contentIframe">商品下架</a>
+                        </li>
+                        <li>
+                            <a href="listProductUserUnaudit.jsp" target="contentIframe">未审核的商品</a>
                         </li>
                         <%--<li>--%>
                             <%--<a href="product/listType.jsp" target="contentIframe">所有类别</a>--%>
@@ -108,17 +86,17 @@
                         <%--</li>--%>
                     </ul>
                 </li>
-                <%--<li>--%>
-                    <%--<a class="active font-1" href="listOrder.jsp">订单管理</a>--%>
-                    <%--<ul class="nav nav-stacked">--%>
-                        <%--<li>--%>
-                            <%--<a href="">订单处理</a>--%>
-                        <%--</li>--%>
-                        <%--<li>--%>
-                            <%--<a href="">订单查询</a>--%>
-                        <%--</li>--%>
-                    <%--</ul>--%>
-                <%--</li>--%>
+                <li>
+                    <a class="active font-1" href="listSales.jsp">订单管理</a>
+                    <ul class="nav nav-stacked">
+                        <li>
+                            <a href="">订单处理</a>
+                        </li>
+                        <li>
+                            <a href="">订单查询</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <!--描述：右半部-->
@@ -127,7 +105,7 @@
         </div>
     </div>
 </div>
-<script src="<%=request.getContextPath()%>/js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script>
     function showNav(that) {
       that.toggle();

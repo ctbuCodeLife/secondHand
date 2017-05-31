@@ -71,7 +71,7 @@
                     <th>原价</th>
                     <th>售价</th>
                     <th>库存量</th>
-                    <th>操作</th>
+                    <th>状态</th>
                 </tr>
                 <tr v-for="product in mydata">
                     <td>{{mydata.indexOf(product)+1}}</td>
@@ -82,11 +82,9 @@
                     <td>{{product.originprice}}</td>
                     <td>{{product.realprice}}</td>
                     <td>{{product.pnum}}</td>
-                    <td>
-                        <span style="display: none">{{product.id}}</span>
-                        <button class="btn btn-danger" onclick="delProduct(this)">删除</button>
-                        <a  v-bind:href="'updateProduct.jsp?id='+product.id"><button class="btn btn-default">更新</button></a>
-                    </td>
+                    <td v-if="product.status == 0">未审核</td>
+                    <td v-if="product.status == 1">上架</td>
+                    <td v-if="product.status == 2">下架</td>
                 </tr>
             </table>
     </div>

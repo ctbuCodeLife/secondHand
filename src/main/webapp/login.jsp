@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <link rel="stylesheet" href="css/head.css">
     <!--引入jquery的js文件-->
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script src="js/sweetalert2.min.js"></script>
 
@@ -154,7 +154,7 @@
     }
     $(function() {
         $(document).keydown(function (event) {
-            if (event.keyCode == 13) {
+            if (event.keyCode === 13) {
                 login()
             }
         })

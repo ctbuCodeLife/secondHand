@@ -3,7 +3,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="com.sh.dao.*" %>
 <%@ page import="com.sh.dao.impl.*" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -18,7 +18,7 @@
           type="text/css"/>
     <link rel="stylesheet" href="css/head.css">
     <!--引入jquery的js文件-->
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <!-- 引入自定义css文件 style.css -->
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
@@ -65,6 +65,10 @@
             Product product = pd.select(id);
             if (product != null) {
                 request.setAttribute("product", product);
+                int uid = product.getUid();
+                UserDAO ud = new UserDAOImpl();
+                User user = ud.select(uid);
+                request.setAttribute("tel", user.getTel());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +97,8 @@
                 <div style="margin: 0 auto; width: 950px;">
                     <div id="productImg" class="col-md-6">
                         <a href="product_info.jsp?id=${product.id}">
-                            <img src="${product.pimage}" alt="${product.pname}" width="170" height="170" style="display: inline-block;">
+                            <img src="${product.pimage}" alt="${product.pname}" width="170" height="170"
+                                 style="display: inline-block;">
                         </a>
                     </div>
 
@@ -112,7 +117,7 @@
 
                         <div style="margin: 10px 0 10px 0;">
                             促销: <a target="_blank" title="限时抢购 (2015-05-30 ~ 2015-06-01)"
-                                   >限时抢购</a>
+                        >限时抢购</a>
                         </div>
 
                         <div
@@ -143,6 +148,16 @@
                     </div>
                     <div id="productImgInfo">
                         <img src="${product.pimage}">
+                    </div>
+                    <div>
+                        <div style="background-color: #d3d3d3; width: 930px; padding: 10px 10px; margin: 10px 0 10px 0;">
+                            <strong>联系卖家</strong>
+                        </div>
+                        <p>卖家联系方式:
+                            <b>
+                                <tel>${requestScope.tel}</tel>
+                            </b>
+                        </p>
                     </div>
                 </div>
             </c:if>

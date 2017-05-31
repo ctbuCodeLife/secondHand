@@ -60,6 +60,13 @@ public class AdminDAOImpl implements AdminDAO {
     public Admin getAdminByName(String username){
         return  adminDao.getAdminByName(username);
     }
+    public Admin getAdminByNameAndPassword(String username,String password){
+        return adminDao.getAdminByNameAndPassword(username,password);
+    }
+
+    public String getPasswordByName(String username){
+        return adminDao.getPasswordByName(username);
+    }
 
     public int count(){
         return adminDao.count();

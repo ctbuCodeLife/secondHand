@@ -15,19 +15,12 @@
     <meta charset="UTF-8">
     <title>上传商品</title>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/head.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/my.js"></script>
     <!-- 引入自定义css文件 style.css -->
     <link rel="stylesheet" href="css/style.css" type="text/css" />
 
     <style>
-        body {
-            margin-top: 20px;
-            margin: 0 auto;
-        }
-
         .carousel-inner .item img {
             width: 100%;
             height: 300px;
@@ -61,8 +54,6 @@
 
 <body>
 <div class="container">
-    <%@ include file="head.jsp"%>
-
     <div class="container"
          style="width: 100%; background: url('image/regist_bg.jpg');">
         <div class="row">
@@ -72,7 +63,7 @@
             <div class="col-md-8"
                  style="background: #fff; padding: 40px 80px; margin: 30px; border: 7px solid #ccc;">
                 <font>上传商品</font>
-                <form name="addform" id="addform" action="api/product/add"
+                <form name="addform" id="addform" action="#"
                       method="post"  class="form-horizontal" style="margin-top: 5px;">
                     <div class="form-group">
                         <label for="pName" class="col-sm-2 control-label">商品名</label>
@@ -122,7 +113,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="pImage" class="col-sm-4 control-label">上传图片</label>
+                        <label for="pImage" class="col-sm-2 control-label">上传图片</label>
                         <div class="col-sm-6">
                             <input id="pImage" name="pImage" type="file" class="form-control"
                                    placeholder="请选择图片">
@@ -130,12 +121,11 @@
                     </div>
                     <div id="button-group" class="form-group">
                         <div class="col-sm-offset-2">
-                            <input type="submit" width="100" value="发布商品" name="submit"
-                                   style="background: url('./images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
+                            <button type="button" class="btn btn-success" onclick="addProdcut()" >注册</button>
                         </div>
                         <div class="col-sm-offset-2">
-                            <input type="reset" width="100" value="重置" name="submit"
-                                   style="background: url('./images/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0); height: 35px; width: 100px; color: white;">
+                            <input type="reset" class="btn btn-danger" value="重置" name="submit"
+                                   >
                         </div>
                     </div>
                 </form>
@@ -143,8 +133,8 @@
 
         </div>
     </div>
-    <%@ include file="foot.jsp"%>
+    <%@ include file="footer.jsp"%>
 </div>
+<script src="js/product.js"></script>
 </body>
-
 </html>

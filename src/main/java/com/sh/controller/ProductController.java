@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -48,7 +49,7 @@ public class ProductController {
         List<Object> data = new ArrayList<Object>();
         Product product = new Product();
         //设置uid
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("saleser");
         Integer uid = new Integer(0);
         if (user == null || user.getId() == null) {
             //用户未登录,跳转到登录页面
@@ -64,6 +65,7 @@ public class ProductController {
             String pDesc = request.getParameter("pDesc");
             Integer pNum = Integer.parseInt(request.getParameter("pNum"));
             String pImage = "img/show/sanxing.jpg";
+            Integer status = 0;//未审核
             Integer originPrice = Integer.parseInt(request.getParameter("originPrice"));
             Integer realPrice = Integer.parseInt(request.getParameter("realPrice"));
 
@@ -73,7 +75,7 @@ public class ProductController {
             product.setPdesc(pDesc);
             product.setPimage(pImage);
             product.setPnum(pNum);
-
+            product.setStatus(status);
             product.setOriginprice(originPrice);
             product.setRealprice(realPrice);
 
@@ -85,7 +87,7 @@ public class ProductController {
                 msg.setData(data);
                 msg.setAutoReturn("user_product.jsp");
             } else {
-                msg.setStatus(1);
+                msg.setStatus(0);
                 data.add("发布失败,3秒后自动跳转到发布商品页面");
                 msg.setData(data);
                 msg.setAutoReturn("user_product.jsp");
@@ -256,6 +258,44 @@ public class ProductController {
         return msg.toString();
     }
 
+    @RequestMapping(value = "/listUser", produces = "text/html;charset=UTF-8")
+    @ResponseBody
+    public String findUser(HttpServletRequest request,HttpSession session) {
+        Message msg = new Message();
+        //此处定义data是为了返回前台统一使用msg
+        List<Object> data = new ArrayList<Object>();
+        int status = 0;//返回给前台的状态码
+
+        //设置uid
+        User user = (User) session.getAttribute("saleser");
+        Integer uid = new Integer(0);
+        if (user == null || user.getId() == null) {
+            //用户未登录,跳转到登录页面
+            msg.setStatus(3);//用户未登录
+            data.add("您还未登录,请登录后再查询发布的商品。3秒后跳转到登录页面");
+            msg.setData(data);
+            msg.setAutoReturn("login.jsp");
+        } else {
+            uid = user.getId();
+            List<Product> list = new ArrayList<Product>();
+            list = service.findByUid(uid);
+
+
+            for (int i = 0; i < list.size(); i++) {
+                data.add(list.get(i));
+            }
+            if (list != null) {
+                status = 1;
+            } else {
+                status = 0;
+            }
+        }
+
+        msg.setStatus(status);
+        msg.setData(data);
+        return msg.toString();
+    }
+
     @RequestMapping(value = "/listUserUnaudit", produces = "text/html;charset=UTF-8")
     @ResponseBody
     public String findUserUnaudit(HttpSession session){
@@ -265,7 +305,7 @@ public class ProductController {
         int status = 0;//返回给前台的状态码
 
         //设置uid
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("saleser");
         Integer uid = new Integer(0);
         if (user == null || user.getId() == null) {
             //用户未登录,跳转到登录页面
@@ -302,7 +342,7 @@ public class ProductController {
         int status = 0;//返回给前台的状态码
 
         //设置uid
-        User user = (User) session.getAttribute("user");
+        User user = (User) session.getAttribute("saleser");
         Integer uid = new Integer(0);
         if (user == null || user.getId() == null) {
             //用户未登录,跳转到登录页面

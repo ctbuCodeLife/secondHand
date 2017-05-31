@@ -27,6 +27,12 @@ public interface AdminDAO {
     @Select("select * from `admin` where `username` = #{username}")
     public Admin getAdminByName(String username);
 
+    @Select("select * from `admin` where `username`=#{username} and `password`=#{password}")
+    public Admin getAdminByNameAndPassword(String username,String password);
+
+    @Select("select `password` from `admin` where `username` = #{username}")
+    public String getPasswordByName(String username);
+
     @Select("select count(id) from `admin`")
     public int count();
 }

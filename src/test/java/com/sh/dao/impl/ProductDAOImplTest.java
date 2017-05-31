@@ -74,7 +74,10 @@ public void testFindAll() throws Exception {
 */ 
 @Test
 public void testListByUid() throws Exception { 
-//TODO: Test goes here... 
+//TODO: Test goes here...
+    ProductDAO productDAO = new ProductDAOImpl();
+    List<Product> list = productDAO.listByUid(10000);
+    System.out.println(list);
 } 
 
 /** 

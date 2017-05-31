@@ -19,14 +19,16 @@
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navber navbar-header">
 				<c:if test="${not empty sessionScope.user }">
-					<a href="#" class="" style="width: 50px;height: 30px">当前用户:${sessionScope.user.username}</a>
+					<a href="index.jsp">首页</a>
+					<a href="selfInfo.jsp" class="" style="width: 50px;height: 30px">当前用户:${sessionScope.user.username}</a>
 					<a href="#" onclick="logout()">注销</a>
 					<a href="cart.jsp">购物车</a>
 					<a href="order_list.jsp">订单</a>
-					<a href="user_product.jsp">发布商品</a>
-					<a href="requestOrder.jsp">订单请求</a>
+					<%--<a href="user_product.jsp">发布商品</a>--%>
+					<%--<a href="requestOrder.jsp">订单请求</a>--%>
 				</c:if>
 				<c:if test="${ empty sessionScope.user }">
+					<a href="index.jsp">首页</a>
 					<a href="login.jsp">登录</a>
 					<a href="register.jsp ">注册</a>
 				</c:if>

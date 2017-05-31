@@ -29,14 +29,17 @@ public interface ProductDAO {
     @Select("select * from `product` where `status`=#{status}")
     public List<Product> listByStatus(Integer status);
 
-    @Select("select * from `product` where `uid`=#{uid} and `status`=#{status}")
-    public List<Product> listByUidAndStatus(Integer uid, Integer status);
+    @Select("select * from `product` where `uid` = #{uid} and `status` = #{status}")
+    public List<Product> listByUidAndStatus(@Param("uid")Integer uid, @Param("status") Integer status);
 
     @Select("select * from `product` where id = #{id}")
     public Product select(Integer id);
 
     @Select("select * from `product` where `pName` like concat(concat('%',#{username}),'%')")
     public List<Product> getProductByLikeName(String productname);
+
+    @Select("select * from `product` where uId=#{uid} and `pName` like concat(concat('%',#{username}),'%')")
+    public List<Product> getProductByUidAndLikeName(@Param("uid") Integer uid, @Param("username") String productname);
 
     @Select("select * from `product` where `pName` = #{pname}")
     public Product getProductByName(String productname);
