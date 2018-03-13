@@ -1,8 +1,5 @@
 # SecondHand
 
-标签（空格分隔）：project
-
----
 
 >Bootstrap+SpringMVC+Spring+Mybatis+MySQL搭建的二手交易网站
 
